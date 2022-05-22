@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import LoginScreen from "./views/login/LoginScreen";
+import {MainScreen} from "./views/main/Main";
+import {BranchesScreen} from "./views/branches/Branches";
+import {BranchScreen} from "./views/branch/Branch";
+import {EditBranchScreen} from "./views/editbranch/EditBranchScreen";
+import {QueueScreen} from "./views/queue/QueueScreen";
+import {GeneralQueueScreen} from "./views/branch/QueueScreen";
+import {EmployeesScreen} from "./views/employees/EmployeesScreen";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (<div className="App">
+        <main className="container">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" exact element={<LoginScreen/>}/>
+                    <Route path="/login" element={<LoginScreen/>}/>
+                    <Route path="/main" element={<MainScreen/>}/>
+                    <Route path="/branches" element={<BranchesScreen/>}/>
+                    <Route path="/branch/:id" element={<BranchScreen/>}/>
+                    <Route path="/branch/edit/:id" element={<EditBranchScreen/>}/>
+                    <Route path="/branch/new" element={<EditBranchScreen/>}/>
+                    <Route path="/branch/:branchId/queues/:queueId" element={<QueueScreen/>}/>
+                    <Route path="/queue/new" element={<GeneralQueueScreen/>}/>
+                    <Route path="/employees" element={<EmployeesScreen/>}/>
+                </Routes>
+            </BrowserRouter>
+        </main>
+    </div>);
 }
 
 export default App;
