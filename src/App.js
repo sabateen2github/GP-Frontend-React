@@ -8,6 +8,8 @@ import {EditBranchScreen} from "./views/editbranch/EditBranchScreen";
 import {QueueScreen} from "./views/queue/QueueScreen";
 import {GeneralQueueScreen} from "./views/branch/QueueScreen";
 import {EmployeesScreen} from "./views/employees/EmployeesScreen";
+import {EditEmployeeScreen} from "./views/employee/EditEmployeeScreen";
+import {NewEmployeeScreen} from "./views/employee/NewEmployeeScreen";
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
                     <Route path="/branch/:branchId/queues/:queueId" element={<QueueScreen/>}/>
                     <Route path="/queue/new" element={<GeneralQueueScreen/>}/>
                     <Route path="/employees" element={<EmployeesScreen/>}/>
+                    <Route path="/employees/:id" element={<EditEmployeeScreen/>}/>
+                    <Route path="/employees/new" element={<NewEmployeeScreen/>}/>
                 </Routes>
             </BrowserRouter>
         </main>

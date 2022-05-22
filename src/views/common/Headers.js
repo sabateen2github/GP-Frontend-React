@@ -19,7 +19,6 @@ const CommonHeader = ({branchName, queueName, ...props}) => {
 };
 
 const InstitutionHeader = ({branchName, queueName, ...props}) => {
-    console.log(branchName);
     return (
         <Stack direction='row' alignItems='center' justifyContent='flex-end' spacing={2}>
             <Avatar

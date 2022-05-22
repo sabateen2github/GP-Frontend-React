@@ -56,6 +56,8 @@ let searchTerm = "all";
 const EmployeesScreen = (props) => {
 
 
+    const history = useNavigate();
+
     const {data, error, isValidating, mutate} = useSWR(searchTerm, fetchEmployees);
 
     return (
@@ -100,7 +102,7 @@ const EmployeesScreen = (props) => {
                 </Card>
             </Stack>
             <Stack direction='row' width='95%' justifyContent='center'>
-                <Button variant='contained'>Add new employee</Button>
+                <Button variant='contained' onClick={()=>{history('/employees/new');}}>Add new employee</Button>
             </Stack>
         </Stack>);
 
