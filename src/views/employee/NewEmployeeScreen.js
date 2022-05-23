@@ -6,6 +6,7 @@ import {Photo} from "@mui/icons-material";
 import useSWR from "swr";
 import {branchesFetcher} from "../../api/branch/branches";
 import {AccountTypes, createEmployee} from "../../api/employee/employee";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 
 const EmployeeLoaded = ({branches, ...props}) => {
@@ -22,13 +23,17 @@ const EmployeeLoaded = ({branches, ...props}) => {
 
     const [image, setImage] = useState();
 
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
+
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={localStorage.getItem('logo')}
-                          institute={localStorage.getItem('instituteName')}
-                          profilePic={localStorage.getItem('profilePic')}
-                          employee={localStorage.getItem('employeeName')}
-                          employeeId={localStorage.getItem('employeeId')}/>
+            <CommonHeader logo={credentialsRequest.data.logo}
+                          institute={credentialsRequest.data.instituteName}
+                          profilePic={credentialsRequest.data.profilePic}
+                          employee={credentialsRequest.data.employeeName}
+                          employeeId={credentialsRequest.data.employeeId}/>
             <Stack direction='column' spacing={2} alignItems='center'>
                 <Button variant='contained' component="label">
                     <Typography paddingX={2}>Upload photo</Typography>

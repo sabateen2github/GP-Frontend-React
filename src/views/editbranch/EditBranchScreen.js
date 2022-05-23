@@ -6,6 +6,7 @@ import useSWR from "swr";
 import {branchFetcher, createBranch, updateBranch} from "../../api/branch/branches";
 import RoomIcon from "@mui/icons-material/Room";
 import {Map, Marker} from "../common/Map";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 
 const BranchDetails = ({data, id, successCallback, ...props}) => {
@@ -25,15 +26,18 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
         markerLocation = location;
     }
 
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
 
     return (<Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader
                 branchName={data ? data.name : undefined}
-                logo={localStorage.getItem('logo')}
-                institute={localStorage.getItem('instituteName')}
-                profilePic={localStorage.getItem('profilePic')}
-                employee={localStorage.getItem('employeeName')}
-                employeeId={localStorage.getItem('employeeId')}/>
+                logo={credentialsRequest.data.logo}
+                institute={credentialsRequest.data.instituteName}
+                profilePic={credentialsRequest.data.profilePic}
+                employee={credentialsRequest.data.employeeName}
+                employeeId={credentialsRequest.data.employeeId}/>
 
             {saving && <CircularProgress/>}
             {(!saving && data) &&

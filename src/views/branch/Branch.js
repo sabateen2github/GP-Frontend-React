@@ -18,6 +18,7 @@ import useSWR from 'swr'
 import {branchFetcher} from "../../api/branch/branches";
 import {FixedSizeList} from "react-window";
 import {ArrowForwardIos} from "@mui/icons-material";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 
 const renderRow = (queues) => (props) => {
@@ -53,6 +54,9 @@ const BranchScreen = (props) => {
 
     const {data, error, isValidating, mutate} = useSWR(id, branchFetcher);
 
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
     const Content = (props) => {
         if (isValidating) return <Box height={350} width={600} alignContent='center'><CircularProgress/></Box>;
         else if (error) return <Typography>Error!</Typography>;
@@ -78,11 +82,11 @@ const BranchScreen = (props) => {
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader
                 branchName={data ? data.name : undefined}
-                logo={localStorage.getItem('logo')}
-                institute={localStorage.getItem('instituteName')}
-                profilePic={localStorage.getItem('profilePic')}
-                employee={localStorage.getItem('employeeName')}
-                employeeId={localStorage.getItem('employeeId')}/>
+                logo={credentialsRequest.data.logo}
+                institute={credentialsRequest.data.instituteName}
+                profilePic={credentialsRequest.data.profilePic}
+                employee={credentialsRequest.data.employeeName}
+                employeeId={credentialsRequest.data.employeeId}/>
             <Card>
                 <CardContent>
                     <Content/>

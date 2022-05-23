@@ -1,3 +1,5 @@
+const CREDENTIAL_KEY = '/credentials';
+
 const login = (username, password, callback) => {
 
     setTimeout(() => {
@@ -19,4 +21,19 @@ const login = (username, password, callback) => {
 };
 
 
-export {login};
+const fetchCredentials = async () => {
+
+    return {
+        logo: localStorage.getItem('logo'),
+        profilePic: localStorage.getItem('profilePic'),
+        instituteName: localStorage.getItem('instituteName'),
+        employeeName: localStorage.getItem('employeeName'),
+        employeeId: localStorage.getItem('employeeId'),
+        instituteEmail: localStorage.getItem('instituteEmail'),
+        institutePhone: localStorage.getItem('institutePhone')
+    };
+
+};
+
+
+export {login, fetchCredentials, CREDENTIAL_KEY};

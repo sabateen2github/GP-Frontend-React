@@ -1,8 +1,10 @@
 import {CommonHeader} from "../common/Headers";
 import React, {useRef, useState} from "react";
-import {Avatar, Button, Stack, TextField, Typography} from "@mui/material";
+import {Avatar, Button, CircularProgress, Stack, TextField, Typography} from "@mui/material";
 import {Photo} from "@mui/icons-material";
 import {saveInstituteDetails} from "../../api/management/management";
+import useSWR, {mutate} from "swr";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 const EditBusinessScreen = (props) => {
 
@@ -10,15 +12,20 @@ const EditBusinessScreen = (props) => {
     const nameRef = useRef();
     const phoneRef = useRef();
 
-    const [image, setImage] = useState(localStorage.getItem('logo'));
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    let [image, setImage] = useState(null);
+
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
+    if (!image) image = credentialsRequest.data.logo;
 
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={localStorage.getItem('logo')}
-                          institute={localStorage.getItem('instituteName')}
-                          profilePic={localStorage.getItem('profilePic')}
-                          employee={localStorage.getItem('employeeName')}
-                          employeeId={localStorage.getItem('employeeId')}/>
+            <CommonHeader logo={credentialsRequest.data.logo}
+                          institute={credentialsRequest.data.instituteName}
+                          profilePic={credentialsRequest.data.profilePic}
+                          employee={credentialsRequest.data.employeeName}
+                          employeeId={credentialsRequest.data.employeeId}/>
 
             <Stack direction='column' spacing={2}>
                 <Stack direction='column' spacing={2} alignItems='center'>
@@ -42,11 +49,11 @@ const EditBusinessScreen = (props) => {
 
                 <Stack direction='column' spacing={4} width={500}>
                     <TextField inputRef={nameRef} variant='outlined' label='Name'
-                               defaultValue={localStorage.getItem('instituteName')}/>
+                               defaultValue={credentialsRequest.data.instituteName}/>
                     <TextField inputRef={emailRef} variant='outlined' label='Email'
-                               defaultValue={localStorage.getItem('instituteEmail')}/>
+                               defaultValue={credentialsRequest.data.instituteEmail}/>
                     <TextField inputRef={phoneRef} variant='outlined' label='Phone'
-                               defaultValue={localStorage.getItem('institutePhone')}/>
+                               defaultValue={credentialsRequest.data.institutePhone}/>
                 </Stack>
             </Stack>
 
@@ -58,6 +65,8 @@ const EditBusinessScreen = (props) => {
                         phone: phoneRef.current.value,
                         logoUrl: image
                     });
+
+                    mutate(CREDENTIAL_KEY);
                 }}>Save</Button>
             </Stack>
         </Stack>);

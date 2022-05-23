@@ -20,6 +20,7 @@ import {ArrowForwardIos} from "@mui/icons-material";
 import useSWR from "swr";
 import {fetchEmployees} from "../../api/employee/employee";
 import {FixedSizeList} from "react-window";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 
 const renderRow = (employees) => (props) => {
@@ -60,13 +61,16 @@ const EmployeesScreen = (props) => {
 
     const {data, error, isValidating, mutate} = useSWR(searchTerm, fetchEmployees);
 
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
     return (
         <Stack direction='column' spacing={4} alignItems='start' justifyContent='space-between'>
-            <CommonHeader logo={localStorage.getItem('logo')}
-                          institute={localStorage.getItem('instituteName')}
-                          profilePic={localStorage.getItem('profilePic')}
-                          employee={localStorage.getItem('employeeName')}
-                          employeeId={localStorage.getItem('employeeId')}/>
+            <CommonHeader logo={credentialsRequest.data.logo}
+                          institute={credentialsRequest.data.instituteName}
+                          profilePic={credentialsRequest.data.profilePic}
+                          employee={credentialsRequest.data.employeeName}
+                          employeeId={credentialsRequest.data.employeeId}/>
 
             <Stack direction='row' spacing={8} paddingX={8}>
                 <form onSubmit={(event) => {

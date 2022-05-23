@@ -3,6 +3,7 @@ import React from 'react';
 
 
 const CommonHeader = ({branchName, queueName, ...props}) => {
+
     return (
         <Stack direction='row' alignItems='flex-start' justifyContent='space-between' sx={{width: 1}}>
             <InstitutionHeader

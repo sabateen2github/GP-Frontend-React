@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import useSWR from "swr";
 import {advanceQueue, queueFetcher, resetQueue} from "../../api/branch/queues";
 import {branchFetcher} from "../../api/branch/branches";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 const QueueScreen = (props) => {
 
@@ -13,19 +14,22 @@ const QueueScreen = (props) => {
     const branchResponse = useSWR(branchId, branchFetcher);
     const {data, error, isValidating, mutate} = useSWR({id: queueId, branchId: branchId}, queueFetcher);
 
-    if (isValidating) {
-        return <CircularProgress/>;
-    } else if (error) return <Typography variant='h2'>Error!</Typography>;
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+
+    if (isValidating || credentialsRequest.isValidating) {
+        return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+    } else if (error || credentialsRequest.error) return <Typography variant='h2'>Error!</Typography>;
+
 
     return (<Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
         <CommonHeader
             branchName={branchResponse.data ? branchResponse.data.name : undefined}
             queueName={data ? data.name : undefined}
-            logo={localStorage.getItem('logo')}
-            institute={localStorage.getItem('instituteName')}
-            profilePic={localStorage.getItem('profilePic')}
-            employee={localStorage.getItem('employeeName')}
-            employeeId={localStorage.getItem('employeeId')}/>
+            logo={credentialsRequest.data.logo}
+            institute={credentialsRequest.data.instituteName}
+            profilePic={credentialsRequest.data.profilePic}
+            employee={credentialsRequest.data.employeeName}
+            employeeId={credentialsRequest.data.employeeId}/>
         <Stack direction='row' width='100%' padding={8} alignItems='start' justifyContent='flex-start'>
             <Stack direction='column' alignItems='start' justifyContent='flex-start'>
                 <Typography variant='h4'>{`Queue Size: ${data.size}`}</Typography>

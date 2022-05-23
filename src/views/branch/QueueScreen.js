@@ -18,6 +18,7 @@ import React from "react";
 import useSWR from "swr";
 import {branchesFetcher} from "../../api/branch/branches";
 import {FixedSizeList} from "react-window";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 
 let queueName = null;
 
@@ -45,9 +46,12 @@ const renderRow = (branches, handleToggle, checked, setChecked) => ({index, styl
 const GeneralQueueScreen = (props) => {
 
     const {data, error, isValidating, mutate} = useSWR('/branchesFetcher', branchesFetcher);
-
-
     const [checked, setChecked] = React.useState([]);
+
+
+    const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
+    if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
+
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -85,11 +89,12 @@ const GeneralQueueScreen = (props) => {
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader
-                logo={localStorage.getItem('logo')}
-                institute={localStorage.getItem('instituteName')}
-                profilePic={localStorage.getItem('profilePic')}
-                employee={localStorage.getItem('employeeName')}
-                employeeId={localStorage.getItem('employeeId')}/>
+                logo={credentialsRequest.data.logo}
+                institute={credentialsRequest.data.instituteName}
+                profilePic={credentialsRequest.data.profilePic}
+                employee={credentialsRequest.data.employeeName}
+                employeeId={credentialsRequest.data.employeeId}
+            />
             <TextField label="Queue name" sx={{width: 400}} variant="outlined"
                        onChange={(event) => queueName = event.target.value}/>
             <Card>
