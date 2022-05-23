@@ -1,14 +1,14 @@
-import {AccountTypes} from "../employee/employee";
-
 const CREDENTIAL_KEY = '/credentials';
+
+const AccountTypes = {
+    HelpDesk: 0, Management: 1, Admin: 2
+};
 
 const login = (username, password, callback) => {
 
     setTimeout(() => {
 
         localStorage.setItem('jwt', "#A105");
-
-
         localStorage.setItem('logo', "https://financialallianceforwomen.org/wp-content/uploads/2015/07/BAE-Logo-600x600-profile-picture.jpg");
         localStorage.setItem('profilePic', "https://financialallianceforwomen.org/wp-content/uploads/2015/07/BAE-Logo-600x600-profile-picture.jpg");
         localStorage.setItem('employeeName', "Alaa Al-Sabateen");
@@ -17,8 +17,7 @@ const login = (username, password, callback) => {
         localStorage.setItem('instituteId', "#dasffesdfds43243");
         localStorage.setItem('instituteEmail', "etihad@bank.com");
         localStorage.setItem('institutePhone', "079 123 4567");
-        localStorage.setItem('accountType', AccountTypes.Management);
-
+        localStorage.setItem('accountType', username == 'alaa2sbateen' ? AccountTypes.Management : AccountTypes.Admin);
         callback(true);
     }, 2000);
 
@@ -46,4 +45,11 @@ const checkIfLoggedIn = () => {
     return localStorage.hasOwnProperty('jwt');
 };
 
-export {login, fetchCredentials, CREDENTIAL_KEY, checkIfLoggedIn};
+
+const logout = async () => {
+    localStorage.clear();
+    return true;
+};
+
+export {login, fetchCredentials, CREDENTIAL_KEY, checkIfLoggedIn, logout};
+export {AccountTypes};

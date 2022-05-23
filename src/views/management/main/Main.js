@@ -1,14 +1,14 @@
 import React from 'react';
 import {CircularProgress, Stack} from "@mui/material";
-import {CommonHeader} from "../common/Headers";
-import {CardButton} from "../common/CardButton";
+import {CommonHeader} from "../../common/Headers";
+import {CardButton} from "../../common/CardButton";
 import edit_business from './images/edit_business.svg';
 import employees from './images/employees.svg';
 import jupyter from './images/jupyter.svg';
 import queues_branches from './images/queues_branches.svg';
 import {useNavigate} from "react-router-dom";
 import useSWR from "swr";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 
 const MainScreen = (props) => {

@@ -13,12 +13,12 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import React from "react";
 import useSWR from "swr";
-import {branchesFetcher} from "../../api/branch/branches";
+import {branchesFetcher} from "../../../api/branch/branches";
 import {FixedSizeList} from "react-window";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 let queueName = null;
 

@@ -1,12 +1,12 @@
 import {Button, CircularProgress, Snackbar, Stack, TextField, Typography} from "@mui/material";
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import useSWR from "swr";
-import {branchFetcher, createBranch, updateBranch} from "../../api/branch/branches";
+import {branchFetcher, createBranch, updateBranch} from "../../../api/branch/branches";
 import RoomIcon from "@mui/icons-material/Room";
-import {Map, Marker} from "../common/Map";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {Map, Marker} from "../../common/Map";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 
 const BranchDetails = ({data, id, successCallback, ...props}) => {

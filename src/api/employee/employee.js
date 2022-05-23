@@ -48,9 +48,4 @@ const createEmployee = async ({profilePic, fullName, dateOfBirth, username, pass
 };
 
 
-const AccountTypes = {
-    HelpDesk: 0,
-    Management: 1
-};
-
-export {fetchEmployees, getEmployee, saveEmployee, createEmployee, AccountTypes};
+export {fetchEmployees, getEmployee, saveEmployee, createEmployee};

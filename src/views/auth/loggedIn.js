@@ -1,7 +1,6 @@
 import useSWR from "swr";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {AccountTypes, CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 import {CircularProgress, Typography} from "@mui/material";
-import {AccountTypes} from "../../api/employee/employee";
 import {Navigate} from 'react-router-dom';
 
 const HandleLoggedIn = (props) => {
@@ -13,7 +12,10 @@ const HandleLoggedIn = (props) => {
 
     if (credentials.data.accountType == AccountTypes.Management)
         return <Navigate to='/main' replace/>;
+    else if (credentials.data.accountType == AccountTypes.Admin)
+        return <Navigate to='/admin' replace/>;
     else return <Typography variant='h2'>Not Implemented!</Typography>
 };
+
 
 export {HandleLoggedIn};

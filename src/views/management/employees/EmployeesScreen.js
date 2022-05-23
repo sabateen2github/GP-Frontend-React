@@ -12,15 +12,15 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import React from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from "react-router-dom";
 import {ArrowForwardIos} from "@mui/icons-material";
 import useSWR from "swr";
-import {fetchEmployees} from "../../api/employee/employee";
+import {fetchEmployees} from "../../../api/employee/employee";
 import {FixedSizeList} from "react-window";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 
 const renderRow = (employees) => (props) => {

@@ -1,10 +1,10 @@
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import React, {useRef, useState} from "react";
 import {Avatar, Button, CircularProgress, Stack, TextField, Typography} from "@mui/material";
 import {Photo} from "@mui/icons-material";
-import {saveInstituteDetails} from "../../api/management/management";
+import {saveInstituteDetails} from "../../../api/management/management";
 import useSWR, {mutate} from "swr";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 const EditBusinessScreen = (props) => {
 

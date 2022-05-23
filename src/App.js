@@ -1,21 +1,22 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LoginScreen from "./views/login/LoginScreen";
-import {MainScreen} from "./views/main/Main";
-import {BranchesScreen} from "./views/branches/Branches";
-import {BranchScreen} from "./views/branch/Branch";
-import {EditBranchScreen} from "./views/editbranch/EditBranchScreen";
-import {QueueScreen} from "./views/queue/QueueScreen";
-import {GeneralQueueScreen} from "./views/branch/QueueScreen";
-import {EmployeesScreen} from "./views/employees/EmployeesScreen";
-import {EditEmployeeScreen} from "./views/employee/EditEmployeeScreen";
-import {NewEmployeeScreen} from "./views/employee/NewEmployeeScreen";
-import {EditBusinessScreen} from "./views/business/EditBusinessScreen";
-import {ProtectedManagement} from "./views/auth/redirect";
+import {MainScreen} from "./views/management/main/Main";
+import {BranchesScreen} from "./views/management/branches/Branches";
+import {BranchScreen} from "./views/management/branch/Branch";
+import {EditBranchScreen} from "./views/management/editbranch/EditBranchScreen";
+import {QueueScreen} from "./views/management/queue/QueueScreen";
+import {GeneralQueueScreen} from "./views/management/branch/QueueScreen";
+import {EmployeesScreen} from "./views/management/employees/EmployeesScreen";
+import {EditEmployeeScreen} from "./views/management/employee/EditEmployeeScreen";
+import {NewEmployeeScreen} from "./views/management/employee/NewEmployeeScreen";
+import {EditBusinessScreen} from "./views/management/business/EditBusinessScreen";
+import {ProtectedAdmin, ProtectedManagement} from "./views/auth/redirect";
+import {AdminScreen} from "./views/admin/main/MainScreen";
+import {BusinessScreen} from "./views/admin/business/BusinessScreen";
 
 
 function App() {
-
     return (<div className="App">
         <main className="container">
             <BrowserRouter>
@@ -38,6 +39,8 @@ function App() {
                     <Route path="/employees/new"
                            element={<ProtectedManagement><NewEmployeeScreen/></ProtectedManagement>}/>
                     <Route path="/edit" element={<ProtectedManagement><EditBusinessScreen/></ProtectedManagement>}/>
+                    <Route path='/admin' element={<ProtectedAdmin><AdminScreen/></ProtectedAdmin>}/>
+                    <Route path='/admin/business/:id' element={<ProtectedAdmin><BusinessScreen/></ProtectedAdmin>}/>
                 </Routes>
             </BrowserRouter>
         </main>

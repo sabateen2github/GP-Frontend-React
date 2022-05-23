@@ -1,5 +1,7 @@
-import {Avatar, Stack, Typography} from "@mui/material";
+import {Avatar, Button, Stack, Typography} from "@mui/material";
 import React from 'react';
+import {logout} from "../../api/login/login";
+import {useNavigate} from "react-router-dom";
 
 
 const CommonHeader = ({branchName, queueName, ...props}) => {
@@ -36,6 +38,9 @@ const InstitutionHeader = ({branchName, queueName, ...props}) => {
 };
 
 const UserHeader = (props) => {
+
+    const navigate = useNavigate();
+
     return (
         <Stack direction='row' alignItems='center' spacing={2}>
 
@@ -43,11 +48,16 @@ const UserHeader = (props) => {
                 <Typography variant='h5'>{props.employee}</Typography>
                 <Typography variant='h5'>{`Employee ID: ${props.employeeId}`}</Typography>
             </Stack>
-            <Avatar
-                alt="Remy Sharp"
-                src={props.profilePic}
-                sx={{width: 150, height: 150}}
-                variant="square"/>
+            <Stack direction='column' spacing={1}>
+                <Avatar
+                    alt="Remy Sharp"
+                    src={props.profilePic}
+                    sx={{width: 150, height: 150}}
+                    variant="square"/>
+                <Button variant='contained' color='error' onClick={() => {
+                    logout().then((result) => navigate('/login'));
+                }}>Logout</Button>
+            </Stack>
 
         </Stack>);
 

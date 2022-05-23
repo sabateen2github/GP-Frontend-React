@@ -1,11 +1,11 @@
 import {Button, CircularProgress, Stack, Typography} from "@mui/material";
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import React from "react";
 import {useParams} from "react-router-dom";
 import useSWR from "swr";
-import {advanceQueue, queueFetcher, resetQueue} from "../../api/branch/queues";
-import {branchFetcher} from "../../api/branch/branches";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {advanceQueue, queueFetcher, resetQueue} from "../../../api/branch/queues";
+import {branchFetcher} from "../../../api/branch/branches";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 const QueueScreen = (props) => {
 

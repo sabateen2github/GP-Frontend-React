@@ -12,13 +12,13 @@ import {
     Stack,
     Typography
 } from "@mui/material";
-import {CommonHeader} from "../common/Headers";
+import {CommonHeader} from "../../common/Headers";
 import {useNavigate} from "react-router-dom";
 import useSWR from 'swr'
-import {branchesFetcher} from "../../api/branch/branches";
+import {branchesFetcher} from "../../../api/branch/branches";
 import {FixedSizeList} from "react-window";
 import {ArrowForwardIos} from "@mui/icons-material";
-import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 
 
 const renderRow = (branches) => (props) => {
