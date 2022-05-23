@@ -11,6 +11,8 @@ import {EmployeesScreen} from "./views/employees/EmployeesScreen";
 import {EditEmployeeScreen} from "./views/employee/EditEmployeeScreen";
 import {NewEmployeeScreen} from "./views/employee/NewEmployeeScreen";
 import {EditBusinessScreen} from "./views/business/EditBusinessScreen";
+import {ProtectedManagement} from "./views/auth/redirect";
+
 
 function App() {
 
@@ -20,17 +22,22 @@ function App() {
                 <Routes>
                     <Route path="/" exact element={<LoginScreen/>}/>
                     <Route path="/login" element={<LoginScreen/>}/>
-                    <Route path="/main" element={<MainScreen/>}/>
-                    <Route path="/branches" element={<BranchesScreen/>}/>
-                    <Route path="/branch/:id" element={<BranchScreen/>}/>
-                    <Route path="/branch/edit/:id" element={<EditBranchScreen/>}/>
-                    <Route path="/branch/new" element={<EditBranchScreen/>}/>
-                    <Route path="/branch/:branchId/queues/:queueId" element={<QueueScreen/>}/>
-                    <Route path="/queue/new" element={<GeneralQueueScreen/>}/>
-                    <Route path="/employees" element={<EmployeesScreen/>}/>
-                    <Route path="/employees/:id" element={<EditEmployeeScreen/>}/>
-                    <Route path="/employees/new" element={<NewEmployeeScreen/>}/>
-                    <Route path="/edit" element={<EditBusinessScreen/>}/>
+                    <Route path="/main" element={<ProtectedManagement><MainScreen/></ProtectedManagement>}/>
+                    <Route path="/branches" element={<ProtectedManagement><BranchesScreen/></ProtectedManagement>}/>
+                    <Route path="/branch/:id" element={<ProtectedManagement><BranchScreen/></ProtectedManagement>}/>
+                    <Route path="/branch/edit/:id"
+                           element={<ProtectedManagement><EditBranchScreen/></ProtectedManagement>}/>
+                    <Route path="/branch/new" element={<ProtectedManagement><EditBranchScreen/></ProtectedManagement>}/>
+                    <Route path="/branch/:branchId/queues/:queueId"
+                           element={<ProtectedManagement><QueueScreen/></ProtectedManagement>}/>
+                    <Route path="/queue/new"
+                           element={<ProtectedManagement><GeneralQueueScreen/></ProtectedManagement>}/>
+                    <Route path="/employees" element={<ProtectedManagement><EmployeesScreen/></ProtectedManagement>}/>
+                    <Route path="/employees/:id"
+                           element={<ProtectedManagement><EditEmployeeScreen/></ProtectedManagement>}/>
+                    <Route path="/employees/new"
+                           element={<ProtectedManagement><NewEmployeeScreen/></ProtectedManagement>}/>
+                    <Route path="/edit" element={<ProtectedManagement><EditBusinessScreen/></ProtectedManagement>}/>
                 </Routes>
             </BrowserRouter>
         </main>

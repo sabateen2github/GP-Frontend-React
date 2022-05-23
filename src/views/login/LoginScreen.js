@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Avatar, Button, CircularProgress, Stack, TextField, Typography} from "@mui/material";
-import {Navigate} from "react-router-dom";
-import {login} from "../../api/login/login";
+import {checkIfLoggedIn, login} from "../../api/login/login";
 import loginLogo from './images/login_logo.svg';
+import {HandleLoggedIn} from "../auth/loggedIn";
 
 let username = null;
 let password = null;
@@ -20,10 +20,6 @@ const onLoginClicked = (state, setState) => () => {
 };
 
 
-const checkIfLoggedIn = () => {
-    return localStorage.hasOwnProperty('jwt');
-};
-
 const LoginScreen = (props) => {
 
     const [state, setState] = useState({
@@ -31,7 +27,7 @@ const LoginScreen = (props) => {
     });
 
     if (checkIfLoggedIn()) {
-        return <Navigate to='/main'/>
+        return <HandleLoggedIn/>;
     } else if (state.isSigningIn) {
         return <CircularProgress/>
     }
