@@ -5,7 +5,7 @@ import {DatePicker} from "@mui/x-date-pickers";
 import {Photo} from "@mui/icons-material";
 import useSWR from "swr";
 import {branchesFetcher} from "../../api/branch/branches";
-import {createEmployee, saveEmployee} from "../../api/employee/employee";
+import {AccountTypes, createEmployee} from "../../api/employee/employee";
 
 
 const EmployeeLoaded = ({branches, ...props}) => {
@@ -18,6 +18,8 @@ const EmployeeLoaded = ({branches, ...props}) => {
 
     const [date, setDate] = useState();
     const [branch, setBranch] = useState();
+    const [accountType, setAccountType] = useState({name: 'Help Desk', id: AccountTypes.HelpDesk});
+
     const [image, setImage] = useState();
 
     return (
@@ -47,6 +49,25 @@ const EmployeeLoaded = ({branches, ...props}) => {
             </Stack>
             <Stack direction='column' spacing={2} width={500}>
                 <TextField inputRef={fullNameRef} variant='outlined' label='Full name'/>
+                <TextField
+                    id="outlined-select-account-type-native"
+                    select
+                    label="Account Type"
+                    defaultValue={accountType.name}
+                    onChange={(e) => setAccountType(JSON.parse(e.target.value))}
+                    SelectProps={{
+                        native: true,
+                    }}
+                >
+                    <option key={AccountTypes.HelpDesk.id}
+                            value={JSON.stringify({name: 'Help Desk', id: AccountTypes.HelpDesk})}>
+                        {'Help Desk'}
+                    </option>
+                    <option key={AccountTypes.Management.id}
+                            value={JSON.stringify({name: 'Management', id: AccountTypes.Management})}>
+                        {'Management'}
+                    </option>
+                </TextField>
                 <DatePicker
                     label="Date of birth"
                     value={date}
@@ -56,12 +77,11 @@ const EmployeeLoaded = ({branches, ...props}) => {
                     renderInput={(params) => <TextField {...params} />}
                 />
                 <TextField inputRef={userNameRef} variant='outlined' label='Username'/>
-                <TextField inputRef={passwordRef} variant='outlined' label='Password' type='password'
-                           helperText="Leave the password field empty if you don't want to update the password."/>
+                <TextField inputRef={passwordRef} variant='outlined' label='Password' type='password'/>
                 <TextField inputRef={emailRef} variant='outlined' label='Email'/>
                 <TextField inputRef={phoneRef} variant='outlined' label='Phone'/>
                 <TextField
-                    id="outlined-select-currency-native"
+                    id="outlined-select-branch-native"
                     select
                     label="Branch"
                     defaultValue={branch}
@@ -89,7 +109,8 @@ const EmployeeLoaded = ({branches, ...props}) => {
                         password: passwordRef.current.value ? passwordRef.current.value : undefined,
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
-                        branchId: branch.id
+                        branchId: branch.id,
+                        accountType: accountType
                     });
                 }}>Save</Button>
             </Stack>
@@ -99,15 +120,12 @@ const EmployeeLoaded = ({branches, ...props}) => {
 };
 
 const NewEmployeeScreen = (props) => {
-
     const {data, error, isValidating, mutate} = useSWR('/branchesFetcher', branchesFetcher);
-
     if (!data) return <div
         style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <CircularProgress/>
     </div>;
     return <EmployeeLoaded branches={data}/>
-
 };
 
 export {NewEmployeeScreen};

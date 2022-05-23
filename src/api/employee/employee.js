@@ -40,11 +40,17 @@ const saveEmployee = async ({id, profilePic, fullName, dateOfBirth, username, pa
 };
 
 
-const createEmployee = async ({profilePic, fullName, dateOfBirth, username, password, email, phone, branchId}) => {
+const createEmployee = async ({profilePic, fullName, dateOfBirth, username, password, email, phone, branchId, accountType}) => {
 
     console.log(profilePic + fullName + dateOfBirth + username + password + email + phone + branchId);
 
     return true;
 };
 
-export {fetchEmployees, getEmployee, saveEmployee, createEmployee};
+
+const AccountTypes = {
+    HelpDesk: 0,
+    Management: 1
+};
+
+export {fetchEmployees, getEmployee, saveEmployee, createEmployee, AccountTypes};

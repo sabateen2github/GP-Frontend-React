@@ -10,6 +10,7 @@ import {GeneralQueueScreen} from "./views/branch/QueueScreen";
 import {EmployeesScreen} from "./views/employees/EmployeesScreen";
 import {EditEmployeeScreen} from "./views/employee/EditEmployeeScreen";
 import {NewEmployeeScreen} from "./views/employee/NewEmployeeScreen";
+import {EditBusinessScreen} from "./views/business/EditBusinessScreen";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/employees" element={<EmployeesScreen/>}/>
                     <Route path="/employees/:id" element={<EditEmployeeScreen/>}/>
                     <Route path="/employees/new" element={<NewEmployeeScreen/>}/>
+                    <Route path="/edit" element={<EditBusinessScreen/>}/>
                 </Routes>
             </BrowserRouter>
         </main>

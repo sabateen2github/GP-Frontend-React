@@ -10,6 +10,8 @@ const login = (username, password, callback) => {
         localStorage.setItem('instituteName', "Bank al Etihad");
         localStorage.setItem('employeeName', "Alaa Al-Sabateen");
         localStorage.setItem('employeeId', "#A105");
+        localStorage.setItem('instituteEmail', "etihad@bank.com");
+        localStorage.setItem('institutePhone', "079 123 4567");
 
         callback(true);
     }, 2000);
