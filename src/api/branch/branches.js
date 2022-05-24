@@ -26,7 +26,6 @@ const branchFetcher = async (id) => {
         queues.push({name: `Category ${i}`, id: `dqwdwqwdq ${i}`});
     }
 
-
     await sleep(500);
 
     return {

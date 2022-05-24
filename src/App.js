@@ -11,9 +11,12 @@ import {EmployeesScreen} from "./views/management/employees/EmployeesScreen";
 import {EditEmployeeScreen} from "./views/management/employee/EditEmployeeScreen";
 import {NewEmployeeScreen} from "./views/management/employee/NewEmployeeScreen";
 import {EditBusinessScreen} from "./views/management/business/EditBusinessScreen";
-import {ProtectedAdmin, ProtectedManagement} from "./views/auth/redirect";
+import {ProtectedAdmin, ProtectedHelpDesk, ProtectedManagement} from "./views/auth/redirect";
 import {AdminScreen} from "./views/admin/main/MainScreen";
 import {BusinessScreen} from "./views/admin/business/BusinessScreen";
+import {NewBusinessScreen} from "./views/admin/business/NewBusinessScreen";
+import {HelpDeskMainScreen} from "./views/helpdesk/MainScreen";
+import {HelpDeskQueueScreen} from "./views/helpdesk/QueueScreen";
 
 
 function App() {
@@ -41,6 +44,12 @@ function App() {
                     <Route path="/edit" element={<ProtectedManagement><EditBusinessScreen/></ProtectedManagement>}/>
                     <Route path='/admin' element={<ProtectedAdmin><AdminScreen/></ProtectedAdmin>}/>
                     <Route path='/admin/business/:id' element={<ProtectedAdmin><BusinessScreen/></ProtectedAdmin>}/>
+                    <Route path='/admin/business/new' element={<ProtectedAdmin><NewBusinessScreen/></ProtectedAdmin>}/>
+                    <Route path='/helpdesk/main'
+                           element={<ProtectedHelpDesk><HelpDeskMainScreen/></ProtectedHelpDesk>}/>
+                    <Route path='/helpdesk/queue/:id'
+                           element={<ProtectedHelpDesk><HelpDeskQueueScreen/></ProtectedHelpDesk>}/>
+
                 </Routes>
             </BrowserRouter>
         </main>

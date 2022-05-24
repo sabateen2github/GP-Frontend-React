@@ -106,7 +106,7 @@ const AdminScreen = (props) => {
             </Stack>
             <Stack direction='row' width='95%' justifyContent='center'>
                 <Button variant='contained' onClick={() => {
-                    history('/business/new');
+                    history('/admin/business/new');
                 }}>Add new business</Button>
             </Stack>
         </Stack>);

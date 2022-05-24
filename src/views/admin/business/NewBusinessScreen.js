@@ -2,11 +2,11 @@ import {CommonHeader} from "../../common/Headers";
 import React, {useRef, useState} from "react";
 import {Avatar, Button, CircularProgress, Stack, TextField, Typography} from "@mui/material";
 import {Photo} from "@mui/icons-material";
-import {saveInstituteDetails} from "../../../api/management/management";
 import useSWR, {mutate} from "swr";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {createBusiness} from "../../../api/admin/admin";
 
-const EditBusinessScreen = (props) => {
+const NewBusinessScreen = (props) => {
 
     const emailRef = useRef();
     const nameRef = useRef();
@@ -59,15 +59,15 @@ const EditBusinessScreen = (props) => {
 
             <Stack direction='row' alignItems='end' justifyContent='space-between' spacing={4} paddingBottom={4}>
                 <Button variant='contained' onClick={() => {
-                    saveInstituteDetails({
+                    createBusiness({
                         name: nameRef.current.value,
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
                         logoUrl: image
-                    }).then(r => mutate(CREDENTIAL_KEY));
+                    }).then(r => mutate(CREDENTIAL_KEY))
                 }}>Save</Button>
             </Stack>
         </Stack>);
 };
 
-export {EditBusinessScreen};
+export {NewBusinessScreen};

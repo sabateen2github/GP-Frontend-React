@@ -14,7 +14,10 @@ const HandleLoggedIn = (props) => {
         return <Navigate to='/main' replace/>;
     else if (credentials.data.accountType == AccountTypes.Admin)
         return <Navigate to='/admin' replace/>;
-    else return <Typography variant='h2'>Not Implemented!</Typography>
+    else if (credentials.data.accountType == AccountTypes.HelpDesk)
+        return <Navigate to='/helpdesk/main' replace/>;
+    else
+        return <Typography variant='h3'>Not Implemented!</Typography>
 };
 
 

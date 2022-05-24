@@ -15,5 +15,14 @@ const fetchBusinesses = async (searchTerm) => {
     });
 };
 
+const deleteBusiness = async (id) => {
 
-export {fetchBusinesses};
+    return true;
+};
+
+const createBusiness = async ({logoUrl, name, phone, email}) => {
+
+    return true;
+};
+
+export {fetchBusinesses, deleteBusiness, createBusiness};

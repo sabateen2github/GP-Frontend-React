@@ -53,7 +53,7 @@ const UserHeader = (props) => {
                     alt="Remy Sharp"
                     src={props.profilePic}
                     sx={{width: 150, height: 150}}
-                    variant="square"/>
+                    variant="circular"/>
                 <Button variant='contained' color='error' onClick={() => {
                     logout().then((result) => navigate('/login'));
                 }}>Logout</Button>
