@@ -26,13 +26,12 @@ let apiInstance = new BackendClient.BranchesControllerApi();
 let opts = {
   'branch': new BackendClient.Branch() // Branch | 
 };
-apiInstance.createBranch(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.createBranch(opts).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -68,13 +67,12 @@ No authorization required
 import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.BranchesControllerApi();
-apiInstance.getAllBranches((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getAllBranches().then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -108,13 +106,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.BranchesControllerApi();
 let id = "id_example"; // String | 
-apiInstance.getBranch(id, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getBranch(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -152,13 +149,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.BranchesControllerApi();
 let id = "id_example"; // String | 
 let branch = new BackendClient.Branch(); // Branch | 
-apiInstance.updateBranch(id, branch, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.updateBranch(id, branch).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

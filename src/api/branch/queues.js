@@ -1,10 +1,17 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import BackendClient from 'backend-client';
+
 
 const queueFetcher = async ({id, branchId}) => {
 
-    await sleep(500);
+    let apiInstance = new BackendClient.QueueControllerApi();
+    apiInstance.getQueue(id, branchId, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + data);
+        }
+    });
+
     return {
         name: `Category 2`,
         id: `dqwdwqwdq`,

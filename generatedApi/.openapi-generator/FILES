@@ -1,6 +1,5 @@
 .babelrc
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/BookedTurnQueue.md
@@ -28,13 +27,3 @@ src/gp.backend.model/Institute.js
 src/gp.backend.model/Queue.js
 src/gp.backend.model/QueueSpec.js
 src/index.js
-test/api/BranchesControllerApi.spec.js
-test/api/EmployeesControllerApi.spec.js
-test/api/InstituteControllerApi.spec.js
-test/api/QueueControllerApi.spec.js
-test/model/BookedTurnQueue.spec.js
-test/model/Branch.spec.js
-test/model/Employee.spec.js
-test/model/Institute.spec.js
-test/model/Queue.spec.js
-test/model/QueueSpec.spec.js

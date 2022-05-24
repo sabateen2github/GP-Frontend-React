@@ -26,13 +26,12 @@ let apiInstance = new BackendClient.EmployeesControllerApi();
 let opts = {
   'employee': new BackendClient.Employee() // Employee | 
 };
-apiInstance.createEmployee(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.createEmployee(opts).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -70,13 +69,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.EmployeesControllerApi();
 let id = "id_example"; // String | 
 let employee = new BackendClient.Employee(); // Employee | 
-apiInstance.editEmployee(id, employee, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.editEmployee(id, employee).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -114,13 +112,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
 let id = "id_example"; // String | 
-apiInstance.getEmployee(id, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getEmployee(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -157,13 +154,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
 let searchTerm = "searchTerm_example"; // String | 
-apiInstance.searchEmployees(searchTerm, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.searchEmployees(searchTerm).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

@@ -34,20 +34,13 @@ export default class InstituteControllerApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the createInstitute operation.
-     * @callback module:gp.backend.api/InstituteControllerApi~createInstituteCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * @param {Object} opts Optional parameters
      * @param {module:gp.backend.model/Institute} opts.institute 
-     * @param {module:gp.backend.api/InstituteControllerApi~createInstituteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createInstitute(opts, callback) {
+    createInstituteWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = opts['institute'];
 
@@ -67,23 +60,28 @@ export default class InstituteControllerApi {
       return this.apiClient.callApi(
         '/institute', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the deleteInstitute operation.
-     * @callback module:gp.backend.api/InstituteControllerApi~deleteInstituteCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * @param {Object} opts Optional parameters
+     * @param {module:gp.backend.model/Institute} opts.institute 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    createInstitute(opts) {
+      return this.createInstituteWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {String} id 
-     * @param {module:gp.backend.api/InstituteControllerApi~deleteInstituteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    deleteInstitute(id, callback) {
+    deleteInstituteWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -107,24 +105,27 @@ export default class InstituteControllerApi {
       return this.apiClient.callApi(
         '/institute/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getInstitute operation.
-     * @callback module:gp.backend.api/InstituteControllerApi~getInstituteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:gp.backend.model/Institute} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    deleteInstitute(id) {
+      return this.deleteInstituteWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {String} id 
-     * @param {module:gp.backend.api/InstituteControllerApi~getInstituteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:gp.backend.model/Institute}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Institute} and HTTP response
      */
-    getInstitute(id, callback) {
+    getInstituteWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -148,25 +149,28 @@ export default class InstituteControllerApi {
       return this.apiClient.callApi(
         '/institute/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the searchInstitutes operation.
-     * @callback module:gp.backend.api/InstituteControllerApi~searchInstitutesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/Institute>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Institute}
      */
+    getInstitute(id) {
+      return this.getInstituteWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerms 
-     * @param {module:gp.backend.api/InstituteControllerApi~searchInstitutesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/Institute>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Institute>} and HTTP response
      */
-    searchInstitutes(opts, callback) {
+    searchInstitutesWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
 
@@ -187,8 +191,20 @@ export default class InstituteControllerApi {
       return this.apiClient.callApi(
         '/institute', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.searchTerms 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Institute>}
+     */
+    searchInstitutes(opts) {
+      return this.searchInstitutesWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

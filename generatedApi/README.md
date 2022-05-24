@@ -105,14 +105,12 @@ var api = new BackendClient.BranchesControllerApi()
 var opts = {
   'branch': new BackendClient.Branch() // {Branch} 
 };
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-api.createBranch(opts, callback);
+api.createBranch(opts).then(function() {
+  console.log('API called successfully.');
+}, function(error) {
+  console.error(error);
+});
+
 
 ```
 

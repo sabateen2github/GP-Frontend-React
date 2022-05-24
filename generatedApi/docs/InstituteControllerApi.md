@@ -26,13 +26,12 @@ let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
   'institute': new BackendClient.Institute() // Institute | 
 };
-apiInstance.createInstitute(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.createInstitute(opts).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -69,13 +68,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let id = "id_example"; // String | 
-apiInstance.deleteInstitute(id, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.deleteInstitute(id).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -112,13 +110,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let id = "id_example"; // String | 
-apiInstance.getInstitute(id, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getInstitute(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -157,13 +154,12 @@ let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
   'searchTerms': "searchTerms_example" // String | 
 };
-apiInstance.searchInstitutes(opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.searchInstitutes(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

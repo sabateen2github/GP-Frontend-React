@@ -31,13 +31,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.QueueControllerApi();
 let id = "id_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.advanceQueue(id, branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.advanceQueue(id, branchId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -77,13 +76,12 @@ let apiInstance = new BackendClient.QueueControllerApi();
 let userId = "userId_example"; // String | 
 let queueId = "queueId_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.bookQueue(userId, queueId, branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.bookQueue(userId, queueId, branchId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -123,13 +121,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.QueueControllerApi();
 let id = "id_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.deleteQueue(id, branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.deleteQueue(id, branchId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -167,13 +164,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
 let queueSpec = new BackendClient.QueueSpec(); // QueueSpec | 
-apiInstance.editQueueSpec(queueSpec, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.editQueueSpec(queueSpec).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -210,13 +206,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
 let userId = "userId_example"; // String | 
-apiInstance.getActiveQueues(userId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getActiveQueues(userId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -253,13 +248,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
 let branchId = "branchId_example"; // String | 
-apiInstance.getAllQueueSpecs(branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getAllQueueSpecs(branchId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -296,13 +290,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
 let branchId = "branchId_example"; // String | 
-apiInstance.getAllQueues(branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getAllQueues(branchId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -339,13 +332,12 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
 let userId = "userId_example"; // String | 
-apiInstance.getArchivedQueues(userId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getArchivedQueues(userId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -383,13 +375,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.QueueControllerApi();
 let id = "id_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.getQueue(id, branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
+apiInstance.getQueue(id, branchId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters
@@ -428,13 +419,12 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.QueueControllerApi();
 let id = "id_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.resetQueue(id, branchId, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
+apiInstance.resetQueue(id, branchId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
 });
+
 ```
 
 ### Parameters

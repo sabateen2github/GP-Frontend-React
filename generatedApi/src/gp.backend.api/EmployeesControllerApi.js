@@ -34,20 +34,13 @@ export default class EmployeesControllerApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the createEmployee operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~createEmployeeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * @param {Object} opts Optional parameters
      * @param {module:gp.backend.model/Employee} opts.employee 
-     * @param {module:gp.backend.api/EmployeesControllerApi~createEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createEmployee(opts, callback) {
+    createEmployeeWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = opts['employee'];
 
@@ -67,24 +60,29 @@ export default class EmployeesControllerApi {
       return this.apiClient.callApi(
         '/employees', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the editEmployee operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~editEmployeeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * @param {Object} opts Optional parameters
+     * @param {module:gp.backend.model/Employee} opts.employee 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    createEmployee(opts) {
+      return this.createEmployeeWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
-     * @param {module:gp.backend.api/EmployeesControllerApi~editEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    editEmployee(id, employee, callback) {
+    editEmployeeWithHttpInfo(id, employee) {
       let postBody = employee;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -112,24 +110,28 @@ export default class EmployeesControllerApi {
       return this.apiClient.callApi(
         '/employees/{id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getEmployee operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~getEmployeeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:gp.backend.model/Employee} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * @param {String} id 
+     * @param {module:gp.backend.model/Employee} employee 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    editEmployee(id, employee) {
+      return this.editEmployeeWithHttpInfo(id, employee)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {String} id 
-     * @param {module:gp.backend.api/EmployeesControllerApi~getEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:gp.backend.model/Employee}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Employee} and HTTP response
      */
-    getEmployee(id, callback) {
+    getEmployeeWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -153,24 +155,27 @@ export default class EmployeesControllerApi {
       return this.apiClient.callApi(
         '/employees/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the searchEmployees operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~searchEmployeesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/Employee>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Employee}
      */
+    getEmployee(id) {
+      return this.getEmployeeWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
      * @param {String} searchTerm 
-     * @param {module:gp.backend.api/EmployeesControllerApi~searchEmployeesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/Employee>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Employee>} and HTTP response
      */
-    searchEmployees(searchTerm, callback) {
+    searchEmployeesWithHttpInfo(searchTerm) {
       let postBody = null;
       // verify the required parameter 'searchTerm' is set
       if (searchTerm === undefined || searchTerm === null) {
@@ -194,8 +199,19 @@ export default class EmployeesControllerApi {
       return this.apiClient.callApi(
         '/employees', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * @param {String} searchTerm 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Employee>}
+     */
+    searchEmployees(searchTerm) {
+      return this.searchEmployeesWithHttpInfo(searchTerm)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 
