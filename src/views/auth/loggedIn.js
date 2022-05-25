@@ -10,11 +10,11 @@ const HandleLoggedIn = (props) => {
     if (credentials.isValidating) return <CircularProgress/>;
     else if (credentials.error) return <Typography variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.Management)
+    if (credentials.data.accountType == AccountTypes.MANAGEMENT)
         return <Navigate to='/main' replace/>;
-    else if (credentials.data.accountType == AccountTypes.Admin)
+    else if (credentials.data.accountType == AccountTypes.ADMIN)
         return <Navigate to='/admin' replace/>;
-    else if (credentials.data.accountType == AccountTypes.HelpDesk)
+    else if (credentials.data.accountType == AccountTypes.HELP_DESK)
         return <Navigate to='/helpdesk/main' replace/>;
     else
         return <Typography variant='h3'>Not Implemented!</Typography>

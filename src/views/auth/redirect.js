@@ -8,8 +8,8 @@ const ProtectedManagement = ({children, ...props}) => {
 
     if (credentials.isValidating) return <CircularProgress/>; else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
-    
-    if (credentials.data.accountType == AccountTypes.Management || credentials.data.accountType == AccountTypes.Admin) return children;
+
+    if (credentials.data.accountType == AccountTypes.MANAGEMENT || credentials.data.accountType == AccountTypes.ADMIN) return children;
     else return <Typography variant='h2'>Not Implemented!</Typography>
 };
 
@@ -20,7 +20,7 @@ const ProtectedAdmin = ({children, ...props}) => {
     else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.Admin) return children;
+    if (credentials.data.accountType == AccountTypes.ADMIN) return children;
     else return <Typography variant='h2'>Not
         Implemented!</Typography>
 };
@@ -33,7 +33,7 @@ const ProtectedHelpDesk = ({children, ...props}) => {
     if (credentials.isValidating) return <CircularProgress/>; else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.Management || credentials.data.accountType == AccountTypes.Admin || credentials.data.accountType == AccountTypes.HelpDesk) return children; else return <Typography
+    if (credentials.data.accountType == AccountTypes.MANAGEMENT || credentials.data.accountType == AccountTypes.ADMIN || credentials.data.accountType == AccountTypes.HELP_DESK) return children; else return <Typography
         variant='h2'>Not Implemented!</Typography>
 };
 

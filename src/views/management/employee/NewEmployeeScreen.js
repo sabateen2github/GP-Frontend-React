@@ -19,7 +19,7 @@ const EmployeeLoaded = ({branches, ...props}) => {
 
     const [date, setDate] = useState();
     const [branch, setBranch] = useState();
-    const [accountType, setAccountType] = useState({name: 'Help Desk', id: AccountTypes.HelpDesk});
+    const [accountType, setAccountType] = useState({name: 'Help Desk', id: AccountTypes.HELP_DESK});
 
     const [image, setImage] = useState();
 
@@ -64,12 +64,12 @@ const EmployeeLoaded = ({branches, ...props}) => {
                         native: true,
                     }}
                 >
-                    <option key={AccountTypes.HelpDesk.id}
-                            value={JSON.stringify({name: 'Help Desk', id: AccountTypes.HelpDesk})}>
+                    <option key={0}
+                            value={JSON.stringify({name: 'Help Desk', id: AccountTypes.HELP_DESK})}>
                         {'Help Desk'}
                     </option>
-                    <option key={AccountTypes.Management.id}
-                            value={JSON.stringify({name: 'Management', id: AccountTypes.Management})}>
+                    <option key={1}
+                            value={JSON.stringify({name: 'Management', id: AccountTypes.MANAGEMENT})}>
                         {'Management'}
                     </option>
                 </TextField>
@@ -115,7 +115,7 @@ const EmployeeLoaded = ({branches, ...props}) => {
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
                         branchId: branch.id,
-                        accountType: accountType
+                        accountType: accountType.id
                     });
                 }}>Save</Button>
             </Stack>

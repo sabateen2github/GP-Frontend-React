@@ -67,16 +67,17 @@ const createEmployee = async ({
     employee.email = email;
     employee.phone = phone;
     employee.branchId = branchId;
+    employee.accountType = accountType;
 
     let opts = {
         'employee': employee // Employee |
     };
-    apiInstance.createEmployee(opts).then(() => {
-        console.log('API called successfully.');
+    return await apiInstance.createEmployee(opts).then(() => {
+        return true;
     }, (error) => {
         console.error(error);
     });
-    return true;
+
 };
 
 

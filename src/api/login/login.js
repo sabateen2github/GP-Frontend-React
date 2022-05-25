@@ -1,8 +1,8 @@
+import {Employee} from "backend-client";
+
 const CREDENTIAL_KEY = '/credentials';
 
-const AccountTypes = {
-    HelpDesk: 0, Management: 1, Admin: 2
-};
+const AccountTypes = Employee.AccountTypeEnum;
 
 const login = (username, password, callback) => {
 
@@ -22,12 +22,12 @@ const login = (username, password, callback) => {
         localStorage.setItem('institutePhone', "079 123 4567");
 
         let accountType;
-        if (username == 'alaa2sbateen') accountType = AccountTypes.Management;
-        else if (username == 'alaa3sbateen') accountType = AccountTypes.HelpDesk;
-        else accountType = AccountTypes.Admin;
+        if (username == 'alaa2sbateen') accountType = AccountTypes.MANAGEMENT;
+        else if (username == 'alaa3sbateen') accountType = AccountTypes.HELP_DESK;
+        else accountType = AccountTypes.ADMIN;
 
         localStorage.setItem('accountType', accountType);
-        if (accountType == AccountTypes.HelpDesk) {
+        if (accountType == AccountTypes.HELP_DESK) {
             localStorage.setItem('branchId', '#ads3reef');
             localStorage.setItem('branchName', 'Bank al Etihad');
         }
@@ -43,7 +43,7 @@ const fetchCredentials = async () => {
     const accountType = localStorage.getItem('accountType');
 
     let helpDeskMetaData = {};
-    if (accountType == AccountTypes.HelpDesk) {
+    if (accountType == AccountTypes.HELP_DESK) {
         helpDeskMetaData = {
             branchName: localStorage.getItem('branchName'),
             branchId: localStorage.getItem('branchId')
