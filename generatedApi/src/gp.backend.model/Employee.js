@@ -65,6 +65,9 @@ class Employee {
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
             if (data.hasOwnProperty('email')) {
                 obj['email'] = ApiClient.convertToType(data['email'], 'String');
             }
@@ -110,6 +113,11 @@ Employee.prototype['dateOfBirth'] = undefined;
  * @member {String} username
  */
 Employee.prototype['username'] = undefined;
+
+/**
+ * @member {String} password
+ */
+Employee.prototype['password'] = undefined;
 
 /**
  * @member {String} email

@@ -26,26 +26,42 @@ const branchFetcher = async (id) => {
 };
 
 
-const updateBranch = async ({id, location, name, phone}) => {
+const updateBranch = async ({id, location, name, phone, instituteId}) => {
 
     let apiInstance = new BackendClient.BranchesControllerApi();
     let branch = new BackendClient.Branch();
     branch.id = id;
     branch.name = name;
     branch.phone = phone;
+    branch.location = location;
+    branch.instituteId = instituteId;
 
-
-    apiInstance.updateBranch(id, branch).then(() => {
-        console.log('API called successfully.');
+    return await apiInstance.updateBranch(id, branch).then(() => {
+        return true;
     }, (error) => {
         console.error(error);
     });
 };
 
-const createBranch = async ({location, name, phone}) => {
+const createBranch = async ({location, name, phone, instituteId}) => {
 
-    await sleep(1000);
-    return true;
+    let apiInstance = new BackendClient.BranchesControllerApi();
+
+    let branch = new BackendClient.Branch();
+    branch.name = name;
+    branch.phone = phone;
+    branch.location = location;
+    branch.instituteId = instituteId;
+
+    let opts = {
+        'branch': branch // Branch |
+    };
+
+    return await apiInstance.createBranch(opts).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 

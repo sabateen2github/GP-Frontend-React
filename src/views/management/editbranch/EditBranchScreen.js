@@ -82,7 +82,8 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
                             id: id,
                             location: markerLocation,
                             name: data.name,
-                            phone: data.phone
+                            phone: data.phone,
+                            instituteId: credentialsRequest.data.institutdeId
                         };
                         if (id) {
                             updateBranch(submitData).then(success => {
