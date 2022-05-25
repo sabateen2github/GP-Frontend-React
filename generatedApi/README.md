@@ -132,6 +132,7 @@ Class | Method | HTTP request | Description
 *BackendClient.InstituteControllerApi* | [**deleteInstitute**](docs/InstituteControllerApi.md#deleteInstitute) | **DELETE** /institute/{id} | 
 *BackendClient.InstituteControllerApi* | [**getInstitute**](docs/InstituteControllerApi.md#getInstitute) | **GET** /institute/{id} | 
 *BackendClient.InstituteControllerApi* | [**searchInstitutes**](docs/InstituteControllerApi.md#searchInstitutes) | **GET** /institute | 
+*BackendClient.InstituteControllerApi* | [**updateInstitute**](docs/InstituteControllerApi.md#updateInstitute) | **PUT** /institute/{id} | 
 *BackendClient.QueueControllerApi* | [**advanceQueue**](docs/QueueControllerApi.md#advanceQueue) | **PUT** /queues/queue/advance | 
 *BackendClient.QueueControllerApi* | [**bookQueue**](docs/QueueControllerApi.md#bookQueue) | **PUT** /queues/queue/book | 
 *BackendClient.QueueControllerApi* | [**deleteQueue**](docs/QueueControllerApi.md#deleteQueue) | **DELETE** /queues/queue | 

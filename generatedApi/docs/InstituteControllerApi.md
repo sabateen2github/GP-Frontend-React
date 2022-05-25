@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteInstitute**](InstituteControllerApi.md#deleteInstitute) | **DELETE** /institute/{id} | 
 [**getInstitute**](InstituteControllerApi.md#getInstitute) | **GET** /institute/{id} | 
 [**searchInstitutes**](InstituteControllerApi.md#searchInstitutes) | **GET** /institute | 
+[**updateInstitute**](InstituteControllerApi.md#updateInstitute) | **PUT** /institute/{id} | 
 
 
 
@@ -181,4 +182,48 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: */*
+
+
+## updateInstitute
+
+> updateInstitute(id, institute)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+
+let apiInstance = new BackendClient.InstituteControllerApi();
+let id = "id_example"; // String | 
+let institute = new BackendClient.Institute(); // Institute | 
+apiInstance.updateInstitute(id, institute).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **institute** | [**Institute**](Institute.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 

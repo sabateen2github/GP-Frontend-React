@@ -208,4 +208,54 @@ export default class InstituteControllerApi {
     }
 
 
+    /**
+     * @param {String} id 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    updateInstituteWithHttpInfo(id, institute) {
+      let postBody = institute;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateInstitute");
+      }
+      // verify the required parameter 'institute' is set
+      if (institute === undefined || institute === null) {
+        throw new Error("Missing the required parameter 'institute' when calling updateInstitute");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/institute/{id}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} id 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    updateInstitute(id, institute) {
+      return this.updateInstituteWithHttpInfo(id, institute)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
 }

@@ -1,3 +1,5 @@
+import BackendClient from 'backend-client';
+
 const saveInstituteDetails = async ({logoUrl, name, phone, email}) => {
 
     return true;
@@ -5,11 +7,12 @@ const saveInstituteDetails = async ({logoUrl, name, phone, email}) => {
 
 
 const fetchInstituteDetails = async (id) => {
-    return {
-        logo: 'https://1000logos.net/wp-content/uploads/2017/03/McDonalds-logo.png',
-        name: 'McDonald\'s',
-        id: id
-    };
+    let apiInstance = new BackendClient.InstituteControllerApi();
+    return await apiInstance.getInstitute(id).then((data) => {
+        return data;
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 
