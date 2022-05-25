@@ -30,6 +30,9 @@ const saveEmployee = async ({id, profilePic, fullName, dateOfBirth, username, pa
     employee.dateOfBirth = dateOfBirth;
     employee.username = username;
     employee.password = password;
+    employee.email = email;
+    employee.phone = phone;
+    employee.branchId = branchId;
 
     return await apiInstance.editEmployee(id, employee).then(() => {
         return true;
@@ -51,8 +54,28 @@ const createEmployee = async ({
                                   accountType
                               }) => {
 
-    console.log(profilePic + fullName + dateOfBirth + username + password + email + phone + branchId);
+    let apiInstance = new BackendClient.EmployeesControllerApi();
 
+    let employee = new BackendClient.Employee(); // Employee |
+    employee.name = fullName;
+    employee.fullName = fullName;
+    employee.accountType = accountType;
+    employee.profilePic = profilePic;
+    employee.dateOfBirth = dateOfBirth;
+    employee.username = username;
+    employee.password = password;
+    employee.email = email;
+    employee.phone = phone;
+    employee.branchId = branchId;
+
+    let opts = {
+        'employee': employee // Employee |
+    };
+    apiInstance.createEmployee(opts).then(() => {
+        console.log('API called successfully.');
+    }, (error) => {
+        console.error(error);
+    });
     return true;
 };
 

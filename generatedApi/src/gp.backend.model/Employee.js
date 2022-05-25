@@ -77,6 +77,9 @@ class Employee {
             if (data.hasOwnProperty('branchId')) {
                 obj['branchId'] = ApiClient.convertToType(data['branchId'], 'String');
             }
+            if (data.hasOwnProperty('accountType')) {
+                obj['accountType'] = ApiClient.convertToType(data['accountType'], 'String');
+            }
         }
         return obj;
     }
@@ -134,8 +137,40 @@ Employee.prototype['phone'] = undefined;
  */
 Employee.prototype['branchId'] = undefined;
 
+/**
+ * @member {module:gp.backend.model/Employee.AccountTypeEnum} accountType
+ */
+Employee.prototype['accountType'] = undefined;
 
 
+
+
+
+/**
+ * Allowed values for the <code>accountType</code> property.
+ * @enum {String}
+ * @readonly
+ */
+Employee['AccountTypeEnum'] = {
+
+    /**
+     * value: "HELP_DESK"
+     * @const
+     */
+    "HELP_DESK": "HELP_DESK",
+
+    /**
+     * value: "MANAGEMENT"
+     * @const
+     */
+    "MANAGEMENT": "MANAGEMENT",
+
+    /**
+     * value: "ADMIN"
+     * @const
+     */
+    "ADMIN": "ADMIN"
+};
 
 
 

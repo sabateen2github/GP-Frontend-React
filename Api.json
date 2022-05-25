@@ -704,6 +704,14 @@
           },
           "branchId": {
             "type": "string"
+          },
+          "accountType": {
+            "type": "string",
+            "enum": [
+              "HELP_DESK",
+              "MANAGEMENT",
+              "ADMIN"
+            ]
           }
         }
       },
