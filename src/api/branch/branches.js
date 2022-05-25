@@ -1,6 +1,4 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import BackendClient from 'backend-client';
 
 
 if (!localStorage.hasOwnProperty('location-edit-branch')) {
@@ -8,43 +6,40 @@ if (!localStorage.hasOwnProperty('location-edit-branch')) {
 }
 const branchesFetcher = async () => {
 
-    const branches = [];
-    for (let i = 0; i < 30; i++) {
-        branches.push({name: 'Amman, Wadi Al-Seer, Al-Hadeel St.', id: `dqwdwqwdq ${i}`});
-    }
-
-    await sleep(500);
-
-    return branches;
+    let apiInstance = new BackendClient.BranchesControllerApi();
+    return await apiInstance.getAllBranches().then((data) => {
+        return data;
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 
 const branchFetcher = async (id) => {
 
-    const queues = [];
-    for (let i = 0; i < 30; i++) {
-        queues.push({name: `Category ${i}`, id: `dqwdwqwdq ${i}`});
-    }
-
-    await sleep(500);
-
-    return {
-        queues: queues,
-        id: id,
-        name: 'Amman, Wadi Al-Seer, Al-Hadeel St.',
-        phone: '0790332791',
-        location: JSON.parse(localStorage.getItem('location-edit-branch'))
-    };
+    let apiInstance = new BackendClient.BranchesControllerApi();
+    return await apiInstance.getBranch(id).then((data) => {
+        return data;
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 
 const updateBranch = async ({id, location, name, phone}) => {
 
+    let apiInstance = new BackendClient.BranchesControllerApi();
+    let branch = new BackendClient.Branch();
+    branch.id = id;
+    branch.name = name;
+    branch.phone = phone;
 
-    await sleep(1000);
-    console.log(name);
-    localStorage.setItem('location-edit-branch', JSON.stringify(location));
-    return true;
+
+    apiInstance.updateBranch(id, branch).then(() => {
+        console.log('API called successfully.');
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 const createBranch = async ({location, name, phone}) => {
@@ -52,7 +47,6 @@ const createBranch = async ({location, name, phone}) => {
     await sleep(1000);
     return true;
 };
-
 
 
 export {branchesFetcher, branchFetcher, updateBranch, createBranch};

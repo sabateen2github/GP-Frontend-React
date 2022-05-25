@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **phone** | **String** |  | [optional] 
 **instituteId** | **String** |  | [optional] 
+**location** | [**LatLng**](LatLng.md) |  | [optional] 
 
 

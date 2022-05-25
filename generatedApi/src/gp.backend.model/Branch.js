@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import LatLng from './LatLng';
 
 /**
  * The Branch model module.
@@ -59,6 +60,9 @@ class Branch {
             if (data.hasOwnProperty('instituteId')) {
                 obj['instituteId'] = ApiClient.convertToType(data['instituteId'], 'String');
             }
+            if (data.hasOwnProperty('location')) {
+                obj['location'] = LatLng.constructFromObject(data['location']);
+            }
         }
         return obj;
     }
@@ -85,6 +89,11 @@ Branch.prototype['phone'] = undefined;
  * @member {String} instituteId
  */
 Branch.prototype['instituteId'] = undefined;
+
+/**
+ * @member {module:gp.backend.model/LatLng} location
+ */
+Branch.prototype['location'] = undefined;
 
 
 

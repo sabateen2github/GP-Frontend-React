@@ -9,6 +9,7 @@ docs/Employee.md
 docs/EmployeesControllerApi.md
 docs/Institute.md
 docs/InstituteControllerApi.md
+docs/LatLng.md
 docs/Queue.md
 docs/QueueControllerApi.md
 docs/QueueSpec.md
@@ -24,6 +25,8 @@ src/gp.backend.model/BookedTurnQueue.js
 src/gp.backend.model/Branch.js
 src/gp.backend.model/Employee.js
 src/gp.backend.model/Institute.js
+src/gp.backend.model/LatLng.js
 src/gp.backend.model/Queue.js
 src/gp.backend.model/QueueSpec.js
 src/index.js
+test/model/LatLng.spec.js

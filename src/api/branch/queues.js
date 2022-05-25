@@ -4,55 +4,65 @@ import BackendClient from 'backend-client';
 const queueFetcher = async ({id, branchId}) => {
 
     let apiInstance = new BackendClient.QueueControllerApi();
-    apiInstance.getQueue(id, branchId, (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log('API called successfully. Returned data: ' + data);
-        }
-    });
 
-    return {
-        name: `Category 2`,
-        id: `dqwdwqwdq`,
-        size: 80,
-        physicalSize: 40,
-        remoteSize: 40,
-        averageServiceTime: 30,
-        current: 'A105'
-    };
+    return await apiInstance.getQueue(id, branchId).then((data) => {
+        return data;
+    }, (error) => {
+        console.error(error);
+    });
 };
 
 
 const resetQueue = async (branchId, queueId) => {
 
-    await sleep(500);
+    let apiInstance = new BackendClient.QueueControllerApi();
 
-    return true;
+    return await apiInstance.resetQueue(queueId, branchId).then(() => {
+        return true;
+    }, (error) => {
+        console.log(error);
+    });
 
 };
 
 const deleteQueue = async (branchId, queueId) => {
 
-    await sleep(500);
+    let apiInstance = new BackendClient.QueueControllerApi();
 
-    return true;
+    return await apiInstance.deleteQueue(queueId, branchId).then(() => {
+        return true;
+    }, (error) => {
+        console.log(error);
+    });
 
 };
 
 const editQueue = async ({branchId, queueId, queueName}) => {
 
-    await sleep(500);
 
-    return true;
+    let apiInstance = new BackendClient.QueueControllerApi();
+    let queueSpec = new BackendClient.QueueSpec();
+    queueSpec.name = queueName;
+    queueSpec.id = queueId;
+    queueSpec.branchId = branchId;
+
+    return await apiInstance.editQueueSpec(queueSpec).then(() => {
+        return true;
+    }, (error) => {
+        console.log(error);
+    });
 
 };
 
 const advanceQueue = async (branchId, queueId) => {
 
-    await sleep(500);
+    let apiInstance = new BackendClient.QueueControllerApi();
 
-    return true;
+    return await apiInstance.advanceQueue(queueId, branchId).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+    });
 
 };
 

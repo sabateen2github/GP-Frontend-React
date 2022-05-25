@@ -17,6 +17,7 @@ import BookedTurnQueue from './gp.backend.model/BookedTurnQueue';
 import Branch from './gp.backend.model/Branch';
 import Employee from './gp.backend.model/Employee';
 import Institute from './gp.backend.model/Institute';
+import LatLng from './gp.backend.model/LatLng';
 import Queue from './gp.backend.model/Queue';
 import QueueSpec from './gp.backend.model/QueueSpec';
 import BranchesControllerApi from './gp.backend.api/BranchesControllerApi';
@@ -86,6 +87,12 @@ export {
      * @property {module:gp.backend.model/Institute}
      */
     Institute,
+
+    /**
+     * The LatLng model constructor.
+     * @property {module:gp.backend.model/LatLng}
+     */
+    LatLng,
 
     /**
      * The Queue model constructor.

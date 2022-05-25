@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
  - [BackendClient.Branch](docs/Branch.md)
  - [BackendClient.Employee](docs/Employee.md)
  - [BackendClient.Institute](docs/Institute.md)
+ - [BackendClient.LatLng](docs/LatLng.md)
  - [BackendClient.Queue](docs/Queue.md)
  - [BackendClient.QueueSpec](docs/QueueSpec.md)
 
