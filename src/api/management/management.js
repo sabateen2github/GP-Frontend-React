@@ -1,8 +1,21 @@
 import BackendClient from 'backend-client';
 
-const saveInstituteDetails = async ({logoUrl, name, phone, email}) => {
+const saveInstituteDetails = async ({logoUrl, name, phone, email, instituteId}) => {
 
-    return true;
+    let apiInstance = new BackendClient.InstituteControllerApi();
+    let institute = new BackendClient.Institute(); // Institute |
+    institute.id = instituteId;
+    institute.name = name;
+    institute.logoUrl = logoUrl;
+    institute.email = email;
+    institute.phone = phone;
+
+    return await apiInstance.updateInstitute(instituteId, institute).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+    });
+
 };
 
 

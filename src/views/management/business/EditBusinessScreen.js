@@ -63,7 +63,8 @@ const EditBusinessScreen = (props) => {
                         name: nameRef.current.value,
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
-                        logoUrl: image
+                        logoUrl: image,
+                        instituteId: credentialsRequest.data.instituteId
                     }).then(r => mutate(CREDENTIAL_KEY));
                 }}>Save</Button>
             </Stack>
