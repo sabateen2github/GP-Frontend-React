@@ -53,9 +53,6 @@ class Employee {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('profilePic')) {
-                obj['profilePic'] = ApiClient.convertToType(data['profilePic'], 'String');
-            }
             if (data.hasOwnProperty('fullName')) {
                 obj['fullName'] = ApiClient.convertToType(data['fullName'], 'String');
             }
@@ -96,11 +93,6 @@ Employee.prototype['name'] = undefined;
  * @member {String} id
  */
 Employee.prototype['id'] = undefined;
-
-/**
- * @member {String} profilePic
- */
-Employee.prototype['profilePic'] = undefined;
 
 /**
  * @member {String} fullName

@@ -160,6 +160,51 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LatLng"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "queue-controller"
+        ],
+        "operationId": "cancelTurn",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "queueId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branchId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -282,16 +327,16 @@
         }
       }
     },
-    "/employees/{id}": {
+    "/employees": {
       "get": {
         "tags": [
           "employees-controller"
         ],
-        "operationId": "getEmployee",
+        "operationId": "searchEmployees",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
+            "name": "searchTerm",
+            "in": "query",
             "required": true,
             "schema": {
               "type": "string"
@@ -304,7 +349,10 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Employee"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employee"
+                  }
                 }
               }
             }
@@ -328,13 +376,58 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Employee"
+                "required": [
+                  "employee",
+                  "profilePic"
+                ],
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "$ref": "#/components/schemas/Employee"
+                  },
+                  "profilePic": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
               }
             }
-          },
-          "required": true
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employees-controller"
+        ],
+        "operationId": "createEmployee",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "employee",
+                  "profilePic"
+                ],
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "$ref": "#/components/schemas/Employee"
+                  },
+                  "profilePic": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
         },
         "responses": {
           "200": {
@@ -446,59 +539,6 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Institute"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/employees": {
-      "get": {
-        "tags": [
-          "employees-controller"
-        ],
-        "operationId": "searchEmployees",
-        "parameters": [
-          {
-            "name": "searchTerm",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Employee"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "employees-controller"
-        ],
-        "operationId": "createEmployee",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Employee"
               }
             }
           }
@@ -684,6 +724,36 @@
           }
         }
       }
+    },
+    "/employees/{id}": {
+      "get": {
+        "tags": [
+          "employees-controller"
+        ],
+        "operationId": "getEmployee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -699,6 +769,19 @@
           },
           "branchId": {
             "type": "string"
+          }
+        }
+      },
+      "LatLng": {
+        "type": "object",
+        "properties": {
+          "lng": {
+            "type": "number",
+            "format": "double"
+          },
+          "lat": {
+            "type": "number",
+            "format": "double"
           }
         }
       },
@@ -729,9 +812,6 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
-          },
-          "profilePic": {
             "type": "string"
           },
           "fullName": {
@@ -783,19 +863,6 @@
           },
           "location": {
             "$ref": "#/components/schemas/LatLng"
-          }
-        }
-      },
-      "LatLng": {
-        "type": "object",
-        "properties": {
-          "lng": {
-            "type": "number",
-            "format": "double"
-          },
-          "lat": {
-            "type": "number",
-            "format": "double"
           }
         }
       },

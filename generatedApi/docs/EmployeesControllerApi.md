@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createEmployee**](EmployeesControllerApi.md#createEmployee) | **POST** /employees | 
-[**editEmployee**](EmployeesControllerApi.md#editEmployee) | **PUT** /employees/{id} | 
+[**editEmployee**](EmployeesControllerApi.md#editEmployee) | **PUT** /employees | 
 [**getEmployee**](EmployeesControllerApi.md#getEmployee) | **GET** /employees/{id} | 
 [**searchEmployees**](EmployeesControllerApi.md#searchEmployees) | **GET** /employees | 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createEmployee
 
-> createEmployee(opts)
+> createEmployee(employee, profilePic)
 
 
 
@@ -23,10 +23,9 @@ Method | HTTP request | Description
 import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
-let opts = {
-  'employee': new BackendClient.Employee() // Employee | 
-};
-apiInstance.createEmployee(opts).then(() => {
+let employee = new BackendClient.Employee(); // Employee | 
+let profilePic = "/path/to/file"; // File | 
+apiInstance.createEmployee(employee, profilePic).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -39,7 +38,8 @@ apiInstance.createEmployee(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee** | [**Employee**](Employee.md)|  | [optional] 
+ **employee** | [**Employee**](Employee.md)|  | 
+ **profilePic** | **File**|  | 
 
 ### Return type
 
@@ -51,13 +51,13 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: Not defined
 
 
 ## editEmployee
 
-> editEmployee(id, employee)
+> editEmployee(id, employee, profilePic)
 
 
 
@@ -69,7 +69,8 @@ import BackendClient from 'backend-client';
 let apiInstance = new BackendClient.EmployeesControllerApi();
 let id = "id_example"; // String | 
 let employee = new BackendClient.Employee(); // Employee | 
-apiInstance.editEmployee(id, employee).then(() => {
+let profilePic = "/path/to/file"; // File | 
+apiInstance.editEmployee(id, employee, profilePic).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -84,6 +85,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **employee** | [**Employee**](Employee.md)|  | 
+ **profilePic** | **File**|  | 
 
 ### Return type
 
@@ -95,7 +97,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: Not defined
 
 

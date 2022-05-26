@@ -36,13 +36,20 @@ export default class EmployeesControllerApi {
 
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Employee} opts.employee 
+     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createEmployeeWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = opts['employee'];
+    createEmployeeWithHttpInfo(employee, profilePic) {
+      let postBody = null;
+      // verify the required parameter 'employee' is set
+      if (employee === undefined || employee === null) {
+        throw new Error("Missing the required parameter 'employee' when calling createEmployee");
+      }
+      // verify the required parameter 'profilePic' is set
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling createEmployee");
+      }
 
       let pathParams = {
       };
@@ -51,10 +58,12 @@ export default class EmployeesControllerApi {
       let headerParams = {
       };
       let formParams = {
+        'employee': employee,
+        'profilePic': profilePic
       };
 
       let authNames = [];
-      let contentTypes = ['application/json'];
+      let contentTypes = ['multipart/form-data'];
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
@@ -65,12 +74,12 @@ export default class EmployeesControllerApi {
     }
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Employee} opts.employee 
+     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    createEmployee(opts) {
-      return this.createEmployeeWithHttpInfo(opts)
+    createEmployee(employee, profilePic) {
+      return this.createEmployeeWithHttpInfo(employee, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -80,10 +89,11 @@ export default class EmployeesControllerApi {
     /**
      * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    editEmployeeWithHttpInfo(id, employee) {
-      let postBody = employee;
+    editEmployeeWithHttpInfo(id, employee, profilePic) {
+      let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling editEmployee");
@@ -91,6 +101,10 @@ export default class EmployeesControllerApi {
       // verify the required parameter 'employee' is set
       if (employee === undefined || employee === null) {
         throw new Error("Missing the required parameter 'employee' when calling editEmployee");
+      }
+      // verify the required parameter 'profilePic' is set
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling editEmployee");
       }
 
       let pathParams = {
@@ -101,14 +115,16 @@ export default class EmployeesControllerApi {
       let headerParams = {
       };
       let formParams = {
+        'employee': employee,
+        'profilePic': profilePic
       };
 
       let authNames = [];
-      let contentTypes = ['application/json'];
+      let contentTypes = ['multipart/form-data'];
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/employees/{id}', 'PUT',
+        '/employees', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -117,10 +133,11 @@ export default class EmployeesControllerApi {
     /**
      * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    editEmployee(id, employee) {
-      return this.editEmployeeWithHttpInfo(id, employee)
+    editEmployee(id, employee, profilePic) {
+      return this.editEmployeeWithHttpInfo(id, employee, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

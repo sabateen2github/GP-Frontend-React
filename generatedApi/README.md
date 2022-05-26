@@ -125,7 +125,7 @@ Class | Method | HTTP request | Description
 *BackendClient.BranchesControllerApi* | [**getBranch**](docs/BranchesControllerApi.md#getBranch) | **GET** /branches/{id} | 
 *BackendClient.BranchesControllerApi* | [**updateBranch**](docs/BranchesControllerApi.md#updateBranch) | **PUT** /branches/{id} | 
 *BackendClient.EmployeesControllerApi* | [**createEmployee**](docs/EmployeesControllerApi.md#createEmployee) | **POST** /employees | 
-*BackendClient.EmployeesControllerApi* | [**editEmployee**](docs/EmployeesControllerApi.md#editEmployee) | **PUT** /employees/{id} | 
+*BackendClient.EmployeesControllerApi* | [**editEmployee**](docs/EmployeesControllerApi.md#editEmployee) | **PUT** /employees | 
 *BackendClient.EmployeesControllerApi* | [**getEmployee**](docs/EmployeesControllerApi.md#getEmployee) | **GET** /employees/{id} | 
 *BackendClient.EmployeesControllerApi* | [**searchEmployees**](docs/EmployeesControllerApi.md#searchEmployees) | **GET** /employees | 
 *BackendClient.InstituteControllerApi* | [**createInstitute**](docs/InstituteControllerApi.md#createInstitute) | **POST** /institute | 
@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *BackendClient.InstituteControllerApi* | [**updateInstitute**](docs/InstituteControllerApi.md#updateInstitute) | **PUT** /institute/{id} | 
 *BackendClient.QueueControllerApi* | [**advanceQueue**](docs/QueueControllerApi.md#advanceQueue) | **PUT** /queues/queue/advance | 
 *BackendClient.QueueControllerApi* | [**bookQueue**](docs/QueueControllerApi.md#bookQueue) | **PUT** /queues/queue/book | 
+*BackendClient.QueueControllerApi* | [**cancelTurn**](docs/QueueControllerApi.md#cancelTurn) | **DELETE** /queues/queue/book | 
 *BackendClient.QueueControllerApi* | [**deleteQueue**](docs/QueueControllerApi.md#deleteQueue) | **DELETE** /queues/queue | 
 *BackendClient.QueueControllerApi* | [**editQueueSpec**](docs/QueueControllerApi.md#editQueueSpec) | **PUT** /queues/queue | 
 *BackendClient.QueueControllerApi* | [**getActiveQueues**](docs/QueueControllerApi.md#getActiveQueues) | **GET** /queues/active/{userId} | 

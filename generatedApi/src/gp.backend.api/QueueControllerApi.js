@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import BookedTurnQueue from '../gp.backend.model/BookedTurnQueue';
+import LatLng from '../gp.backend.model/LatLng';
 import Queue from '../gp.backend.model/Queue';
 import QueueSpec from '../gp.backend.model/QueueSpec';
 
@@ -92,9 +93,10 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
+     * @param {module:gp.backend.model/LatLng} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    bookQueueWithHttpInfo(userId, queueId, branchId) {
+    bookQueueWithHttpInfo(userId, queueId, branchId, location) {
       let postBody = null;
       // verify the required parameter 'userId' is set
       if (userId === undefined || userId === null) {
@@ -108,13 +110,18 @@ export default class QueueControllerApi {
       if (branchId === undefined || branchId === null) {
         throw new Error("Missing the required parameter 'branchId' when calling bookQueue");
       }
+      // verify the required parameter 'location' is set
+      if (location === undefined || location === null) {
+        throw new Error("Missing the required parameter 'location' when calling bookQueue");
+      }
 
       let pathParams = {
       };
       let queryParams = {
         'userId': userId,
         'queueId': queueId,
-        'branchId': branchId
+        'branchId': branchId,
+        'location': location
       };
       let headerParams = {
       };
@@ -136,10 +143,69 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
+     * @param {module:gp.backend.model/LatLng} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    bookQueue(userId, queueId, branchId) {
-      return this.bookQueueWithHttpInfo(userId, queueId, branchId)
+    bookQueue(userId, queueId, branchId, location) {
+      return this.bookQueueWithHttpInfo(userId, queueId, branchId, location)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    cancelTurnWithHttpInfo(userId, queueId, branchId) {
+      let postBody = null;
+      // verify the required parameter 'userId' is set
+      if (userId === undefined || userId === null) {
+        throw new Error("Missing the required parameter 'userId' when calling cancelTurn");
+      }
+      // verify the required parameter 'queueId' is set
+      if (queueId === undefined || queueId === null) {
+        throw new Error("Missing the required parameter 'queueId' when calling cancelTurn");
+      }
+      // verify the required parameter 'branchId' is set
+      if (branchId === undefined || branchId === null) {
+        throw new Error("Missing the required parameter 'branchId' when calling cancelTurn");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'userId': userId,
+        'queueId': queueId,
+        'branchId': branchId
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/queues/queue/book', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    cancelTurn(userId, queueId, branchId) {
+      return this.cancelTurnWithHttpInfo(userId, queueId, branchId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
