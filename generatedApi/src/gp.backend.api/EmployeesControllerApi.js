@@ -182,6 +182,50 @@ export default class EmployeesControllerApi {
 
 
     /**
+     * @param {String} username 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Employee} and HTTP response
+     */
+    getEmployeeByUsernameWithHttpInfo(username) {
+      let postBody = null;
+      // verify the required parameter 'username' is set
+      if (username === undefined || username === null) {
+        throw new Error("Missing the required parameter 'username' when calling getEmployeeByUsername");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'username': username
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = Employee;
+      return this.apiClient.callApi(
+        '/employees/username', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} username 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Employee}
+     */
+    getEmployeeByUsername(username) {
+      return this.getEmployeeByUsernameWithHttpInfo(username)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * @param {String} searchTerm 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Employee>} and HTTP response
      */

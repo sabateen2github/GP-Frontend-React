@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *BackendClient.EmployeesControllerApi* | [**createEmployee**](docs/EmployeesControllerApi.md#createEmployee) | **POST** /employees | 
 *BackendClient.EmployeesControllerApi* | [**editEmployee**](docs/EmployeesControllerApi.md#editEmployee) | **PUT** /employees | 
 *BackendClient.EmployeesControllerApi* | [**getEmployee**](docs/EmployeesControllerApi.md#getEmployee) | **GET** /employees/{id} | 
+*BackendClient.EmployeesControllerApi* | [**getEmployeeByUsername**](docs/EmployeesControllerApi.md#getEmployeeByUsername) | **GET** /employees/username | 
 *BackendClient.EmployeesControllerApi* | [**searchEmployees**](docs/EmployeesControllerApi.md#searchEmployees) | **GET** /employees | 
 *BackendClient.FileServingControllerApi* | [**getFile**](docs/FileServingControllerApi.md#getFile) | **GET** /files/{filename} | 
 *BackendClient.InstituteControllerApi* | [**createInstitute**](docs/InstituteControllerApi.md#createInstitute) | **POST** /institute | 

@@ -1,16 +1,25 @@
-import {UserControllerApi, UserResponseDTO} from "auth-backend-client";
+import {ApiClient as AuthApiClient, UserControllerApi, UserResponseDTO} from "auth-backend-client";
 import {ApiClient, EmployeesControllerApi} from "backend-client";
 
 const CREDENTIAL_KEY = 'CREDENTIAL_KEY';
 
 const login = (username, password, callback) => {
 
-    let apiInstance = new UserControllerApi();
+    let loginApi = new UserControllerApi();
 
-    apiInstance.login(username, password).then((data) => {
+    loginApi.login(username, password).then((data) => {
         localStorage.setItem('jwt', data);
 
+        AuthApiClient.instance.authentications['bearerAuth'].accessToken = data;
+        ApiClient.instance.authentications['bearerAuth'].accessToken = data;
 
+        let employeeApi = new EmployeesControllerApi();
+        let id = "id_example"; // String |
+        employeeApi.getEmployee(id).then((data) => {
+            console.log('API called successfully. Returned data: ' + data);
+        }, (error) => {
+            console.error(error);
+        });
 
         //fetchDataAfterLogin();
         //callback(true);
@@ -74,8 +83,7 @@ const fetchCredentials = async () => {
     let helpDeskMetaData = {};
     if (accountType == UserResponseDTO.AppUserRolesEnum.HELP_DESK) {
         helpDeskMetaData = {
-            branchName: localStorage.getItem('branchName'),
-            branchId: localStorage.getItem('branchId')
+            branchName: localStorage.getItem('branchName'), branchId: localStorage.getItem('branchId')
         };
     }
 
@@ -88,8 +96,7 @@ const fetchCredentials = async () => {
         instituteId: localStorage.getItem('instituteId'),
         instituteEmail: localStorage.getItem('instituteEmail'),
         institutePhone: localStorage.getItem('institutePhone'),
-        accountType: accountType,
-        ...helpDeskMetaData
+        accountType: accountType, ...helpDeskMetaData
     };
 
 };

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createEmployee**](EmployeesControllerApi.md#createEmployee) | **POST** /employees | 
 [**editEmployee**](EmployeesControllerApi.md#editEmployee) | **PUT** /employees | 
 [**getEmployee**](EmployeesControllerApi.md#getEmployee) | **GET** /employees/{id} | 
+[**getEmployeeByUsername**](EmployeesControllerApi.md#getEmployeeByUsername) | **GET** /employees/username | 
 [**searchEmployees**](EmployeesControllerApi.md#searchEmployees) | **GET** /employees | 
 
 
@@ -138,6 +139,52 @@ apiInstance.getEmployee(id).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+
+### Return type
+
+[**Employee**](Employee.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
+## getEmployeeByUsername
+
+> Employee getEmployeeByUsername(username)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new BackendClient.EmployeesControllerApi();
+let username = "username_example"; // String | 
+apiInstance.getEmployeeByUsername(username).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **username** | **String**|  | 
 
 ### Return type
 
