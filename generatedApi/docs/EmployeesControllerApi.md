@@ -57,7 +57,7 @@ No authorization required
 
 ## editEmployee
 
-> editEmployee(id, employee, profilePic)
+> editEmployee(employee, profilePic)
 
 
 
@@ -67,10 +67,9 @@ No authorization required
 import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
-let id = "id_example"; // String | 
 let employee = new BackendClient.Employee(); // Employee | 
 let profilePic = "/path/to/file"; // File | 
-apiInstance.editEmployee(id, employee, profilePic).then(() => {
+apiInstance.editEmployee(employee, profilePic).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -83,7 +82,6 @@ apiInstance.editEmployee(id, employee, profilePic).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
  **employee** | [**Employee**](Employee.md)|  | 
  **profilePic** | **File**|  | 
 

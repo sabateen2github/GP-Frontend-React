@@ -128,11 +128,12 @@ Class | Method | HTTP request | Description
 *BackendClient.EmployeesControllerApi* | [**editEmployee**](docs/EmployeesControllerApi.md#editEmployee) | **PUT** /employees | 
 *BackendClient.EmployeesControllerApi* | [**getEmployee**](docs/EmployeesControllerApi.md#getEmployee) | **GET** /employees/{id} | 
 *BackendClient.EmployeesControllerApi* | [**searchEmployees**](docs/EmployeesControllerApi.md#searchEmployees) | **GET** /employees | 
+*BackendClient.FileServingControllerApi* | [**getFile**](docs/FileServingControllerApi.md#getFile) | **GET** /files/{filename} | 
 *BackendClient.InstituteControllerApi* | [**createInstitute**](docs/InstituteControllerApi.md#createInstitute) | **POST** /institute | 
 *BackendClient.InstituteControllerApi* | [**deleteInstitute**](docs/InstituteControllerApi.md#deleteInstitute) | **DELETE** /institute/{id} | 
 *BackendClient.InstituteControllerApi* | [**getInstitute**](docs/InstituteControllerApi.md#getInstitute) | **GET** /institute/{id} | 
 *BackendClient.InstituteControllerApi* | [**searchInstitutes**](docs/InstituteControllerApi.md#searchInstitutes) | **GET** /institute | 
-*BackendClient.InstituteControllerApi* | [**updateInstitute**](docs/InstituteControllerApi.md#updateInstitute) | **PUT** /institute/{id} | 
+*BackendClient.InstituteControllerApi* | [**updateInstitute**](docs/InstituteControllerApi.md#updateInstitute) | **PUT** /institute | 
 *BackendClient.QueueControllerApi* | [**advanceQueue**](docs/QueueControllerApi.md#advanceQueue) | **PUT** /queues/queue/advance | 
 *BackendClient.QueueControllerApi* | [**bookQueue**](docs/QueueControllerApi.md#bookQueue) | **PUT** /queues/queue/book | 
 *BackendClient.QueueControllerApi* | [**cancelTurn**](docs/QueueControllerApi.md#cancelTurn) | **DELETE** /queues/queue/book | 
@@ -144,6 +145,7 @@ Class | Method | HTTP request | Description
 *BackendClient.QueueControllerApi* | [**getArchivedQueues**](docs/QueueControllerApi.md#getArchivedQueues) | **GET** /queues/archived/{userId} | 
 *BackendClient.QueueControllerApi* | [**getQueue**](docs/QueueControllerApi.md#getQueue) | **GET** /queues/queue | 
 *BackendClient.QueueControllerApi* | [**resetQueue**](docs/QueueControllerApi.md#resetQueue) | **PUT** /queues/queue/reset | 
+*BackendClient.QueueControllerApi* | [**switchUserLocationMode**](docs/QueueControllerApi.md#switchUserLocationMode) | **PUT** /queues/queue/book/toggle | 
 
 
 ## Documentation for Models
@@ -151,6 +153,8 @@ Class | Method | HTTP request | Description
  - [BackendClient.BookedTurnQueue](docs/BookedTurnQueue.md)
  - [BackendClient.Branch](docs/Branch.md)
  - [BackendClient.Employee](docs/Employee.md)
+ - [BackendClient.InlineObject](docs/InlineObject.md)
+ - [BackendClient.InlineObject1](docs/InlineObject1.md)
  - [BackendClient.Institute](docs/Institute.md)
  - [BackendClient.LatLng](docs/LatLng.md)
  - [BackendClient.Queue](docs/Queue.md)

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **dateOfBirth** | **Date** |  | [optional] 
 **username** | **String** |  | [optional] 
 **password** | **String** |  | [optional] 
+**profilePic** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **phone** | **String** |  | [optional] 
 **branchId** | **String** |  | [optional] 

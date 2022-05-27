@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**turnId** | **Number** |  | [optional] 
+**turnId** | **String** |  | [optional] 
 **position** | **Number** |  | [optional] 
 **logoUrl** | **String** |  | [optional] 
 **state** | **String** |  | [optional] 

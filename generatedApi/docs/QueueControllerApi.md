@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getArchivedQueues**](QueueControllerApi.md#getArchivedQueues) | **GET** /queues/archived/{userId} | 
 [**getQueue**](QueueControllerApi.md#getQueue) | **GET** /queues/queue | 
 [**resetQueue**](QueueControllerApi.md#resetQueue) | **PUT** /queues/queue/reset | 
+[**switchUserLocationMode**](QueueControllerApi.md#switchUserLocationMode) | **PUT** /queues/queue/book/toggle | 
 
 
 
@@ -482,6 +483,54 @@ apiInstance.resetQueue(id, branchId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+ **branchId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## switchUserLocationMode
+
+> switchUserLocationMode(instituteId, userId, queueId, branchId)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+
+let apiInstance = new BackendClient.QueueControllerApi();
+let instituteId = "instituteId_example"; // String | 
+let userId = "userId_example"; // String | 
+let queueId = "queueId_example"; // String | 
+let branchId = "branchId_example"; // String | 
+apiInstance.switchUserLocationMode(instituteId, userId, queueId, branchId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instituteId** | **String**|  | 
+ **userId** | **String**|  | 
+ **queueId** | **String**|  | 
  **branchId** | **String**|  | 
 
 ### Return type

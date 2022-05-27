@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deleteInstitute**](InstituteControllerApi.md#deleteInstitute) | **DELETE** /institute/{id} | 
 [**getInstitute**](InstituteControllerApi.md#getInstitute) | **GET** /institute/{id} | 
 [**searchInstitutes**](InstituteControllerApi.md#searchInstitutes) | **GET** /institute | 
-[**updateInstitute**](InstituteControllerApi.md#updateInstitute) | **PUT** /institute/{id} | 
+[**updateInstitute**](InstituteControllerApi.md#updateInstitute) | **PUT** /institute | 
 
 
 
@@ -25,7 +25,7 @@ import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
-  'institute': new BackendClient.Institute() // Institute | 
+  'inlineObject1': new BackendClient.InlineObject1() // InlineObject1 | 
 };
 apiInstance.createInstitute(opts).then(() => {
   console.log('API called successfully.');
@@ -40,7 +40,7 @@ apiInstance.createInstitute(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **institute** | [**Institute**](Institute.md)|  | [optional] 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | [optional] 
 
 ### Return type
 
@@ -186,7 +186,7 @@ No authorization required
 
 ## updateInstitute
 
-> updateInstitute(id, institute)
+> updateInstitute(opts)
 
 
 
@@ -196,9 +196,10 @@ No authorization required
 import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.InstituteControllerApi();
-let id = "id_example"; // String | 
-let institute = new BackendClient.Institute(); // Institute | 
-apiInstance.updateInstitute(id, institute).then(() => {
+let opts = {
+  'inlineObject': new BackendClient.InlineObject() // InlineObject | 
+};
+apiInstance.updateInstitute(opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -211,8 +212,7 @@ apiInstance.updateInstitute(id, institute).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **institute** | [**Institute**](Institute.md)|  | 
+ **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
 
 ### Return type
 

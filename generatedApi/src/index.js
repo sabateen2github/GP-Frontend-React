@@ -16,12 +16,15 @@ import ApiClient from './ApiClient';
 import BookedTurnQueue from './gp.backend.model/BookedTurnQueue';
 import Branch from './gp.backend.model/Branch';
 import Employee from './gp.backend.model/Employee';
+import InlineObject from './gp.backend.model/InlineObject';
+import InlineObject1 from './gp.backend.model/InlineObject1';
 import Institute from './gp.backend.model/Institute';
 import LatLng from './gp.backend.model/LatLng';
 import Queue from './gp.backend.model/Queue';
 import QueueSpec from './gp.backend.model/QueueSpec';
 import BranchesControllerApi from './gp.backend.api/BranchesControllerApi';
 import EmployeesControllerApi from './gp.backend.api/EmployeesControllerApi';
+import FileServingControllerApi from './gp.backend.api/FileServingControllerApi';
 import InstituteControllerApi from './gp.backend.api/InstituteControllerApi';
 import QueueControllerApi from './gp.backend.api/QueueControllerApi';
 
@@ -83,6 +86,18 @@ export {
     Employee,
 
     /**
+     * The InlineObject model constructor.
+     * @property {module:gp.backend.model/InlineObject}
+     */
+    InlineObject,
+
+    /**
+     * The InlineObject1 model constructor.
+     * @property {module:gp.backend.model/InlineObject1}
+     */
+    InlineObject1,
+
+    /**
      * The Institute model constructor.
      * @property {module:gp.backend.model/Institute}
      */
@@ -117,6 +132,12 @@ export {
     * @property {module:gp.backend.api/EmployeesControllerApi}
     */
     EmployeesControllerApi,
+
+    /**
+    * The FileServingControllerApi service constructor.
+    * @property {module:gp.backend.api/FileServingControllerApi}
+    */
+    FileServingControllerApi,
 
     /**
     * The InstituteControllerApi service constructor.

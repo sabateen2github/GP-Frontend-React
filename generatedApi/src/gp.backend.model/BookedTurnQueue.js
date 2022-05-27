@@ -49,7 +49,7 @@ class BookedTurnQueue {
             obj = obj || new BookedTurnQueue();
 
             if (data.hasOwnProperty('turnId')) {
-                obj['turnId'] = ApiClient.convertToType(data['turnId'], 'Number');
+                obj['turnId'] = ApiClient.convertToType(data['turnId'], 'String');
             }
             if (data.hasOwnProperty('position')) {
                 obj['position'] = ApiClient.convertToType(data['position'], 'Number');
@@ -71,7 +71,7 @@ class BookedTurnQueue {
 }
 
 /**
- * @member {Number} turnId
+ * @member {String} turnId
  */
 BookedTurnQueue.prototype['turnId'] = undefined;
 

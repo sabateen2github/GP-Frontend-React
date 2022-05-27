@@ -13,6 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
+import InlineObject from '../gp.backend.model/InlineObject';
+import InlineObject1 from '../gp.backend.model/InlineObject1';
 import Institute from '../gp.backend.model/Institute';
 
 /**
@@ -37,12 +39,12 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Institute} opts.institute 
+     * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     createInstituteWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['institute'];
+      let postBody = opts['inlineObject1'];
 
       let pathParams = {
       };
@@ -66,7 +68,7 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Institute} opts.institute 
+     * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     createInstitute(opts) {
@@ -209,23 +211,15 @@ export default class InstituteControllerApi {
 
 
     /**
-     * @param {String} id 
-     * @param {module:gp.backend.model/Institute} institute 
+     * @param {Object} opts Optional parameters
+     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    updateInstituteWithHttpInfo(id, institute) {
-      let postBody = institute;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling updateInstitute");
-      }
-      // verify the required parameter 'institute' is set
-      if (institute === undefined || institute === null) {
-        throw new Error("Missing the required parameter 'institute' when calling updateInstitute");
-      }
+    updateInstituteWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['inlineObject'];
 
       let pathParams = {
-        'id': id
       };
       let queryParams = {
       };
@@ -239,19 +233,19 @@ export default class InstituteControllerApi {
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
-        '/institute/{id}', 'PUT',
+        '/institute', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * @param {String} id 
-     * @param {module:gp.backend.model/Institute} institute 
+     * @param {Object} opts Optional parameters
+     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    updateInstitute(id, institute) {
-      return this.updateInstituteWithHttpInfo(id, institute)
+    updateInstitute(opts) {
+      return this.updateInstituteWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

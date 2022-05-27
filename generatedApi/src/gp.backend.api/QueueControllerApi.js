@@ -584,4 +584,69 @@ export default class QueueControllerApi {
     }
 
 
+    /**
+     * @param {String} instituteId 
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    switchUserLocationModeWithHttpInfo(instituteId, userId, queueId, branchId) {
+      let postBody = null;
+      // verify the required parameter 'instituteId' is set
+      if (instituteId === undefined || instituteId === null) {
+        throw new Error("Missing the required parameter 'instituteId' when calling switchUserLocationMode");
+      }
+      // verify the required parameter 'userId' is set
+      if (userId === undefined || userId === null) {
+        throw new Error("Missing the required parameter 'userId' when calling switchUserLocationMode");
+      }
+      // verify the required parameter 'queueId' is set
+      if (queueId === undefined || queueId === null) {
+        throw new Error("Missing the required parameter 'queueId' when calling switchUserLocationMode");
+      }
+      // verify the required parameter 'branchId' is set
+      if (branchId === undefined || branchId === null) {
+        throw new Error("Missing the required parameter 'branchId' when calling switchUserLocationMode");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'instituteId': instituteId,
+        'userId': userId,
+        'queueId': queueId,
+        'branchId': branchId
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/queues/queue/book/toggle', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} instituteId 
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    switchUserLocationMode(instituteId, userId, queueId, branchId) {
+      return this.switchUserLocationModeWithHttpInfo(instituteId, userId, queueId, branchId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
 }

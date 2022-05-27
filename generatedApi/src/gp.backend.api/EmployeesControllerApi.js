@@ -87,17 +87,12 @@ export default class EmployeesControllerApi {
 
 
     /**
-     * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    editEmployeeWithHttpInfo(id, employee, profilePic) {
+    editEmployeeWithHttpInfo(employee, profilePic) {
       let postBody = null;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling editEmployee");
-      }
       // verify the required parameter 'employee' is set
       if (employee === undefined || employee === null) {
         throw new Error("Missing the required parameter 'employee' when calling editEmployee");
@@ -108,7 +103,6 @@ export default class EmployeesControllerApi {
       }
 
       let pathParams = {
-        'id': id
       };
       let queryParams = {
       };
@@ -131,13 +125,12 @@ export default class EmployeesControllerApi {
     }
 
     /**
-     * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    editEmployee(id, employee, profilePic) {
-      return this.editEmployeeWithHttpInfo(id, employee, profilePic)
+    editEmployee(employee, profilePic) {
+      return this.editEmployeeWithHttpInfo(employee, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
