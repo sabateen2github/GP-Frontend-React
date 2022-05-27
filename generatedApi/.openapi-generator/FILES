@@ -35,6 +35,3 @@ src/gp.backend.model/LatLng.js
 src/gp.backend.model/Queue.js
 src/gp.backend.model/QueueSpec.js
 src/index.js
-test/api/FileServingControllerApi.spec.js
-test/model/InlineObject.spec.js
-test/model/InlineObject1.spec.js

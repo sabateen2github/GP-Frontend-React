@@ -22,6 +22,10 @@ Method | HTTP request | Description
 
 ```javascript
 import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
@@ -48,7 +52,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -66,6 +70,10 @@ No authorization required
 
 ```javascript
 import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let id = "id_example"; // String | 
@@ -90,7 +98,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -194,6 +202,10 @@ No authorization required
 
 ```javascript
 import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
@@ -220,7 +232,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
