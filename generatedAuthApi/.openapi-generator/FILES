@@ -1,6 +1,5 @@
 .babelrc
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/UserControllerApi.md
@@ -14,6 +13,3 @@ src/gp.backend.api/UserControllerApi.js
 src/gp.backend.model/UserDataDTO.js
 src/gp.backend.model/UserResponseDTO.js
 src/index.js
-test/api/UserControllerApi.spec.js
-test/model/UserDataDTO.spec.js
-test/model/UserResponseDTO.spec.js

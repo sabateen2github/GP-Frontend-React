@@ -38,14 +38,14 @@ var ApiClient = /*#__PURE__*/function () {
    * @param {String} basePath
    */
   function ApiClient() {
-    var basePath = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'http://localhost:8080';
+    var basePath = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'http://localhost:8081';
 
     _classCallCheck(this, ApiClient);
 
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default http://localhost:8080
+     * @default http://localhost:8081
      */
     this.basePath = basePath.replace(/\/+$/, '');
     /**
@@ -571,7 +571,7 @@ var ApiClient = /*#__PURE__*/function () {
       */
     function hostSettings() {
       return [{
-        'url': "http://localhost:8080",
+        'url': "http://localhost:8081",
         'description': "Generated server url"
       }];
     }

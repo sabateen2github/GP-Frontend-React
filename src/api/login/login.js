@@ -8,8 +8,10 @@ const login = (username, password, callback) => {
     let apiInstance = new UserControllerApi();
 
     apiInstance.login(username, password).then((data) => {
-        localStorage.setItem('jwt-login', data);
-        console.log(data);
+        localStorage.setItem('jwt', data);
+
+
+
         //fetchDataAfterLogin();
         //callback(true);
     }, (error) => {
@@ -17,6 +19,7 @@ const login = (username, password, callback) => {
         //callback(false);
     });
 
+    /*
     setTimeout(() => {
 
         const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
@@ -44,7 +47,7 @@ const login = (username, password, callback) => {
         }
 
         callback(true);
-    }, 2000);
+    }, 2000); */
 
 };
 
