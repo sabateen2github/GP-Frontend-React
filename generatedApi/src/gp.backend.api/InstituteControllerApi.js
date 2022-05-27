@@ -36,17 +36,19 @@ export default class InstituteControllerApi {
 
 
     /**
-     * @param {module:gp.backend.model/Institute} institute 
-     * @param {Object} opts Optional parameters
-     * @param {File} opts.profilePic 
+     * @param {File} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createInstituteWithHttpInfo(institute, opts) {
-      opts = opts || {};
+    createInstituteWithHttpInfo(institute, profilePic) {
       let postBody = null;
       // verify the required parameter 'institute' is set
       if (institute === undefined || institute === null) {
         throw new Error("Missing the required parameter 'institute' when calling createInstitute");
+      }
+      // verify the required parameter 'profilePic' is set
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling createInstitute");
       }
 
       let pathParams = {
@@ -57,7 +59,7 @@ export default class InstituteControllerApi {
       };
       let formParams = {
         'institute': institute,
-        'profilePic': opts['profilePic']
+        'profilePic': profilePic
       };
 
       let authNames = ['bearerAuth'];
@@ -72,13 +74,12 @@ export default class InstituteControllerApi {
     }
 
     /**
-     * @param {module:gp.backend.model/Institute} institute 
-     * @param {Object} opts Optional parameters
-     * @param {File} opts.profilePic 
+     * @param {File} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    createInstitute(institute, opts) {
-      return this.createInstituteWithHttpInfo(institute, opts)
+    createInstitute(institute, profilePic) {
+      return this.createInstituteWithHttpInfo(institute, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -261,7 +262,7 @@ export default class InstituteControllerApi {
 
 
     /**
-     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} institute 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -299,7 +300,7 @@ export default class InstituteControllerApi {
     }
 
     /**
-     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} institute 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */

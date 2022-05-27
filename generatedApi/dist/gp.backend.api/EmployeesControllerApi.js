@@ -36,7 +36,7 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * @param {module:gp.backend.model/Employee} employee 
+   * @param {File} employee 
    * @param {File} profilePic 
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
@@ -70,7 +70,7 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
       return this.apiClient.callApi('/employees', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
@@ -83,7 +83,7 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
       });
     }
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -116,7 +116,7 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
       return this.apiClient.callApi('/employees', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */

@@ -391,7 +391,8 @@
                 "type": "object",
                 "properties": {
                   "institute": {
-                    "$ref": "#/components/schemas/Institute"
+                    "type": "string",
+                    "format": "binary"
                   },
                   "profilePic": {
                     "type": "string",
@@ -423,12 +424,14 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "institute"
+                  "institute",
+                  "profilePic"
                 ],
                 "type": "object",
                 "properties": {
                   "institute": {
-                    "$ref": "#/components/schemas/Institute"
+                    "type": "string",
+                    "format": "binary"
                   },
                   "profilePic": {
                     "type": "string",
@@ -504,7 +507,8 @@
                 "type": "object",
                 "properties": {
                   "employee": {
-                    "$ref": "#/components/schemas/Employee"
+                    "type": "string",
+                    "format": "binary"
                   },
                   "profilePic": {
                     "type": "string",
@@ -542,7 +546,8 @@
                 "type": "object",
                 "properties": {
                   "employee": {
-                    "$ref": "#/components/schemas/Employee"
+                    "type": "string",
+                    "format": "binary"
                   },
                   "profilePic": {
                     "type": "string",
@@ -1033,70 +1038,6 @@
           }
         }
       },
-      "Institute": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "logoUrl": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          }
-        }
-      },
-      "Employee": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "fullName": {
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "profilePic": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "branchId": {
-            "type": "string"
-          },
-          "accountType": {
-            "type": "string",
-            "enum": [
-              "ROLE_HELP_DESK",
-              "ROLE_MANAGEMENT",
-              "ROLE_ADMIN"
-            ]
-          }
-        }
-      },
       "Branch": {
         "type": "object",
         "properties": {
@@ -1167,6 +1108,70 @@
           },
           "queue": {
             "$ref": "#/components/schemas/Queue"
+          }
+        }
+      },
+      "Institute": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "profilePic": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "branchId": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string",
+            "enum": [
+              "ROLE_HELP_DESK",
+              "ROLE_MANAGEMENT",
+              "ROLE_ADMIN"
+            ]
           }
         }
       }

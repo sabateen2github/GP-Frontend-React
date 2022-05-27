@@ -42,13 +42,17 @@ const createBusiness = async ({logoUrl, name, phone, email}) => {
         profilePic = file;
     }
 
-    let apiInstance = new InstituteControllerApi();
-
     institute.name = name;
     institute.phone = phone;
     institute.email = email;
 
-    return apiInstance.createInstitute(institute, profilePic).then(() => {
+    let apiInstance = new InstituteControllerApi();
+
+
+    let opts = {
+        'profilePic': profilePic // File |
+    };
+    return apiInstance.createInstitute(institute, opts).then(() => {
         console.log('API called successfully.');
     }, (error) => {
         console.error(error);

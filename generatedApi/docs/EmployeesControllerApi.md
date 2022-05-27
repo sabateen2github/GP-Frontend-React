@@ -28,7 +28,7 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
-let employee = new BackendClient.Employee(); // Employee | 
+let employee = "/path/to/file"; // File | 
 let profilePic = "/path/to/file"; // File | 
 apiInstance.createEmployee(employee, profilePic).then(() => {
   console.log('API called successfully.');
@@ -43,7 +43,7 @@ apiInstance.createEmployee(employee, profilePic).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee** | [**Employee**](Employee.md)|  | 
+ **employee** | **File**|  | 
  **profilePic** | **File**|  | 
 
 ### Return type
@@ -76,7 +76,7 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.EmployeesControllerApi();
-let employee = new BackendClient.Employee(); // Employee | 
+let employee = "/path/to/file"; // File | 
 let profilePic = "/path/to/file"; // File | 
 apiInstance.editEmployee(employee, profilePic).then(() => {
   console.log('API called successfully.');
@@ -91,7 +91,7 @@ apiInstance.editEmployee(employee, profilePic).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee** | [**Employee**](Employee.md)|  | 
+ **employee** | **File**|  | 
  **profilePic** | **File**|  | 
 
 ### Return type

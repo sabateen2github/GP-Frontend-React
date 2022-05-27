@@ -36,7 +36,7 @@ export default class EmployeesControllerApi {
 
 
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -74,7 +74,7 @@ export default class EmployeesControllerApi {
     }
 
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
@@ -87,7 +87,7 @@ export default class EmployeesControllerApi {
 
 
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -125,7 +125,7 @@ export default class EmployeesControllerApi {
     }
 
     /**
-     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} employee 
      * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
