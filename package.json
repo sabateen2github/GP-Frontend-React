@@ -20,6 +20,7 @@
     "backend-client": "file:generatedApi",
     "date-fns": "^2.28.0",
     "fast-equals": "^3.0.2",
+    "jwt-decode": "^3.1.2",
     "querystring-es3": "^0.2.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

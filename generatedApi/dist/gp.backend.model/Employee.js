@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The Employee model module.
  * @module gp.backend.model/Employee
- * @version v1
+ * @version 1.0.0
  */
 var Employee = /*#__PURE__*/function () {
   /**

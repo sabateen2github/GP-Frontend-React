@@ -1,10 +1,10 @@
 import {ApiClient as AuthApiClient, UserControllerApi, UserResponseDTO} from "auth-backend-client";
-import {ApiClient, EmployeesControllerApi} from "backend-client";
+import {ApiClient, BranchesControllerApi, EmployeesControllerApi, InstituteControllerApi} from "backend-client";
+import jwt_decode from "jwt-decode";
 
 const CREDENTIAL_KEY = 'CREDENTIAL_KEY';
 
 const login = (username, password, callback) => {
-
     let loginApi = new UserControllerApi();
 
     loginApi.login(username, password).then((data) => {
@@ -12,69 +12,55 @@ const login = (username, password, callback) => {
 
         AuthApiClient.instance.authentications['bearerAuth'].accessToken = data;
         ApiClient.instance.authentications['bearerAuth'].accessToken = data;
-
         let employeeApi = new EmployeesControllerApi();
-        let id = "id_example"; // String |
-        employeeApi.getEmployee(id).then((data) => {
-            console.log('API called successfully. Returned data: ' + data);
-        }, (error) => {
-            console.error(error);
-        });
+        return employeeApi.getEmployeeByUsername(username);
 
-        //fetchDataAfterLogin();
-        //callback(true);
-    }, (error) => {
-        console.log(error);
-        //callback(false);
-    });
+    }).then((employee) => {
+        localStorage.setItem('employeeId', employee.id);
+        localStorage.setItem('employeeName', employee.name);
+        localStorage.setItem('employeeFullName', employee.fullName);
 
-    /*
-    setTimeout(() => {
-
-        const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
-        const businessLogo = "https://financialallianceforwomen.org/wp-content/uploads/2015/07/BAE-Logo-600x600-profile-picture.jpg";
-        localStorage.setItem('jwt', "#A105");
-        localStorage.setItem('logo', username == 'alaa2sbateen' ? businessLogo : adminLogo);
-        localStorage.setItem('profilePic', username == 'alaa2sbateen' ? businessLogo : adminLogo);
-        localStorage.setItem('employeeName', "Alaa Al-Sabateen");
-
-        localStorage.setItem('employeeId', "Admin");
-        localStorage.setItem('instituteName', username == 'alaa2sbateen' ? "Bank al Etihad" : "Admin");
-        localStorage.setItem('instituteId', "#dasffesdfds43243");
-        localStorage.setItem('instituteEmail', "etihad@bank.com");
-        localStorage.setItem('institutePhone', "079 123 4567");
-
-        let accountType;
-        if (username == 'alaa2sbateen') accountType = UserResponseDTO.AppUserRolesEnum.MANAGEMENT;
-        else if (username == 'alaa3sbateen') accountType = UserResponseDTO.AppUserRolesEnum.HELP_DESK;
-        else accountType = UserResponseDTO.AppUserRolesEnum.ADMIN;
-
-        localStorage.setItem('accountType', accountType);
-        if (accountType == UserResponseDTO.AppUserRolesEnum.HELP_DESK) {
-            localStorage.setItem('branchId', '#ads3reef');
-            localStorage.setItem('branchName', 'Bank al Etihad');
+        if (employee.branchId != null)
+            localStorage.setItem("branchId", employee.branchId);
+        else localStorage.removeItem("branchId");
+        if (employee.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN) {
+            const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
+            localStorage.setItem('profilePic', adminLogo);
+        } else {
+            localStorage.setItem('profilePic', employee.profilePic);
         }
+        localStorage.setItem('accountType', employee.accountType);
+        let decoded = jwt_decode(localStorage.getItem("jwt"));
+        let instituteApi = new InstituteControllerApi();
+        return instituteApi.getInstitute(decoded.instituteId);
 
+    }).then((institute) => {
+        localStorage.setItem('instituteId', institute.id);
+        localStorage.setItem('instituteName', institute.name);
+        localStorage.setItem('instituteEmail', institute.email);
+        localStorage.setItem('institutePhone', institute.phone);
+        if (localStorage.getItem("accountType") == UserResponseDTO.AppUserRolesEnum.ADMIN) {
+            const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
+            localStorage.setItem('logo', adminLogo);
+        } else {
+            localStorage.setItem('logo', institute.logoUrl);
+        }
+        if (localStorage.getItem("branchId")) {
+            let branchApi = new BranchesControllerApi();
+            return branchApi.getBranch(localStorage.getItem("branchId")).then((branch) => {
+                localStorage.setItem('branchName', branch.name);
+                callback(true);
+            }).catch((error) => {
+                console.log(error);
+                callback(false);
+            });
+        }
         callback(true);
-    }, 2000); */
-
-};
-
-const fetchDataAfterLogin = () => {
-    let defaultClient = ApiClient.instance;
-    // Configure Bearer (JWT) access token for authorization: bearerAuth
-    let bearerAuth = defaultClient.authentications['bearerAuth'];
-    bearerAuth.accessToken = "YOUR ACCESS TOKEN"
-
-    let apiInstance = new EmployeesControllerApi();
-    let id = "id_example"; // String |
-    apiInstance.getEmployee(id).then((data) => {
-        console.log('API called successfully. Returned data: ' + data);
-    }, (error) => {
-        console.error(error);
+    }).catch((error) => {
+        console.log(error);
+        callback(false);
     });
 };
-
 
 const fetchCredentials = async () => {
 

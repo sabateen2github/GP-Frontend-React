@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The Branch model module.
  * @module gp.backend.model/Branch
- * @version v1
+ * @version 1.0.0
  */
 var Branch = /*#__PURE__*/function () {
   /**

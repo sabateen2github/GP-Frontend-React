@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * BranchesController service.
 * @module gp.backend.api/BranchesControllerApi
-* @version v1
+* @version 1.0.0
 */
 var BranchesControllerApi = /*#__PURE__*/function () {
   /**

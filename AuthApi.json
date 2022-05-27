@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "My API",
-    "version": "v1"
+    "title": "auth-backend",
+    "version": "1.0.0"
   },
   "servers": [
     {

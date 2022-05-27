@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The QueueSpec model module.
  * @module gp.backend.model/QueueSpec
- * @version v1
+ * @version 1.0.0
  */
 var QueueSpec = /*#__PURE__*/function () {
   /**

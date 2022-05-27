@@ -22,7 +22,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * InstituteController service.
 * @module gp.backend.api/InstituteControllerApi
-* @version v1
+* @version 1.0.0
 */
 var InstituteControllerApi = /*#__PURE__*/function () {
   /**

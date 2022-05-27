@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The LatLng model module.
  * @module gp.backend.model/LatLng
- * @version v1
+ * @version 1.0.0
  */
 var LatLng = /*#__PURE__*/function () {
   /**

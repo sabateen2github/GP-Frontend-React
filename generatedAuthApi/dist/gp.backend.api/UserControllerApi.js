@@ -22,7 +22,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * UserController service.
 * @module gp.backend.api/UserControllerApi
-* @version v1
+* @version 1.0.0
 */
 var UserControllerApi = /*#__PURE__*/function () {
   /**

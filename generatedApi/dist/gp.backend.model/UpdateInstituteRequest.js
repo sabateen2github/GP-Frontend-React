@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The UpdateInstituteRequest model module.
  * @module gp.backend.model/UpdateInstituteRequest
- * @version v1
+ * @version 1.0.0
  */
 var UpdateInstituteRequest = /*#__PURE__*/function () {
   /**

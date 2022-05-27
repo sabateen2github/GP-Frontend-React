@@ -26,7 +26,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * QueueController service.
 * @module gp.backend.api/QueueControllerApi
-* @version v1
+* @version 1.0.0
 */
 var QueueControllerApi = /*#__PURE__*/function () {
   /**

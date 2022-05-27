@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * FileServingController service.
 * @module gp.backend.api/FileServingControllerApi
-* @version v1
+* @version 1.0.0
 */
 var FileServingControllerApi = /*#__PURE__*/function () {
   /**

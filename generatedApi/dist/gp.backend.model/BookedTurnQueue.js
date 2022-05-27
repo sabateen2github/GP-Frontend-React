@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The BookedTurnQueue model module.
  * @module gp.backend.model/BookedTurnQueue
- * @version v1
+ * @version 1.0.0
  */
 var BookedTurnQueue = /*#__PURE__*/function () {
   /**

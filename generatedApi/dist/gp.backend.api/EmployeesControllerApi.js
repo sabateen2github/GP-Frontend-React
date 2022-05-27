@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * EmployeesController service.
 * @module gp.backend.api/EmployeesControllerApi
-* @version v1
+* @version 1.0.0
 */
 var EmployeesControllerApi = /*#__PURE__*/function () {
   /**
@@ -163,6 +163,44 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
     key: "getEmployee",
     value: function getEmployee(id) {
       return this.getEmployeeWithHttpInfo(id).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} username 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Employee} and HTTP response
+     */
+
+  }, {
+    key: "getEmployeeByUsernameWithHttpInfo",
+    value: function getEmployeeByUsernameWithHttpInfo(username) {
+      var postBody = null; // verify the required parameter 'username' is set
+
+      if (username === undefined || username === null) {
+        throw new Error("Missing the required parameter 'username' when calling getEmployeeByUsername");
+      }
+
+      var pathParams = {};
+      var queryParams = {
+        'username': username
+      };
+      var headerParams = {};
+      var formParams = {};
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = ['*/*'];
+      var returnType = _Employee.default;
+      return this.apiClient.callApi('/employees/username', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} username 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Employee}
+     */
+
+  }, {
+    key: "getEmployeeByUsername",
+    value: function getEmployeeByUsername(username) {
+      return this.getEmployeeByUsernameWithHttpInfo(username).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

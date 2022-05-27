@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The UserDataDTO model module.
  * @module gp.backend.model/UserDataDTO
- * @version v1
+ * @version 1.0.0
  */
 var UserDataDTO = /*#__PURE__*/function () {
   /**
