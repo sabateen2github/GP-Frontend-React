@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The Employee model module.
  * @module gp.backend.model/Employee
- * @version v0
+ * @version v1
  */
 var Employee = /*#__PURE__*/function () {
   /**
@@ -62,10 +62,6 @@ var Employee = /*#__PURE__*/function () {
           obj['id'] = _ApiClient.default.convertToType(data['id'], 'String');
         }
 
-        if (data.hasOwnProperty('profilePic')) {
-          obj['profilePic'] = _ApiClient.default.convertToType(data['profilePic'], 'String');
-        }
-
         if (data.hasOwnProperty('fullName')) {
           obj['fullName'] = _ApiClient.default.convertToType(data['fullName'], 'String');
         }
@@ -78,6 +74,14 @@ var Employee = /*#__PURE__*/function () {
           obj['username'] = _ApiClient.default.convertToType(data['username'], 'String');
         }
 
+        if (data.hasOwnProperty('password')) {
+          obj['password'] = _ApiClient.default.convertToType(data['password'], 'String');
+        }
+
+        if (data.hasOwnProperty('profilePic')) {
+          obj['profilePic'] = _ApiClient.default.convertToType(data['profilePic'], 'String');
+        }
+
         if (data.hasOwnProperty('email')) {
           obj['email'] = _ApiClient.default.convertToType(data['email'], 'String');
         }
@@ -88,6 +92,10 @@ var Employee = /*#__PURE__*/function () {
 
         if (data.hasOwnProperty('branchId')) {
           obj['branchId'] = _ApiClient.default.convertToType(data['branchId'], 'String');
+        }
+
+        if (data.hasOwnProperty('accountType')) {
+          obj['accountType'] = _ApiClient.default.convertToType(data['accountType'], 'String');
         }
       }
 
@@ -109,11 +117,6 @@ Employee.prototype['name'] = undefined;
 
 Employee.prototype['id'] = undefined;
 /**
- * @member {String} profilePic
- */
-
-Employee.prototype['profilePic'] = undefined;
-/**
  * @member {String} fullName
  */
 
@@ -129,6 +132,16 @@ Employee.prototype['dateOfBirth'] = undefined;
 
 Employee.prototype['username'] = undefined;
 /**
+ * @member {String} password
+ */
+
+Employee.prototype['password'] = undefined;
+/**
+ * @member {String} profilePic
+ */
+
+Employee.prototype['profilePic'] = undefined;
+/**
  * @member {String} email
  */
 
@@ -143,5 +156,35 @@ Employee.prototype['phone'] = undefined;
  */
 
 Employee.prototype['branchId'] = undefined;
+/**
+ * @member {module:gp.backend.model/Employee.AccountTypeEnum} accountType
+ */
+
+Employee.prototype['accountType'] = undefined;
+/**
+ * Allowed values for the <code>accountType</code> property.
+ * @enum {String}
+ * @readonly
+ */
+
+Employee['AccountTypeEnum'] = {
+  /**
+   * value: "HELP_DESK"
+   * @const
+   */
+  "HELP_DESK": "HELP_DESK",
+
+  /**
+   * value: "MANAGEMENT"
+   * @const
+   */
+  "MANAGEMENT": "MANAGEMENT",
+
+  /**
+   * value: "ADMIN"
+   * @const
+   */
+  "ADMIN": "ADMIN"
+};
 var _default = Employee;
 exports.default = _default;

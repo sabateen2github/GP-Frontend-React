@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * BranchesController service.
 * @module gp.backend.api/BranchesControllerApi
-* @version v0
+* @version v1
 */
 var BranchesControllerApi = /*#__PURE__*/function () {
   /**
@@ -36,51 +36,47 @@ var BranchesControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * Callback function to receive the result of the createBranch operation.
-   * @callback module:gp.backend.api/BranchesControllerApi~createBranchCallback
-   * @param {String} error Error message, if any.
-   * @param data This operation does not return a value.
-   * @param {String} response The complete HTTP response.
-   */
-
-  /**
    * @param {Object} opts Optional parameters
    * @param {module:gp.backend.model/Branch} opts.branch 
-   * @param {module:gp.backend.api/BranchesControllerApi~createBranchCallback} callback The callback function, accepting three arguments: error, data, response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(BranchesControllerApi, [{
-    key: "createBranch",
-    value: function createBranch(opts, callback) {
+    key: "createBranchWithHttpInfo",
+    value: function createBranchWithHttpInfo(opts) {
       opts = opts || {};
       var postBody = opts['branch'];
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/branches', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/branches', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getAllBranches operation.
-     * @callback module:gp.backend.api/BranchesControllerApi~getAllBranchesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/Branch>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {module:gp.backend.api/BranchesControllerApi~getAllBranchesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/Branch>}
+     * @param {Object} opts Optional parameters
+     * @param {module:gp.backend.model/Branch} opts.branch 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
-    key: "getAllBranches",
-    value: function getAllBranches(callback) {
+    key: "createBranch",
+    value: function createBranch(opts) {
+      return this.createBranchWithHttpInfo(opts).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Branch>} and HTTP response
+     */
+
+  }, {
+    key: "getAllBranchesWithHttpInfo",
+    value: function getAllBranchesWithHttpInfo() {
       var postBody = null;
       var pathParams = {};
       var queryParams = {};
@@ -90,25 +86,27 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_Branch.default];
-      return this.apiClient.callApi('/branches', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/branches', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getBranch operation.
-     * @callback module:gp.backend.api/BranchesControllerApi~getBranchCallback
-     * @param {String} error Error message, if any.
-     * @param {module:gp.backend.model/Branch} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} id 
-     * @param {module:gp.backend.api/BranchesControllerApi~getBranchCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:gp.backend.model/Branch}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Branch>}
      */
 
   }, {
-    key: "getBranch",
-    value: function getBranch(id, callback) {
+    key: "getAllBranches",
+    value: function getAllBranches() {
+      return this.getAllBranchesWithHttpInfo().then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Branch} and HTTP response
+     */
+
+  }, {
+    key: "getBranchWithHttpInfo",
+    value: function getBranchWithHttpInfo(id) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -125,25 +123,29 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = _Branch.default;
-      return this.apiClient.callApi('/branches/{id}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/branches/{id}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the updateBranch operation.
-     * @callback module:gp.backend.api/BranchesControllerApi~updateBranchCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
      * @param {String} id 
-     * @param {module:gp.backend.model/Branch} branch 
-     * @param {module:gp.backend.api/BranchesControllerApi~updateBranchCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Branch}
      */
 
   }, {
-    key: "updateBranch",
-    value: function updateBranch(id, branch, callback) {
+    key: "getBranch",
+    value: function getBranch(id) {
+      return this.getBranchWithHttpInfo(id).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} id 
+     * @param {module:gp.backend.model/Branch} branch 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "updateBranchWithHttpInfo",
+    value: function updateBranchWithHttpInfo(id, branch) {
       var postBody = branch; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -161,11 +163,24 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       var queryParams = {};
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/branches/{id}', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/branches/{id}', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} id 
+     * @param {module:gp.backend.model/Branch} branch 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "updateBranch",
+    value: function updateBranch(id, branch) {
+      return this.updateBranchWithHttpInfo(id, branch).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
   }]);
 

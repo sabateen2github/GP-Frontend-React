@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The Queue model module.
  * @module gp.backend.model/Queue
- * @version v0
+ * @version v1
  */
 var Queue = /*#__PURE__*/function () {
   /**

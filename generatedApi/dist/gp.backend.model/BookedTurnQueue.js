@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The BookedTurnQueue model module.
  * @module gp.backend.model/BookedTurnQueue
- * @version v0
+ * @version v1
  */
 var BookedTurnQueue = /*#__PURE__*/function () {
   /**
@@ -57,7 +57,7 @@ var BookedTurnQueue = /*#__PURE__*/function () {
         obj = obj || new BookedTurnQueue();
 
         if (data.hasOwnProperty('turnId')) {
-          obj['turnId'] = _ApiClient.default.convertToType(data['turnId'], 'Number');
+          obj['turnId'] = _ApiClient.default.convertToType(data['turnId'], 'String');
         }
 
         if (data.hasOwnProperty('position')) {
@@ -84,7 +84,7 @@ var BookedTurnQueue = /*#__PURE__*/function () {
   return BookedTurnQueue;
 }();
 /**
- * @member {Number} turnId
+ * @member {String} turnId
  */
 
 

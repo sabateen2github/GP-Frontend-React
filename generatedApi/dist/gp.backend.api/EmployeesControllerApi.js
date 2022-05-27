@@ -20,7 +20,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * EmployeesController service.
 * @module gp.backend.api/EmployeesControllerApi
-* @version v0
+* @version v1
 */
 var EmployeesControllerApi = /*#__PURE__*/function () {
   /**
@@ -36,92 +36,106 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * Callback function to receive the result of the createEmployee operation.
-   * @callback module:gp.backend.api/EmployeesControllerApi~createEmployeeCallback
-   * @param {String} error Error message, if any.
-   * @param data This operation does not return a value.
-   * @param {String} response The complete HTTP response.
-   */
-
-  /**
-   * @param {Object} opts Optional parameters
-   * @param {module:gp.backend.model/Employee} opts.employee 
-   * @param {module:gp.backend.api/EmployeesControllerApi~createEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
+   * @param {module:gp.backend.model/Employee} employee 
+   * @param {File} profilePic 
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(EmployeesControllerApi, [{
-    key: "createEmployee",
-    value: function createEmployee(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['employee'];
+    key: "createEmployeeWithHttpInfo",
+    value: function createEmployeeWithHttpInfo(employee, profilePic) {
+      var postBody = null; // verify the required parameter 'employee' is set
+
+      if (employee === undefined || employee === null) {
+        throw new Error("Missing the required parameter 'employee' when calling createEmployee");
+      } // verify the required parameter 'profilePic' is set
+
+
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling createEmployee");
+      }
+
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
-      var formParams = {};
-      var authNames = [];
-      var contentTypes = ['application/json'];
+      var formParams = {
+        'employee': employee,
+        'profilePic': profilePic
+      };
+      var authNames = ['bearerAuth'];
+      var contentTypes = ['multipart/form-data'];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/employees', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/employees', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the editEmployee operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~editEmployeeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
+  }, {
+    key: "createEmployee",
+    value: function createEmployee(employee, profilePic) {
+      return this.createEmployeeWithHttpInfo(employee, profilePic).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
     /**
-     * @param {String} id 
      * @param {module:gp.backend.model/Employee} employee 
-     * @param {module:gp.backend.api/EmployeesControllerApi~editEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {File} profilePic 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "editEmployeeWithHttpInfo",
+    value: function editEmployeeWithHttpInfo(employee, profilePic) {
+      var postBody = null; // verify the required parameter 'employee' is set
+
+      if (employee === undefined || employee === null) {
+        throw new Error("Missing the required parameter 'employee' when calling editEmployee");
+      } // verify the required parameter 'profilePic' is set
+
+
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling editEmployee");
+      }
+
+      var pathParams = {};
+      var queryParams = {};
+      var headerParams = {};
+      var formParams = {
+        'employee': employee,
+        'profilePic': profilePic
+      };
+      var authNames = ['bearerAuth'];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = [];
+      var returnType = null;
+      return this.apiClient.callApi('/employees', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {module:gp.backend.model/Employee} employee 
+     * @param {File} profilePic 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
     key: "editEmployee",
-    value: function editEmployee(id, employee, callback) {
-      var postBody = employee; // verify the required parameter 'id' is set
-
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling editEmployee");
-      } // verify the required parameter 'employee' is set
-
-
-      if (employee === undefined || employee === null) {
-        throw new Error("Missing the required parameter 'employee' when calling editEmployee");
-      }
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {};
-      var headerParams = {};
-      var formParams = {};
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
-      return this.apiClient.callApi('/employees/{id}', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+    value: function editEmployee(employee, profilePic) {
+      return this.editEmployeeWithHttpInfo(employee, profilePic).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
     /**
-     * Callback function to receive the result of the getEmployee operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~getEmployeeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:gp.backend.model/Employee} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
      * @param {String} id 
-     * @param {module:gp.backend.api/EmployeesControllerApi~getEmployeeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:gp.backend.model/Employee}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Employee} and HTTP response
      */
 
   }, {
-    key: "getEmployee",
-    value: function getEmployee(id, callback) {
+    key: "getEmployeeWithHttpInfo",
+    value: function getEmployeeWithHttpInfo(id) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -134,29 +148,32 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
       var queryParams = {};
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = _Employee.default;
-      return this.apiClient.callApi('/employees/{id}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/employees/{id}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the searchEmployees operation.
-     * @callback module:gp.backend.api/EmployeesControllerApi~searchEmployeesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/Employee>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} searchTerm 
-     * @param {module:gp.backend.api/EmployeesControllerApi~searchEmployeesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/Employee>}
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Employee}
      */
 
   }, {
-    key: "searchEmployees",
-    value: function searchEmployees(searchTerm, callback) {
+    key: "getEmployee",
+    value: function getEmployee(id) {
+      return this.getEmployeeWithHttpInfo(id).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} searchTerm 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Employee>} and HTTP response
+     */
+
+  }, {
+    key: "searchEmployeesWithHttpInfo",
+    value: function searchEmployeesWithHttpInfo(searchTerm) {
       var postBody = null; // verify the required parameter 'searchTerm' is set
 
       if (searchTerm === undefined || searchTerm === null) {
@@ -169,11 +186,23 @@ var EmployeesControllerApi = /*#__PURE__*/function () {
       };
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_Employee.default];
-      return this.apiClient.callApi('/employees', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/employees', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} searchTerm 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Employee>}
+     */
+
+  }, {
+    key: "searchEmployees",
+    value: function searchEmployees(searchTerm) {
+      return this.searchEmployeesWithHttpInfo(searchTerm).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
   }]);
 

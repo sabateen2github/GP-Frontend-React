@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**advanceQueue**](QueueControllerApi.md#advanceQueue) | **PUT** /queues/queue/advance | 
 [**bookQueue**](QueueControllerApi.md#bookQueue) | **PUT** /queues/queue/book | 
 [**cancelTurn**](QueueControllerApi.md#cancelTurn) | **DELETE** /queues/queue/book | 
+[**createQueueSpec**](QueueControllerApi.md#createQueueSpec) | **POST** /queues/queue | 
 [**deleteQueue**](QueueControllerApi.md#deleteQueue) | **DELETE** /queues/queue | 
 [**editQueueSpec**](QueueControllerApi.md#editQueueSpec) | **PUT** /queues/queue | 
 [**getActiveQueues**](QueueControllerApi.md#getActiveQueues) | **GET** /queues/active/{userId} | 
@@ -158,6 +159,52 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## createQueueSpec
+
+> createQueueSpec(queueSpec)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new BackendClient.QueueControllerApi();
+let queueSpec = new BackendClient.QueueSpec(); // QueueSpec | 
+apiInstance.createQueueSpec(queueSpec).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queueSpec** | [**QueueSpec**](QueueSpec.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 

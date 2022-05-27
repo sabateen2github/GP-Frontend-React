@@ -16,19 +16,19 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 /**
- * The QueueSpec model module.
- * @module gp.backend.model/QueueSpec
+ * The LatLng model module.
+ * @module gp.backend.model/LatLng
  * @version v1
  */
-var QueueSpec = /*#__PURE__*/function () {
+var LatLng = /*#__PURE__*/function () {
   /**
-   * Constructs a new <code>QueueSpec</code>.
-   * @alias module:gp.backend.model/QueueSpec
+   * Constructs a new <code>LatLng</code>.
+   * @alias module:gp.backend.model/LatLng
    */
-  function QueueSpec() {
-    _classCallCheck(this, QueueSpec);
+  function LatLng() {
+    _classCallCheck(this, LatLng);
 
-    QueueSpec.initialize(this);
+    LatLng.initialize(this);
   }
   /**
    * Initializes the fields of this object.
@@ -37,33 +37,29 @@ var QueueSpec = /*#__PURE__*/function () {
    */
 
 
-  _createClass(QueueSpec, null, [{
+  _createClass(LatLng, null, [{
     key: "initialize",
     value: function initialize(obj) {}
     /**
-     * Constructs a <code>QueueSpec</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>LatLng</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:gp.backend.model/QueueSpec} obj Optional instance to populate.
-     * @return {module:gp.backend.model/QueueSpec} The populated <code>QueueSpec</code> instance.
+     * @param {module:gp.backend.model/LatLng} obj Optional instance to populate.
+     * @return {module:gp.backend.model/LatLng} The populated <code>LatLng</code> instance.
      */
 
   }, {
     key: "constructFromObject",
     value: function constructFromObject(data, obj) {
       if (data) {
-        obj = obj || new QueueSpec();
+        obj = obj || new LatLng();
 
-        if (data.hasOwnProperty('name')) {
-          obj['name'] = _ApiClient.default.convertToType(data['name'], 'String');
+        if (data.hasOwnProperty('lng')) {
+          obj['lng'] = _ApiClient.default.convertToType(data['lng'], 'Number');
         }
 
-        if (data.hasOwnProperty('id')) {
-          obj['id'] = _ApiClient.default.convertToType(data['id'], 'String');
-        }
-
-        if (data.hasOwnProperty('branchId')) {
-          obj['branchId'] = _ApiClient.default.convertToType(data['branchId'], 'String');
+        if (data.hasOwnProperty('lat')) {
+          obj['lat'] = _ApiClient.default.convertToType(data['lat'], 'Number');
         }
       }
 
@@ -71,23 +67,18 @@ var QueueSpec = /*#__PURE__*/function () {
     }
   }]);
 
-  return QueueSpec;
+  return LatLng;
 }();
 /**
- * @member {String} name
+ * @member {Number} lng
  */
 
 
-QueueSpec.prototype['name'] = undefined;
+LatLng.prototype['lng'] = undefined;
 /**
- * @member {String} id
+ * @member {Number} lat
  */
 
-QueueSpec.prototype['id'] = undefined;
-/**
- * @member {String} branchId
- */
-
-QueueSpec.prototype['branchId'] = undefined;
-var _default = QueueSpec;
+LatLng.prototype['lat'] = undefined;
+var _default = LatLng;
 exports.default = _default;

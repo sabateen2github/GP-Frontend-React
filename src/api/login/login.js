@@ -1,10 +1,19 @@
-import BackendClient from 'backend-client';
+import AuthBackendClient from 'auth-backend-client';
 
-const CREDENTIAL_KEY = '/credentials';
-
-const AccountTypes = Employee.AccountTypeEnum;
 
 const login = (username, password, callback) => {
+
+
+    let apiInstance = new AuthBackendClient.UserControllerApi();
+    apiInstance.login(username, password).then((data) => {
+
+        localStorage.setItem("jwt", data);
+
+    }, (error) => {
+        console.log(error);
+        callback(false);
+    });
+
 
     setTimeout(() => {
 

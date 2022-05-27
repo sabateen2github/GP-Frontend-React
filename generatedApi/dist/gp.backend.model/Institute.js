@@ -18,7 +18,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
  * The Institute model module.
  * @module gp.backend.model/Institute
- * @version v0
+ * @version v1
  */
 var Institute = /*#__PURE__*/function () {
   /**

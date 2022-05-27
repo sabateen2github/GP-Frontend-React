@@ -213,6 +213,49 @@ export default class QueueControllerApi {
 
 
     /**
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    createQueueSpecWithHttpInfo(queueSpec) {
+      let postBody = queueSpec;
+      // verify the required parameter 'queueSpec' is set
+      if (queueSpec === undefined || queueSpec === null) {
+        throw new Error("Missing the required parameter 'queueSpec' when calling createQueueSpec");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/queues/queue', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    createQueueSpec(queueSpec) {
+      return this.createQueueSpecWithHttpInfo(queueSpec)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * @param {String} id 
      * @param {String} branchId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response

@@ -9,6 +9,8 @@ var _ApiClient = _interopRequireDefault(require("../ApiClient"));
 
 var _BookedTurnQueue = _interopRequireDefault(require("../gp.backend.model/BookedTurnQueue"));
 
+var _LatLng = _interopRequireDefault(require("../gp.backend.model/LatLng"));
+
 var _Queue = _interopRequireDefault(require("../gp.backend.model/Queue"));
 
 var _QueueSpec = _interopRequireDefault(require("../gp.backend.model/QueueSpec"));
@@ -24,7 +26,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /**
 * QueueController service.
 * @module gp.backend.api/QueueControllerApi
-* @version v0
+* @version v1
 */
 var QueueControllerApi = /*#__PURE__*/function () {
   /**
@@ -40,23 +42,15 @@ var QueueControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * Callback function to receive the result of the advanceQueue operation.
-   * @callback module:gp.backend.api/QueueControllerApi~advanceQueueCallback
-   * @param {String} error Error message, if any.
-   * @param data This operation does not return a value.
-   * @param {String} response The complete HTTP response.
-   */
-
-  /**
    * @param {String} id 
    * @param {String} branchId 
-   * @param {module:gp.backend.api/QueueControllerApi~advanceQueueCallback} callback The callback function, accepting three arguments: error, data, response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(QueueControllerApi, [{
-    key: "advanceQueue",
-    value: function advanceQueue(id, branchId, callback) {
+    key: "advanceQueueWithHttpInfo",
+    value: function advanceQueueWithHttpInfo(id, branchId) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -75,30 +69,36 @@ var QueueControllerApi = /*#__PURE__*/function () {
       };
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/queues/queue/advance', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue/advance', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the bookQueue operation.
-     * @callback module:gp.backend.api/QueueControllerApi~bookQueueCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
+  }, {
+    key: "advanceQueue",
+    value: function advanceQueue(id, branchId) {
+      return this.advanceQueueWithHttpInfo(id, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
     /**
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~bookQueueCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:gp.backend.model/LatLng} location 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
 
   }, {
-    key: "bookQueue",
-    value: function bookQueue(userId, queueId, branchId, callback) {
+    key: "bookQueueWithHttpInfo",
+    value: function bookQueueWithHttpInfo(userId, queueId, branchId, location) {
       var postBody = null; // verify the required parameter 'userId' is set
 
       if (userId === undefined || userId === null) {
@@ -113,6 +113,67 @@ var QueueControllerApi = /*#__PURE__*/function () {
 
       if (branchId === undefined || branchId === null) {
         throw new Error("Missing the required parameter 'branchId' when calling bookQueue");
+      } // verify the required parameter 'location' is set
+
+
+      if (location === undefined || location === null) {
+        throw new Error("Missing the required parameter 'location' when calling bookQueue");
+      }
+
+      var pathParams = {};
+      var queryParams = {
+        'userId': userId,
+        'queueId': queueId,
+        'branchId': branchId,
+        'location': location
+      };
+      var headerParams = {};
+      var formParams = {};
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+      return this.apiClient.callApi('/queues/queue/book', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @param {module:gp.backend.model/LatLng} location 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "bookQueue",
+    value: function bookQueue(userId, queueId, branchId, location) {
+      return this.bookQueueWithHttpInfo(userId, queueId, branchId, location).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "cancelTurnWithHttpInfo",
+    value: function cancelTurnWithHttpInfo(userId, queueId, branchId) {
+      var postBody = null; // verify the required parameter 'userId' is set
+
+      if (userId === undefined || userId === null) {
+        throw new Error("Missing the required parameter 'userId' when calling cancelTurn");
+      } // verify the required parameter 'queueId' is set
+
+
+      if (queueId === undefined || queueId === null) {
+        throw new Error("Missing the required parameter 'queueId' when calling cancelTurn");
+      } // verify the required parameter 'branchId' is set
+
+
+      if (branchId === undefined || branchId === null) {
+        throw new Error("Missing the required parameter 'branchId' when calling cancelTurn");
       }
 
       var pathParams = {};
@@ -127,25 +188,31 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/queues/queue/book', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue/book', 'DELETE', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the deleteQueue operation.
-     * @callback module:gp.backend.api/QueueControllerApi~deleteQueueCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} id 
+     * @param {String} userId 
+     * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~deleteQueueCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
-    key: "deleteQueue",
-    value: function deleteQueue(id, branchId, callback) {
+    key: "cancelTurn",
+    value: function cancelTurn(userId, queueId, branchId) {
+      return this.cancelTurnWithHttpInfo(userId, queueId, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "deleteQueueWithHttpInfo",
+    value: function deleteQueueWithHttpInfo(id, branchId) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -164,28 +231,33 @@ var QueueControllerApi = /*#__PURE__*/function () {
       };
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/queues/queue', 'DELETE', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue', 'DELETE', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the editQueueSpec operation.
-     * @callback module:gp.backend.api/QueueControllerApi~editQueueSpecCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {module:gp.backend.model/QueueSpec} queueSpec 
-     * @param {module:gp.backend.api/QueueControllerApi~editQueueSpecCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
-    key: "editQueueSpec",
-    value: function editQueueSpec(queueSpec, callback) {
+    key: "deleteQueue",
+    value: function deleteQueue(id, branchId) {
+      return this.deleteQueueWithHttpInfo(id, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "editQueueSpecWithHttpInfo",
+    value: function editQueueSpecWithHttpInfo(queueSpec) {
       var postBody = queueSpec; // verify the required parameter 'queueSpec' is set
 
       if (queueSpec === undefined || queueSpec === null) {
@@ -196,29 +268,32 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var queryParams = {};
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/queues/queue', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getActiveQueues operation.
-     * @callback module:gp.backend.api/QueueControllerApi~getActiveQueuesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/BookedTurnQueue>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} userId 
-     * @param {module:gp.backend.api/QueueControllerApi~getActiveQueuesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/BookedTurnQueue>}
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
-    key: "getActiveQueues",
-    value: function getActiveQueues(userId, callback) {
+    key: "editQueueSpec",
+    value: function editQueueSpec(queueSpec) {
+      return this.editQueueSpecWithHttpInfo(queueSpec).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} userId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/BookedTurnQueue>} and HTTP response
+     */
+
+  }, {
+    key: "getActiveQueuesWithHttpInfo",
+    value: function getActiveQueuesWithHttpInfo(userId) {
       var postBody = null; // verify the required parameter 'userId' is set
 
       if (userId === undefined || userId === null) {
@@ -235,25 +310,28 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_BookedTurnQueue.default];
-      return this.apiClient.callApi('/queues/active/{userId}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/active/{userId}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getAllQueueSpecs operation.
-     * @callback module:gp.backend.api/QueueControllerApi~getAllQueueSpecsCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/QueueSpec>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~getAllQueueSpecsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/QueueSpec>}
+     * @param {String} userId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/BookedTurnQueue>}
      */
 
   }, {
-    key: "getAllQueueSpecs",
-    value: function getAllQueueSpecs(branchId, callback) {
+    key: "getActiveQueues",
+    value: function getActiveQueues(userId) {
+      return this.getActiveQueuesWithHttpInfo(userId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/QueueSpec>} and HTTP response
+     */
+
+  }, {
+    key: "getAllQueueSpecsWithHttpInfo",
+    value: function getAllQueueSpecsWithHttpInfo(branchId) {
       var postBody = null; // verify the required parameter 'branchId' is set
 
       if (branchId === undefined || branchId === null) {
@@ -270,25 +348,28 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_QueueSpec.default];
-      return this.apiClient.callApi('/queues/spec/all', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/spec/all', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getAllQueues operation.
-     * @callback module:gp.backend.api/QueueControllerApi~getAllQueuesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/Queue>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
      * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~getAllQueuesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/Queue>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/QueueSpec>}
      */
 
   }, {
-    key: "getAllQueues",
-    value: function getAllQueues(branchId, callback) {
+    key: "getAllQueueSpecs",
+    value: function getAllQueueSpecs(branchId) {
+      return this.getAllQueueSpecsWithHttpInfo(branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Queue>} and HTTP response
+     */
+
+  }, {
+    key: "getAllQueuesWithHttpInfo",
+    value: function getAllQueuesWithHttpInfo(branchId) {
       var postBody = null; // verify the required parameter 'branchId' is set
 
       if (branchId === undefined || branchId === null) {
@@ -305,25 +386,28 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_Queue.default];
-      return this.apiClient.callApi('/queues/queues/all', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queues/all', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getArchivedQueues operation.
-     * @callback module:gp.backend.api/QueueControllerApi~getArchivedQueuesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:gp.backend.model/BookedTurnQueue>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} userId 
-     * @param {module:gp.backend.api/QueueControllerApi~getArchivedQueuesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:gp.backend.model/BookedTurnQueue>}
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Queue>}
      */
 
   }, {
-    key: "getArchivedQueues",
-    value: function getArchivedQueues(userId, callback) {
+    key: "getAllQueues",
+    value: function getAllQueues(branchId) {
+      return this.getAllQueuesWithHttpInfo(branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} userId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/BookedTurnQueue>} and HTTP response
+     */
+
+  }, {
+    key: "getArchivedQueuesWithHttpInfo",
+    value: function getArchivedQueuesWithHttpInfo(userId) {
       var postBody = null; // verify the required parameter 'userId' is set
 
       if (userId === undefined || userId === null) {
@@ -340,26 +424,29 @@ var QueueControllerApi = /*#__PURE__*/function () {
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = [_BookedTurnQueue.default];
-      return this.apiClient.callApi('/queues/archived/{userId}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/archived/{userId}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * Callback function to receive the result of the getQueue operation.
-     * @callback module:gp.backend.api/QueueControllerApi~getQueueCallback
-     * @param {String} error Error message, if any.
-     * @param {module:gp.backend.model/Queue} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} id 
-     * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~getQueueCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:gp.backend.model/Queue}
+     * @param {String} userId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/BookedTurnQueue>}
      */
 
   }, {
-    key: "getQueue",
-    value: function getQueue(id, branchId, callback) {
+    key: "getArchivedQueues",
+    value: function getArchivedQueues(userId) {
+      return this.getArchivedQueuesWithHttpInfo(userId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Queue} and HTTP response
+     */
+
+  }, {
+    key: "getQueueWithHttpInfo",
+    value: function getQueueWithHttpInfo(id, branchId) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -378,29 +465,34 @@ var QueueControllerApi = /*#__PURE__*/function () {
       };
       var headerParams = {};
       var formParams = {};
-      var authNames = [];
+      var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['*/*'];
       var returnType = _Queue.default;
-      return this.apiClient.callApi('/queues/queue', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
-    /**
-     * Callback function to receive the result of the resetQueue operation.
-     * @callback module:gp.backend.api/QueueControllerApi~resetQueueCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
     /**
      * @param {String} id 
      * @param {String} branchId 
-     * @param {module:gp.backend.api/QueueControllerApi~resetQueueCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Queue}
      */
 
   }, {
-    key: "resetQueue",
-    value: function resetQueue(id, branchId, callback) {
+    key: "getQueue",
+    value: function getQueue(id, branchId) {
+      return this.getQueueWithHttpInfo(id, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "resetQueueWithHttpInfo",
+    value: function resetQueueWithHttpInfo(id, branchId) {
       var postBody = null; // verify the required parameter 'id' is set
 
       if (id === undefined || id === null) {
@@ -419,11 +511,86 @@ var QueueControllerApi = /*#__PURE__*/function () {
       };
       var headerParams = {};
       var formParams = {};
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+      return this.apiClient.callApi('/queues/queue/reset', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} id 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "resetQueue",
+    value: function resetQueue(id, branchId) {
+      return this.resetQueueWithHttpInfo(id, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {String} instituteId 
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "switchUserLocationModeWithHttpInfo",
+    value: function switchUserLocationModeWithHttpInfo(instituteId, userId, queueId, branchId) {
+      var postBody = null; // verify the required parameter 'instituteId' is set
+
+      if (instituteId === undefined || instituteId === null) {
+        throw new Error("Missing the required parameter 'instituteId' when calling switchUserLocationMode");
+      } // verify the required parameter 'userId' is set
+
+
+      if (userId === undefined || userId === null) {
+        throw new Error("Missing the required parameter 'userId' when calling switchUserLocationMode");
+      } // verify the required parameter 'queueId' is set
+
+
+      if (queueId === undefined || queueId === null) {
+        throw new Error("Missing the required parameter 'queueId' when calling switchUserLocationMode");
+      } // verify the required parameter 'branchId' is set
+
+
+      if (branchId === undefined || branchId === null) {
+        throw new Error("Missing the required parameter 'branchId' when calling switchUserLocationMode");
+      }
+
+      var pathParams = {};
+      var queryParams = {
+        'instituteId': instituteId,
+        'userId': userId,
+        'queueId': queueId,
+        'branchId': branchId
+      };
+      var headerParams = {};
+      var formParams = {};
       var authNames = [];
       var contentTypes = [];
       var accepts = [];
       var returnType = null;
-      return this.apiClient.callApi('/queues/queue/reset', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null, callback);
+      return this.apiClient.callApi('/queues/queue/book/toggle', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} instituteId 
+     * @param {String} userId 
+     * @param {String} queueId 
+     * @param {String} branchId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "switchUserLocationMode",
+    value: function switchUserLocationMode(instituteId, userId, queueId, branchId) {
+      return this.switchUserLocationModeWithHttpInfo(instituteId, userId, queueId, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
     }
   }]);
 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createInstitute**](InstituteControllerApi.md#createInstitute) | **POST** /institute | 
 [**deleteInstitute**](InstituteControllerApi.md#deleteInstitute) | **DELETE** /institute/{id} | 
 [**getInstitute**](InstituteControllerApi.md#getInstitute) | **GET** /institute/{id} | 
+[**loginAsInstitute**](InstituteControllerApi.md#loginAsInstitute) | **GET** /institute/login/{id} | 
 [**searchInstitutes**](InstituteControllerApi.md#searchInstitutes) | **GET** /institute | 
 [**updateInstitute**](InstituteControllerApi.md#updateInstitute) | **PUT** /institute | 
 
@@ -141,6 +142,52 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
+## loginAsInstitute
+
+> String loginAsInstitute(id)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new BackendClient.InstituteControllerApi();
+let id = "id_example"; // String | 
+apiInstance.loginAsInstitute(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
 * @module ApiClient
-* @version v0
+* @version v1
 */
 
 /**
@@ -53,7 +53,12 @@ var ApiClient = /*#__PURE__*/function () {
      * @type {Array.<String>}
      */
 
-    this.authentications = {};
+    this.authentications = {
+      'bearerAuth': {
+        type: 'bearer'
+      } // JWT
+
+    };
     /**
      * The default HTTP headers to be included for all API calls.
      * @type {Array.<String>}
@@ -61,7 +66,7 @@ var ApiClient = /*#__PURE__*/function () {
      */
 
     this.defaultHeaders = {
-      'User-Agent': 'OpenAPI-Generator/v0/Javascript'
+      'User-Agent': 'OpenAPI-Generator/v1/Javascript'
     };
     /**
      * The default HTTP timeout for all API calls.
@@ -408,14 +413,6 @@ var ApiClient = /*#__PURE__*/function () {
       return ApiClient.convertToType(data, returnType);
     }
     /**
-     * Callback function to receive the result of the operation.
-     * @callback module:ApiClient~callApiCallback
-     * @param {String} error Error message, if any.
-     * @param data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
      * Invokes the REST service using the supplied settings and parameters.
      * @param {String} path The base URL to invoke.
      * @param {String} httpMethod The HTTP method to use.
@@ -430,13 +427,12 @@ var ApiClient = /*#__PURE__*/function () {
      * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
      * constructor for a complex type.
      * @param {String} apiBasePath base path defined in the operation/path level to override the default one
-     * @param {module:ApiClient~callApiCallback} callback The callback function.
-     * @returns {Object} The SuperAgent request object.
+     * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
      */
 
   }, {
     key: "callApi",
-    value: function callApi(path, httpMethod, pathParams, queryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts, returnType, apiBasePath, callback) {
+    value: function callApi(path, httpMethod, pathParams, queryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts, returnType, apiBasePath) {
       var _this3 = this;
 
       var url = this.buildUrl(path, pathParams, apiBasePath);
@@ -527,26 +523,38 @@ var ApiClient = /*#__PURE__*/function () {
         }
       }
 
-      request.end(function (error, response) {
-        if (callback) {
-          var data = null;
+      return new Promise(function (resolve, reject) {
+        request.end(function (error, response) {
+          if (error) {
+            var err = {};
 
-          if (!error) {
+            if (response) {
+              err.status = response.status;
+              err.statusText = response.statusText;
+              err.body = response.body;
+              err.response = response;
+            }
+
+            err.error = error;
+            reject(err);
+          } else {
             try {
-              data = _this3.deserialize(response, returnType);
+              var data = _this3.deserialize(response, returnType);
 
               if (_this3.enableCookies && typeof window === 'undefined') {
                 _this3.agent._saveCookies(response);
               }
+
+              resolve({
+                data: data,
+                response: response
+              });
             } catch (err) {
-              error = err;
+              reject(err);
             }
           }
-
-          callback(error, data, response);
-        }
+        });
       });
-      return request;
     }
     /**
     * Parses an ISO-8601 string representation or epoch representation of a date value.

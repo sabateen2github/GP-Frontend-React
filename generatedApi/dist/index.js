@@ -39,6 +39,24 @@ Object.defineProperty(exports, "EmployeesControllerApi", {
     return _EmployeesControllerApi.default;
   }
 });
+Object.defineProperty(exports, "FileServingControllerApi", {
+  enumerable: true,
+  get: function get() {
+    return _FileServingControllerApi.default;
+  }
+});
+Object.defineProperty(exports, "InlineObject", {
+  enumerable: true,
+  get: function get() {
+    return _InlineObject.default;
+  }
+});
+Object.defineProperty(exports, "InlineObject1", {
+  enumerable: true,
+  get: function get() {
+    return _InlineObject2.default;
+  }
+});
 Object.defineProperty(exports, "Institute", {
   enumerable: true,
   get: function get() {
@@ -49,6 +67,12 @@ Object.defineProperty(exports, "InstituteControllerApi", {
   enumerable: true,
   get: function get() {
     return _InstituteControllerApi.default;
+  }
+});
+Object.defineProperty(exports, "LatLng", {
+  enumerable: true,
+  get: function get() {
+    return _LatLng.default;
   }
 });
 Object.defineProperty(exports, "Queue", {
@@ -78,7 +102,13 @@ var _Branch = _interopRequireDefault(require("./gp.backend.model/Branch"));
 
 var _Employee = _interopRequireDefault(require("./gp.backend.model/Employee"));
 
+var _InlineObject = _interopRequireDefault(require("./gp.backend.model/InlineObject"));
+
+var _InlineObject2 = _interopRequireDefault(require("./gp.backend.model/InlineObject1"));
+
 var _Institute = _interopRequireDefault(require("./gp.backend.model/Institute"));
+
+var _LatLng = _interopRequireDefault(require("./gp.backend.model/LatLng"));
 
 var _Queue = _interopRequireDefault(require("./gp.backend.model/Queue"));
 
@@ -87,6 +117,8 @@ var _QueueSpec = _interopRequireDefault(require("./gp.backend.model/QueueSpec"))
 var _BranchesControllerApi = _interopRequireDefault(require("./gp.backend.api/BranchesControllerApi"));
 
 var _EmployeesControllerApi = _interopRequireDefault(require("./gp.backend.api/EmployeesControllerApi"));
+
+var _FileServingControllerApi = _interopRequireDefault(require("./gp.backend.api/FileServingControllerApi"));
 
 var _InstituteControllerApi = _interopRequireDefault(require("./gp.backend.api/InstituteControllerApi"));
 
