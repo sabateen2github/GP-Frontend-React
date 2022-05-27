@@ -14,7 +14,6 @@
 
 import ApiClient from "../ApiClient";
 import Institute from '../gp.backend.model/Institute';
-import UpdateInstituteRequest from '../gp.backend.model/UpdateInstituteRequest';
 
 /**
 * InstituteController service.
@@ -37,13 +36,20 @@ export default class InstituteControllerApi {
 
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createInstituteWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = opts['updateInstituteRequest'];
+    createInstituteWithHttpInfo(institute, profilePic) {
+      let postBody = null;
+      // verify the required parameter 'institute' is set
+      if (institute === undefined || institute === null) {
+        throw new Error("Missing the required parameter 'institute' when calling createInstitute");
+      }
+      // verify the required parameter 'profilePic' is set
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling createInstitute");
+      }
 
       let pathParams = {
       };
@@ -52,10 +58,12 @@ export default class InstituteControllerApi {
       let headerParams = {
       };
       let formParams = {
+        'institute': institute,
+        'profilePic': profilePic
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['application/json'];
+      let contentTypes = ['multipart/form-data'];
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
@@ -66,12 +74,12 @@ export default class InstituteControllerApi {
     }
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    createInstitute(opts) {
-      return this.createInstituteWithHttpInfo(opts)
+    createInstitute(institute, profilePic) {
+      return this.createInstituteWithHttpInfo(institute, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -254,13 +262,20 @@ export default class InstituteControllerApi {
 
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    updateInstituteWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = opts['updateInstituteRequest'];
+    updateInstituteWithHttpInfo(institute, profilePic) {
+      let postBody = null;
+      // verify the required parameter 'institute' is set
+      if (institute === undefined || institute === null) {
+        throw new Error("Missing the required parameter 'institute' when calling updateInstitute");
+      }
+      // verify the required parameter 'profilePic' is set
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling updateInstitute");
+      }
 
       let pathParams = {
       };
@@ -269,10 +284,12 @@ export default class InstituteControllerApi {
       let headerParams = {
       };
       let formParams = {
+        'institute': institute,
+        'profilePic': profilePic
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['application/json'];
+      let contentTypes = ['multipart/form-data'];
       let accepts = [];
       let returnType = null;
       return this.apiClient.callApi(
@@ -283,12 +300,12 @@ export default class InstituteControllerApi {
     }
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    updateInstitute(opts) {
-      return this.updateInstituteWithHttpInfo(opts)
+    updateInstitute(institute, profilePic) {
+      return this.updateInstituteWithHttpInfo(institute, profilePic)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

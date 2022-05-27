@@ -23,8 +23,9 @@ const login = (username, password, callback) => {
         if (employee.branchId != null)
             localStorage.setItem("branchId", employee.branchId);
         else localStorage.removeItem("branchId");
+
         if (employee.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN) {
-            const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
+            const adminLogo = 'https://image.pngaaa.com/702/6256702-middle.png';
             localStorage.setItem('profilePic', adminLogo);
         } else {
             localStorage.setItem('profilePic', employee.profilePic);
@@ -40,7 +41,7 @@ const login = (username, password, callback) => {
         localStorage.setItem('instituteEmail', institute.email);
         localStorage.setItem('institutePhone', institute.phone);
         if (localStorage.getItem("accountType") == UserResponseDTO.AppUserRolesEnum.ADMIN) {
-            const adminLogo = 'https://www.pngitem.com/pimgs/m/226-2260470_transparent-admin-icon-png-admin-logo-png-png.png';
+            const adminLogo = 'https://image.pngaaa.com/702/6256702-middle.png';
             localStorage.setItem('logo', adminLogo);
         } else {
             localStorage.setItem('logo', institute.logoUrl);
@@ -82,7 +83,8 @@ const fetchCredentials = async () => {
         instituteId: localStorage.getItem('instituteId'),
         instituteEmail: localStorage.getItem('instituteEmail'),
         institutePhone: localStorage.getItem('institutePhone'),
-        accountType: accountType, ...helpDeskMetaData
+        accountType: accountType,
+        ...helpDeskMetaData
     };
 
 };

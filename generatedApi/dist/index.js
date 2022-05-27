@@ -81,12 +81,6 @@ Object.defineProperty(exports, "QueueSpec", {
     return _QueueSpec.default;
   }
 });
-Object.defineProperty(exports, "UpdateInstituteRequest", {
-  enumerable: true,
-  get: function get() {
-    return _UpdateInstituteRequest.default;
-  }
-});
 
 var _ApiClient = _interopRequireDefault(require("./ApiClient"));
 
@@ -103,8 +97,6 @@ var _LatLng = _interopRequireDefault(require("./gp.backend.model/LatLng"));
 var _Queue = _interopRequireDefault(require("./gp.backend.model/Queue"));
 
 var _QueueSpec = _interopRequireDefault(require("./gp.backend.model/QueueSpec"));
-
-var _UpdateInstituteRequest = _interopRequireDefault(require("./gp.backend.model/UpdateInstituteRequest"));
 
 var _BranchesControllerApi = _interopRequireDefault(require("./gp.backend.api/BranchesControllerApi"));
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## createInstitute
 
-> createInstitute(opts)
+> createInstitute(institute, profilePic)
 
 
 
@@ -29,10 +29,9 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
-let opts = {
-  'updateInstituteRequest': new BackendClient.UpdateInstituteRequest() // UpdateInstituteRequest | 
-};
-apiInstance.createInstitute(opts).then(() => {
+let institute = new BackendClient.Institute(); // Institute | 
+let profilePic = "/path/to/file"; // File | 
+apiInstance.createInstitute(institute, profilePic).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -45,7 +44,8 @@ apiInstance.createInstitute(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateInstituteRequest** | [**UpdateInstituteRequest**](UpdateInstituteRequest.md)|  | [optional] 
+ **institute** | [**Institute**](Institute.md)|  | 
+ **profilePic** | **File**|  | 
 
 ### Return type
 
@@ -57,7 +57,7 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: Not defined
 
 
@@ -241,7 +241,7 @@ No authorization required
 
 ## updateInstitute
 
-> updateInstitute(opts)
+> updateInstitute(institute, profilePic)
 
 
 
@@ -255,10 +255,9 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
-let opts = {
-  'updateInstituteRequest': new BackendClient.UpdateInstituteRequest() // UpdateInstituteRequest | 
-};
-apiInstance.updateInstitute(opts).then(() => {
+let institute = new BackendClient.Institute(); // Institute | 
+let profilePic = "/path/to/file"; // File | 
+apiInstance.updateInstitute(institute, profilePic).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -271,7 +270,8 @@ apiInstance.updateInstitute(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateInstituteRequest** | [**UpdateInstituteRequest**](UpdateInstituteRequest.md)|  | [optional] 
+ **institute** | [**Institute**](Institute.md)|  | 
+ **profilePic** | **File**|  | 
 
 ### Return type
 
@@ -283,6 +283,6 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: Not defined
 

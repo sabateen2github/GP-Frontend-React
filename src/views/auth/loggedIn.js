@@ -11,6 +11,7 @@ const HandleLoggedIn = (props) => {
     if (credentials.isValidating) return <CircularProgress/>;
     else if (credentials.error) return <Typography variant='h2'>Error!</Typography>;
 
+
     if (credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.MANAGEMENT)
         return <Navigate to='/main' replace/>;
     else if (credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN)

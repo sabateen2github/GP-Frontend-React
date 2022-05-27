@@ -20,7 +20,6 @@ import Institute from './gp.backend.model/Institute';
 import LatLng from './gp.backend.model/LatLng';
 import Queue from './gp.backend.model/Queue';
 import QueueSpec from './gp.backend.model/QueueSpec';
-import UpdateInstituteRequest from './gp.backend.model/UpdateInstituteRequest';
 import BranchesControllerApi from './gp.backend.api/BranchesControllerApi';
 import EmployeesControllerApi from './gp.backend.api/EmployeesControllerApi';
 import FileServingControllerApi from './gp.backend.api/FileServingControllerApi';
@@ -107,12 +106,6 @@ export {
      * @property {module:gp.backend.model/QueueSpec}
      */
     QueueSpec,
-
-    /**
-     * The UpdateInstituteRequest model constructor.
-     * @property {module:gp.backend.model/UpdateInstituteRequest}
-     */
-    UpdateInstituteRequest,
 
     /**
     * The BranchesControllerApi service constructor.

@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 ## Enum: AccountTypeEnum
 
 
-* `HELP_DESK` (value: `"HELP_DESK"`)
+* `HELP_DESK` (value: `"ROLE_HELP_DESK"`)
 
-* `MANAGEMENT` (value: `"MANAGEMENT"`)
+* `MANAGEMENT` (value: `"ROLE_MANAGEMENT"`)
 
-* `ADMIN` (value: `"ADMIN"`)
+* `ADMIN` (value: `"ROLE_ADMIN"`)
 
 
 

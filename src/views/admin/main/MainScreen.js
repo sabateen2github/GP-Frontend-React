@@ -52,7 +52,7 @@ const renderRow = (businesses) => (props) => {
 }
 
 
-let searchTerm = "all";
+let searchTerm = {term: null};
 
 const AdminScreen = (props) => {
 
@@ -78,7 +78,7 @@ const AdminScreen = (props) => {
                 }}>
                     <Stack direction='column' spacing={2}>
                         <TextField type='text' label='Name or ID' style={{width: 350}}
-                                   onChange={(e) => searchTerm = e.target.value}/>
+                                   onChange={(e) => searchTerm.term = e.target.value}/>
                         <Button variant='contained' type='submit'>
                             <SearchIcon/>
                             <Typography>Search</Typography>

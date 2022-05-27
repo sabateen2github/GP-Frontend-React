@@ -154,22 +154,22 @@ Employee.prototype['accountType'] = undefined;
 Employee['AccountTypeEnum'] = {
 
     /**
-     * value: "HELP_DESK"
+     * value: "ROLE_HELP_DESK"
      * @const
      */
-    "HELP_DESK": "HELP_DESK",
+    "HELP_DESK": "ROLE_HELP_DESK",
 
     /**
-     * value: "MANAGEMENT"
+     * value: "ROLE_MANAGEMENT"
      * @const
      */
-    "MANAGEMENT": "MANAGEMENT",
+    "MANAGEMENT": "ROLE_MANAGEMENT",
 
     /**
-     * value: "ADMIN"
+     * value: "ROLE_ADMIN"
      * @const
      */
-    "ADMIN": "ADMIN"
+    "ADMIN": "ROLE_ADMIN"
 };
 
 

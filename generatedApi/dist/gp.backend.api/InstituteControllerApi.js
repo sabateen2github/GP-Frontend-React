@@ -9,8 +9,6 @@ var _ApiClient = _interopRequireDefault(require("../ApiClient"));
 
 var _Institute = _interopRequireDefault(require("../gp.backend.model/Institute"));
 
-var _UpdateInstituteRequest = _interopRequireDefault(require("../gp.backend.model/UpdateInstituteRequest"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,37 +36,49 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * @param {Object} opts Optional parameters
-   * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+   * @param {module:gp.backend.model/Institute} institute 
+   * @param {File} profilePic 
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(InstituteControllerApi, [{
     key: "createInstituteWithHttpInfo",
-    value: function createInstituteWithHttpInfo(opts) {
-      opts = opts || {};
-      var postBody = opts['updateInstituteRequest'];
+    value: function createInstituteWithHttpInfo(institute, profilePic) {
+      var postBody = null; // verify the required parameter 'institute' is set
+
+      if (institute === undefined || institute === null) {
+        throw new Error("Missing the required parameter 'institute' when calling createInstitute");
+      } // verify the required parameter 'profilePic' is set
+
+
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling createInstitute");
+      }
+
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
-      var formParams = {};
+      var formParams = {
+        'institute': institute,
+        'profilePic': profilePic
+      };
       var authNames = ['bearerAuth'];
-      var contentTypes = ['application/json'];
+      var contentTypes = ['multipart/form-data'];
       var accepts = [];
       var returnType = null;
       return this.apiClient.callApi('/institute', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
     key: "createInstitute",
-    value: function createInstitute(opts) {
-      return this.createInstituteWithHttpInfo(opts).then(function (response_and_data) {
+    value: function createInstitute(institute, profilePic) {
+      return this.createInstituteWithHttpInfo(institute, profilePic).then(function (response_and_data) {
         return response_and_data.data;
       });
     }
@@ -223,36 +233,48 @@ var InstituteControllerApi = /*#__PURE__*/function () {
       });
     }
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
 
   }, {
     key: "updateInstituteWithHttpInfo",
-    value: function updateInstituteWithHttpInfo(opts) {
-      opts = opts || {};
-      var postBody = opts['updateInstituteRequest'];
+    value: function updateInstituteWithHttpInfo(institute, profilePic) {
+      var postBody = null; // verify the required parameter 'institute' is set
+
+      if (institute === undefined || institute === null) {
+        throw new Error("Missing the required parameter 'institute' when calling updateInstitute");
+      } // verify the required parameter 'profilePic' is set
+
+
+      if (profilePic === undefined || profilePic === null) {
+        throw new Error("Missing the required parameter 'profilePic' when calling updateInstitute");
+      }
+
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
-      var formParams = {};
+      var formParams = {
+        'institute': institute,
+        'profilePic': profilePic
+      };
       var authNames = ['bearerAuth'];
-      var contentTypes = ['application/json'];
+      var contentTypes = ['multipart/form-data'];
       var accepts = [];
       var returnType = null;
       return this.apiClient.callApi('/institute', 'PUT', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
+     * @param {module:gp.backend.model/Institute} institute 
+     * @param {File} profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
     key: "updateInstitute",
-    value: function updateInstitute(opts) {
-      return this.updateInstituteWithHttpInfo(opts).then(function (response_and_data) {
+    value: function updateInstitute(institute, profilePic) {
+      return this.updateInstituteWithHttpInfo(institute, profilePic).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

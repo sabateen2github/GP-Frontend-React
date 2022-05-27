@@ -14,7 +14,6 @@ docs/LatLng.md
 docs/Queue.md
 docs/QueueControllerApi.md
 docs/QueueSpec.md
-docs/UpdateInstituteRequest.md
 git_push.sh
 mocha.opts
 package.json
@@ -31,5 +30,4 @@ src/gp.backend.model/Institute.js
 src/gp.backend.model/LatLng.js
 src/gp.backend.model/Queue.js
 src/gp.backend.model/QueueSpec.js
-src/gp.backend.model/UpdateInstituteRequest.js
 src/index.js

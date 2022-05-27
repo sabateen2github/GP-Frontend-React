@@ -17,8 +17,6 @@ const NewBusinessScreen = (props) => {
 
     if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
 
-    if (!image) image = credentialsRequest.data.logo;
-
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader logo={credentialsRequest.data.logo}
@@ -48,12 +46,9 @@ const NewBusinessScreen = (props) => {
                 </Stack>
 
                 <Stack direction='column' spacing={4} width={500}>
-                    <TextField inputRef={nameRef} variant='outlined' label='Name'
-                               defaultValue={credentialsRequest.data.instituteName}/>
-                    <TextField inputRef={emailRef} variant='outlined' label='Email'
-                               defaultValue={credentialsRequest.data.instituteEmail}/>
-                    <TextField inputRef={phoneRef} variant='outlined' label='Phone'
-                               defaultValue={credentialsRequest.data.institutePhone}/>
+                    <TextField inputRef={nameRef} variant='outlined' label='Name'/>
+                    <TextField inputRef={emailRef} variant='outlined' label='Email'/>
+                    <TextField inputRef={phoneRef} variant='outlined' label='Phone'/>
                 </Stack>
             </Stack>
 

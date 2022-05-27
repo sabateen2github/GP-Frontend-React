@@ -382,7 +382,7 @@
         "operationId": "updateInstitute",
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "required": [
                   "institute",
@@ -420,7 +420,7 @@
         "operationId": "createInstitute",
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "required": [
                   "institute",
@@ -1091,9 +1091,9 @@
           "accountType": {
             "type": "string",
             "enum": [
-              "HELP_DESK",
-              "MANAGEMENT",
-              "ADMIN"
+              "ROLE_HELP_DESK",
+              "ROLE_MANAGEMENT",
+              "ROLE_ADMIN"
             ]
           }
         }
