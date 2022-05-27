@@ -1,19 +1,21 @@
-import AuthBackendClient from 'auth-backend-client';
+import {UserControllerApi, UserResponseDTO} from "auth-backend-client";
+import {ApiClient, EmployeesControllerApi} from "backend-client";
 
+const CREDENTIAL_KEY = 'CREDENTIAL_KEY';
 
 const login = (username, password, callback) => {
 
+    let apiInstance = new UserControllerApi();
 
-    let apiInstance = new AuthBackendClient.UserControllerApi();
     apiInstance.login(username, password).then((data) => {
-
-        localStorage.setItem("jwt", data);
-
+        localStorage.setItem('jwt-login', data);
+        console.log(data);
+        //fetchDataAfterLogin();
+        //callback(true);
     }, (error) => {
         console.log(error);
-        callback(false);
+        //callback(false);
     });
-
 
     setTimeout(() => {
 
@@ -31,12 +33,12 @@ const login = (username, password, callback) => {
         localStorage.setItem('institutePhone', "079 123 4567");
 
         let accountType;
-        if (username == 'alaa2sbateen') accountType = AccountTypes.MANAGEMENT;
-        else if (username == 'alaa3sbateen') accountType = AccountTypes.HELP_DESK;
-        else accountType = AccountTypes.ADMIN;
+        if (username == 'alaa2sbateen') accountType = UserResponseDTO.AppUserRolesEnum.MANAGEMENT;
+        else if (username == 'alaa3sbateen') accountType = UserResponseDTO.AppUserRolesEnum.HELP_DESK;
+        else accountType = UserResponseDTO.AppUserRolesEnum.ADMIN;
 
         localStorage.setItem('accountType', accountType);
-        if (accountType == AccountTypes.HELP_DESK) {
+        if (accountType == UserResponseDTO.AppUserRolesEnum.HELP_DESK) {
             localStorage.setItem('branchId', '#ads3reef');
             localStorage.setItem('branchName', 'Bank al Etihad');
         }
@@ -46,13 +48,28 @@ const login = (username, password, callback) => {
 
 };
 
+const fetchDataAfterLogin = () => {
+    let defaultClient = ApiClient.instance;
+    // Configure Bearer (JWT) access token for authorization: bearerAuth
+    let bearerAuth = defaultClient.authentications['bearerAuth'];
+    bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+    let apiInstance = new EmployeesControllerApi();
+    let id = "id_example"; // String |
+    apiInstance.getEmployee(id).then((data) => {
+        console.log('API called successfully. Returned data: ' + data);
+    }, (error) => {
+        console.error(error);
+    });
+};
+
 
 const fetchCredentials = async () => {
 
     const accountType = localStorage.getItem('accountType');
 
     let helpDeskMetaData = {};
-    if (accountType == AccountTypes.HELP_DESK) {
+    if (accountType == UserResponseDTO.AppUserRolesEnum.HELP_DESK) {
         helpDeskMetaData = {
             branchName: localStorage.getItem('branchName'),
             branchId: localStorage.getItem('branchId')
@@ -89,5 +106,4 @@ const logout = async () => {
     return true;
 };
 
-export {login, fetchCredentials, CREDENTIAL_KEY, checkIfLoggedIn, logout, loginAdminAsInstitute};
-export {AccountTypes};
+export {login, fetchCredentials, checkIfLoggedIn, logout, loginAdminAsInstitute, CREDENTIAL_KEY};

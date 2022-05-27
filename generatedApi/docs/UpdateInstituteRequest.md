@@ -1,4 +1,4 @@
-# BackendClient.InlineObject1
+# BackendClient.UpdateInstituteRequest
 
 ## Properties
 

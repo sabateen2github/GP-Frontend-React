@@ -15,20 +15,20 @@ import ApiClient from '../ApiClient';
 import Institute from './Institute';
 
 /**
- * The InlineObject model module.
- * @module gp.backend.model/InlineObject
+ * The UpdateInstituteRequest model module.
+ * @module gp.backend.model/UpdateInstituteRequest
  * @version v1
  */
-class InlineObject {
+class UpdateInstituteRequest {
     /**
-     * Constructs a new <code>InlineObject</code>.
-     * @alias module:gp.backend.model/InlineObject
+     * Constructs a new <code>UpdateInstituteRequest</code>.
+     * @alias module:gp.backend.model/UpdateInstituteRequest
      * @param institute {module:gp.backend.model/Institute} 
      * @param profilePic {File} 
      */
     constructor(institute, profilePic) { 
         
-        InlineObject.initialize(this, institute, profilePic);
+        UpdateInstituteRequest.initialize(this, institute, profilePic);
     }
 
     /**
@@ -42,15 +42,15 @@ class InlineObject {
     }
 
     /**
-     * Constructs a <code>InlineObject</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>UpdateInstituteRequest</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:gp.backend.model/InlineObject} obj Optional instance to populate.
-     * @return {module:gp.backend.model/InlineObject} The populated <code>InlineObject</code> instance.
+     * @param {module:gp.backend.model/UpdateInstituteRequest} obj Optional instance to populate.
+     * @return {module:gp.backend.model/UpdateInstituteRequest} The populated <code>UpdateInstituteRequest</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new InlineObject();
+            obj = obj || new UpdateInstituteRequest();
 
             if (data.hasOwnProperty('institute')) {
                 obj['institute'] = Institute.constructFromObject(data['institute']);
@@ -68,17 +68,17 @@ class InlineObject {
 /**
  * @member {module:gp.backend.model/Institute} institute
  */
-InlineObject.prototype['institute'] = undefined;
+UpdateInstituteRequest.prototype['institute'] = undefined;
 
 /**
  * @member {File} profilePic
  */
-InlineObject.prototype['profilePic'] = undefined;
+UpdateInstituteRequest.prototype['profilePic'] = undefined;
 
 
 
 
 
 
-export default InlineObject;
+export default UpdateInstituteRequest;
 

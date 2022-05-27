@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.BackendClient);
+    factory(root.expect, root.AuthBackendClient);
   }
-}(this, function(expect, BackendClient) {
+}(this, function(expect, AuthBackendClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new BackendClient.UserDataDTO();
+    instance = new AuthBackendClient.UserDataDTO();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('UserDataDTO', function() {
     it('should create an instance of UserDataDTO', function() {
       // uncomment below and update the code to test UserDataDTO
-      //var instance = new BackendClient.UserDataDTO();
-      //expect(instance).to.be.a(BackendClient.UserDataDTO);
+      //var instance = new AuthBackendClient.UserDataDTO();
+      //expect(instance).to.be.a(AuthBackendClient.UserDataDTO);
     });
 
     it('should have the property appUserRoles (base name: "appUserRoles")', function() {
       // uncomment below and update the code to test the property appUserRoles
-      //var instance = new BackendClient.UserDataDTO();
+      //var instance = new AuthBackendClient.UserDataDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instance = new BackendClient.UserDataDTO();
+      //var instance = new AuthBackendClient.UserDataDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new BackendClient.UserDataDTO();
+      //var instance = new AuthBackendClient.UserDataDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property instituteId (base name: "instituteId")', function() {
       // uncomment below and update the code to test the property instituteId
-      //var instance = new BackendClient.UserDataDTO();
+      //var instance = new AuthBackendClient.UserDataDTO();
       //expect(instance).to.be();
     });
 

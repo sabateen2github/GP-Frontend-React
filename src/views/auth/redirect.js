@@ -1,6 +1,7 @@
 import useSWR from "swr";
-import {AccountTypes, CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../api/login/login";
 import {CircularProgress, Typography} from "@mui/material";
+import {UserResponseDTO} from "auth-backend-client";
 
 const ProtectedManagement = ({children, ...props}) => {
 
@@ -9,7 +10,7 @@ const ProtectedManagement = ({children, ...props}) => {
     if (credentials.isValidating) return <CircularProgress/>; else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.MANAGEMENT || credentials.data.accountType == AccountTypes.ADMIN) return children;
+    if (credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.MANAGEMENT || credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN) return children;
     else return <Typography variant='h2'>Not Implemented!</Typography>
 };
 
@@ -20,7 +21,7 @@ const ProtectedAdmin = ({children, ...props}) => {
     else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.ADMIN) return children;
+    if (credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN) return children;
     else return <Typography variant='h2'>Not
         Implemented!</Typography>
 };
@@ -33,7 +34,8 @@ const ProtectedHelpDesk = ({children, ...props}) => {
     if (credentials.isValidating) return <CircularProgress/>; else if (credentials.error) return <Typography
         variant='h2'>Error!</Typography>;
 
-    if (credentials.data.accountType == AccountTypes.MANAGEMENT || credentials.data.accountType == AccountTypes.ADMIN || credentials.data.accountType == AccountTypes.HELP_DESK) return children; else return <Typography
+    if (credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.MANAGEMENT || credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN || credentials.data.accountType == UserResponseDTO.AppUserRolesEnum.HELP_DESK) return children;
+    else return <Typography
         variant='h2'>Not Implemented!</Typography>
 };
 

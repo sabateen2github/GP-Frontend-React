@@ -45,18 +45,6 @@ Object.defineProperty(exports, "FileServingControllerApi", {
     return _FileServingControllerApi.default;
   }
 });
-Object.defineProperty(exports, "InlineObject", {
-  enumerable: true,
-  get: function get() {
-    return _InlineObject.default;
-  }
-});
-Object.defineProperty(exports, "InlineObject1", {
-  enumerable: true,
-  get: function get() {
-    return _InlineObject2.default;
-  }
-});
 Object.defineProperty(exports, "Institute", {
   enumerable: true,
   get: function get() {
@@ -93,6 +81,12 @@ Object.defineProperty(exports, "QueueSpec", {
     return _QueueSpec.default;
   }
 });
+Object.defineProperty(exports, "UpdateInstituteRequest", {
+  enumerable: true,
+  get: function get() {
+    return _UpdateInstituteRequest.default;
+  }
+});
 
 var _ApiClient = _interopRequireDefault(require("./ApiClient"));
 
@@ -102,10 +96,6 @@ var _Branch = _interopRequireDefault(require("./gp.backend.model/Branch"));
 
 var _Employee = _interopRequireDefault(require("./gp.backend.model/Employee"));
 
-var _InlineObject = _interopRequireDefault(require("./gp.backend.model/InlineObject"));
-
-var _InlineObject2 = _interopRequireDefault(require("./gp.backend.model/InlineObject1"));
-
 var _Institute = _interopRequireDefault(require("./gp.backend.model/Institute"));
 
 var _LatLng = _interopRequireDefault(require("./gp.backend.model/LatLng"));
@@ -113,6 +103,8 @@ var _LatLng = _interopRequireDefault(require("./gp.backend.model/LatLng"));
 var _Queue = _interopRequireDefault(require("./gp.backend.model/Queue"));
 
 var _QueueSpec = _interopRequireDefault(require("./gp.backend.model/QueueSpec"));
+
+var _UpdateInstituteRequest = _interopRequireDefault(require("./gp.backend.model/UpdateInstituteRequest"));
 
 var _BranchesControllerApi = _interopRequireDefault(require("./gp.backend.api/BranchesControllerApi"));
 

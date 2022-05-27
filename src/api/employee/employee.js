@@ -1,8 +1,8 @@
-import BackendClient from 'backend-client';
+import {Employee, EmployeesControllerApi} from 'backend-client';
 
 const fetchEmployees = async (searchTerm) => {
 
-    let apiInstance = new BackendClient.EmployeesControllerApi();
+    let apiInstance = new EmployeesControllerApi();
     return await apiInstance.searchEmployees(searchTerm).then((data) => {
         return data;
     }, (error) => {
@@ -11,7 +11,7 @@ const fetchEmployees = async (searchTerm) => {
 };
 
 const getEmployee = async (id) => {
-    let apiInstance = new BackendClient.EmployeesControllerApi();
+    let apiInstance = new EmployeesControllerApi();
     return await apiInstance.getEmployee(id).then((data) => {
         return data;
     }, (error) => {
@@ -21,8 +21,8 @@ const getEmployee = async (id) => {
 
 const saveEmployee = async ({id, profilePic, fullName, dateOfBirth, username, password, email, phone, branchId}) => {
 
-    let apiInstance = new BackendClient.EmployeesControllerApi();
-    let employee = new BackendClient.Employee(); // Employee |
+    let apiInstance = new EmployeesControllerApi();
+    let employee = new Employee(); // Employee |
     employee.name = fullName;
     employee.fullName = fullName;
     employee.id = id;
@@ -54,9 +54,9 @@ const createEmployee = async ({
                                   accountType
                               }) => {
 
-    let apiInstance = new BackendClient.EmployeesControllerApi();
+    let apiInstance = new EmployeesControllerApi();
 
-    let employee = new BackendClient.Employee(); // Employee |
+    let employee = new Employee(); // Employee |
     employee.name = fullName;
     employee.fullName = fullName;
     employee.accountType = accountType;

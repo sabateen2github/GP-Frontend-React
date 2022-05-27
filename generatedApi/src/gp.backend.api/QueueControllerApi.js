@@ -93,7 +93,7 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.model/LatLng} location 
+     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     bookQueueWithHttpInfo(userId, queueId, branchId, location) {
@@ -143,7 +143,7 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.model/LatLng} location 
+     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     bookQueue(userId, queueId, branchId, location) {

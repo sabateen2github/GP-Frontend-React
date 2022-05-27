@@ -6,7 +6,8 @@ import {Photo} from "@mui/icons-material";
 import useSWR from "swr";
 import {branchesFetcher} from "../../../api/branch/branches";
 import {createEmployee} from "../../../api/employee/employee";
-import {AccountTypes, CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import { CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {UserResponseDTO} from "auth-backend-client";
 
 
 const EmployeeLoaded = ({branches, ...props}) => {
@@ -19,7 +20,7 @@ const EmployeeLoaded = ({branches, ...props}) => {
 
     const [date, setDate] = useState();
     const [branch, setBranch] = useState();
-    const [accountType, setAccountType] = useState({name: 'Help Desk', id: AccountTypes.HELP_DESK});
+    const [accountType, setAccountType] = useState({name: 'Help Desk', id: UserResponseDTO.AppUserRolesEnum.HELP_DESK});
 
     const [image, setImage] = useState();
 
@@ -65,11 +66,11 @@ const EmployeeLoaded = ({branches, ...props}) => {
                     }}
                 >
                     <option key={0}
-                            value={JSON.stringify({name: 'Help Desk', id: AccountTypes.HELP_DESK})}>
+                            value={JSON.stringify({name: 'Help Desk', id: UserResponseDTO.AppUserRolesEnum.HELP_DESK})}>
                         {'Help Desk'}
                     </option>
                     <option key={1}
-                            value={JSON.stringify({name: 'Management', id: AccountTypes.MANAGEMENT})}>
+                            value={JSON.stringify({name: 'Management', id: UserResponseDTO.AppUserRolesEnum.MANAGEMENT})}>
                         {'Management'}
                     </option>
                 </TextField>

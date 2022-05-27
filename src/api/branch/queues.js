@@ -1,9 +1,9 @@
-import BackendClient from 'backend-client';
+import {QueueControllerApi, QueueSpec} from 'backend-client';
 
 
 const queueFetcher = async ({id, branchId}) => {
 
-    let apiInstance = new BackendClient.QueueControllerApi();
+    let apiInstance = new QueueControllerApi();
 
     return await apiInstance.getQueue(id, branchId).then((data) => {
         return data;
@@ -15,7 +15,7 @@ const queueFetcher = async ({id, branchId}) => {
 
 const resetQueue = async (branchId, queueId) => {
 
-    let apiInstance = new BackendClient.QueueControllerApi();
+    let apiInstance = new QueueControllerApi();
 
     return await apiInstance.resetQueue(queueId, branchId).then(() => {
         return true;
@@ -27,7 +27,7 @@ const resetQueue = async (branchId, queueId) => {
 
 const deleteQueue = async (branchId, queueId) => {
 
-    let apiInstance = new BackendClient.QueueControllerApi();
+    let apiInstance = new QueueControllerApi();
 
     return await apiInstance.deleteQueue(queueId, branchId).then(() => {
         return true;
@@ -40,8 +40,8 @@ const deleteQueue = async (branchId, queueId) => {
 const editQueue = async ({branchId, queueId, queueName}) => {
 
 
-    let apiInstance = new BackendClient.QueueControllerApi();
-    let queueSpec = new BackendClient.QueueSpec();
+    let apiInstance = new QueueControllerApi();
+    let queueSpec = new QueueSpec();
     queueSpec.name = queueName;
     queueSpec.id = queueId;
     queueSpec.branchId = branchId;
@@ -56,7 +56,7 @@ const editQueue = async ({branchId, queueId, queueName}) => {
 
 const advanceQueue = async (branchId, queueId) => {
 
-    let apiInstance = new BackendClient.QueueControllerApi();
+    let apiInstance = new QueueControllerApi();
 
     return await apiInstance.advanceQueue(queueId, branchId).then(() => {
         return true;

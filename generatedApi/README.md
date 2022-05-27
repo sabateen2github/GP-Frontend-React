@@ -159,12 +159,11 @@ Class | Method | HTTP request | Description
  - [BackendClient.BookedTurnQueue](docs/BookedTurnQueue.md)
  - [BackendClient.Branch](docs/Branch.md)
  - [BackendClient.Employee](docs/Employee.md)
- - [BackendClient.InlineObject](docs/InlineObject.md)
- - [BackendClient.InlineObject1](docs/InlineObject1.md)
  - [BackendClient.Institute](docs/Institute.md)
  - [BackendClient.LatLng](docs/LatLng.md)
  - [BackendClient.Queue](docs/Queue.md)
  - [BackendClient.QueueSpec](docs/QueueSpec.md)
+ - [BackendClient.UpdateInstituteRequest](docs/UpdateInstituteRequest.md)
 
 
 ## Documentation for Authorization

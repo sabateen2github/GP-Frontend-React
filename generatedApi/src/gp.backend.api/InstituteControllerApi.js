@@ -13,9 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineObject from '../gp.backend.model/InlineObject';
-import InlineObject1 from '../gp.backend.model/InlineObject1';
 import Institute from '../gp.backend.model/Institute';
+import UpdateInstituteRequest from '../gp.backend.model/UpdateInstituteRequest';
 
 /**
 * InstituteController service.
@@ -39,12 +38,12 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     createInstituteWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject1'];
+      let postBody = opts['updateInstituteRequest'];
 
       let pathParams = {
       };
@@ -68,7 +67,7 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     createInstitute(opts) {
@@ -256,12 +255,12 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     updateInstituteWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['inlineObject'];
+      let postBody = opts['updateInstituteRequest'];
 
       let pathParams = {
       };
@@ -285,7 +284,7 @@ export default class InstituteControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     updateInstitute(opts) {

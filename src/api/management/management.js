@@ -1,9 +1,9 @@
-import BackendClient from 'backend-client';
+import {Institute, InstituteControllerApi} from 'backend-client';
 
 const saveInstituteDetails = async ({logoUrl, name, phone, email, instituteId}) => {
 
-    let apiInstance = new BackendClient.InstituteControllerApi();
-    let institute = new BackendClient.Institute(); // Institute |
+    let apiInstance = new InstituteControllerApi();
+    let institute = new Institute(); // Institute |
     institute.id = instituteId;
     institute.name = name;
     institute.logoUrl = logoUrl;
@@ -20,7 +20,7 @@ const saveInstituteDetails = async ({logoUrl, name, phone, email, instituteId}) 
 
 
 const fetchInstituteDetails = async (id) => {
-    let apiInstance = new BackendClient.InstituteControllerApi();
+    let apiInstance = new InstituteControllerApi();
     return await apiInstance.getInstitute(id).then((data) => {
         return data;
     }, (error) => {

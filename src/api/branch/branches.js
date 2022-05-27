@@ -1,4 +1,4 @@
-import BackendClient from 'backend-client';
+import {Branch, BranchesControllerApi} from 'backend-client';
 
 
 if (!localStorage.hasOwnProperty('location-edit-branch')) {
@@ -6,7 +6,7 @@ if (!localStorage.hasOwnProperty('location-edit-branch')) {
 }
 const branchesFetcher = async () => {
 
-    let apiInstance = new BackendClient.BranchesControllerApi();
+    let apiInstance = new BranchesControllerApi();
     return await apiInstance.getAllBranches().then((data) => {
         return data;
     }, (error) => {
@@ -17,7 +17,7 @@ const branchesFetcher = async () => {
 
 const branchFetcher = async (id) => {
 
-    let apiInstance = new BackendClient.BranchesControllerApi();
+    let apiInstance = new BranchesControllerApi();
     return await apiInstance.getBranch(id).then((data) => {
         return data;
     }, (error) => {
@@ -28,8 +28,8 @@ const branchFetcher = async (id) => {
 
 const updateBranch = async ({id, location, name, phone, instituteId}) => {
 
-    let apiInstance = new BackendClient.BranchesControllerApi();
-    let branch = new BackendClient.Branch();
+    let apiInstance = new BranchesControllerApi();
+    let branch = new Branch();
     branch.id = id;
     branch.name = name;
     branch.phone = phone;
@@ -45,9 +45,9 @@ const updateBranch = async ({id, location, name, phone, instituteId}) => {
 
 const createBranch = async ({location, name, phone, instituteId}) => {
 
-    let apiInstance = new BackendClient.BranchesControllerApi();
+    let apiInstance = new BranchesControllerApi();
 
-    let branch = new BackendClient.Branch();
+    let branch = new Branch();
     branch.name = name;
     branch.phone = phone;
     branch.location = location;

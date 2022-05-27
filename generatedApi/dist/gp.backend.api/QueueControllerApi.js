@@ -92,7 +92,7 @@ var QueueControllerApi = /*#__PURE__*/function () {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.model/LatLng} location 
+     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
 
@@ -139,7 +139,7 @@ var QueueControllerApi = /*#__PURE__*/function () {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {module:gp.backend.model/LatLng} location 
+     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
@@ -201,6 +201,42 @@ var QueueControllerApi = /*#__PURE__*/function () {
     key: "cancelTurn",
     value: function cancelTurn(userId, queueId, branchId) {
       return this.cancelTurnWithHttpInfo(userId, queueId, branchId).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "createQueueSpecWithHttpInfo",
+    value: function createQueueSpecWithHttpInfo(queueSpec) {
+      var postBody = queueSpec; // verify the required parameter 'queueSpec' is set
+
+      if (queueSpec === undefined || queueSpec === null) {
+        throw new Error("Missing the required parameter 'queueSpec' when calling createQueueSpec");
+      }
+
+      var pathParams = {};
+      var queryParams = {};
+      var headerParams = {};
+      var formParams = {};
+      var authNames = ['bearerAuth'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+      return this.apiClient.callApi('/queues/queue', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {module:gp.backend.model/QueueSpec} queueSpec 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "createQueueSpec",
+    value: function createQueueSpec(queueSpec) {
+      return this.createQueueSpecWithHttpInfo(queueSpec).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

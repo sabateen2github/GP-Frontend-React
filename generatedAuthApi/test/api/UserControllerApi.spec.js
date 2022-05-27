@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.BackendClient);
+    factory(root.expect, root.AuthBackendClient);
   }
-}(this, function(expect, BackendClient) {
+}(this, function(expect, AuthBackendClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new BackendClient.UserControllerApi();
+    instance = new AuthBackendClient.UserControllerApi();
   });
 
   var getProperty = function(object, getter, property) {

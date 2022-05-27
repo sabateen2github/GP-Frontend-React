@@ -7,11 +7,9 @@ exports.default = void 0;
 
 var _ApiClient = _interopRequireDefault(require("../ApiClient"));
 
-var _InlineObject = _interopRequireDefault(require("../gp.backend.model/InlineObject"));
-
-var _InlineObject2 = _interopRequireDefault(require("../gp.backend.model/InlineObject1"));
-
 var _Institute = _interopRequireDefault(require("../gp.backend.model/Institute"));
+
+var _UpdateInstituteRequest = _interopRequireDefault(require("../gp.backend.model/UpdateInstituteRequest"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41,7 +39,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
   }
   /**
    * @param {Object} opts Optional parameters
-   * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
+   * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
@@ -50,7 +48,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     key: "createInstituteWithHttpInfo",
     value: function createInstituteWithHttpInfo(opts) {
       opts = opts || {};
-      var postBody = opts['inlineObject1'];
+      var postBody = opts['updateInstituteRequest'];
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
@@ -63,7 +61,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     }
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject1} opts.inlineObject1 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
@@ -151,6 +149,44 @@ var InstituteControllerApi = /*#__PURE__*/function () {
       });
     }
     /**
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link String} and HTTP response
+     */
+
+  }, {
+    key: "loginAsInstituteWithHttpInfo",
+    value: function loginAsInstituteWithHttpInfo(id) {
+      var postBody = null; // verify the required parameter 'id' is set
+
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling loginAsInstitute");
+      }
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {};
+      var headerParams = {};
+      var formParams = {};
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = ['*/*'];
+      var returnType = 'String';
+      return this.apiClient.callApi('/institute/login/{id}', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link String}
+     */
+
+  }, {
+    key: "loginAsInstitute",
+    value: function loginAsInstitute(id) {
+      return this.loginAsInstituteWithHttpInfo(id).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerms 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Institute>} and HTTP response
@@ -188,7 +224,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     }
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
 
@@ -196,7 +232,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     key: "updateInstituteWithHttpInfo",
     value: function updateInstituteWithHttpInfo(opts) {
       opts = opts || {};
-      var postBody = opts['inlineObject'];
+      var postBody = opts['updateInstituteRequest'];
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
@@ -209,7 +245,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     }
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/InlineObject} opts.inlineObject 
+     * @param {module:gp.backend.model/UpdateInstituteRequest} opts.updateInstituteRequest 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 

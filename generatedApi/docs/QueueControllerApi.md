@@ -83,7 +83,7 @@ let apiInstance = new BackendClient.QueueControllerApi();
 let userId = "userId_example"; // String | 
 let queueId = "queueId_example"; // String | 
 let branchId = "branchId_example"; // String | 
-let location = new BackendClient.LatLng(); // LatLng | 
+let location = {key: null}; // LatLng | 
 apiInstance.bookQueue(userId, queueId, branchId, location).then(() => {
   console.log('API called successfully.');
 }, (error) => {

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.BackendClient);
+    factory(root.expect, root.AuthBackendClient);
   }
-}(this, function(expect, BackendClient) {
+}(this, function(expect, AuthBackendClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new BackendClient.UserResponseDTO();
+    instance = new AuthBackendClient.UserResponseDTO();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('UserResponseDTO', function() {
     it('should create an instance of UserResponseDTO', function() {
       // uncomment below and update the code to test UserResponseDTO
-      //var instance = new BackendClient.UserResponseDTO();
-      //expect(instance).to.be.a(BackendClient.UserResponseDTO);
+      //var instance = new AuthBackendClient.UserResponseDTO();
+      //expect(instance).to.be.a(AuthBackendClient.UserResponseDTO);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new BackendClient.UserResponseDTO();
+      //var instance = new AuthBackendClient.UserResponseDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instance = new BackendClient.UserResponseDTO();
+      //var instance = new AuthBackendClient.UserResponseDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new BackendClient.UserResponseDTO();
+      //var instance = new AuthBackendClient.UserResponseDTO();
       //expect(instance).to.be();
     });
 
     it('should have the property appUserRoles (base name: "appUserRoles")', function() {
       // uncomment below and update the code to test the property appUserRoles
-      //var instance = new BackendClient.UserResponseDTO();
+      //var instance = new AuthBackendClient.UserResponseDTO();
       //expect(instance).to.be();
     });
 

@@ -30,7 +30,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
-  'inlineObject1': new BackendClient.InlineObject1() // InlineObject1 | 
+  'updateInstituteRequest': new BackendClient.UpdateInstituteRequest() // UpdateInstituteRequest | 
 };
 apiInstance.createInstitute(opts).then(() => {
   console.log('API called successfully.');
@@ -45,7 +45,7 @@ apiInstance.createInstitute(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | [optional] 
+ **updateInstituteRequest** | [**UpdateInstituteRequest**](UpdateInstituteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -256,7 +256,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let opts = {
-  'inlineObject': new BackendClient.InlineObject() // InlineObject | 
+  'updateInstituteRequest': new BackendClient.UpdateInstituteRequest() // UpdateInstituteRequest | 
 };
 apiInstance.updateInstitute(opts).then(() => {
   console.log('API called successfully.');
@@ -271,7 +271,7 @@ apiInstance.updateInstitute(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | [optional] 
+ **updateInstituteRequest** | [**UpdateInstituteRequest**](UpdateInstituteRequest.md)|  | [optional] 
 
 ### Return type
 

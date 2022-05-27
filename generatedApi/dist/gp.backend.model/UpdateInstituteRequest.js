@@ -18,21 +18,21 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 /**
- * The InlineObject1 model module.
- * @module gp.backend.model/InlineObject1
+ * The UpdateInstituteRequest model module.
+ * @module gp.backend.model/UpdateInstituteRequest
  * @version v1
  */
-var InlineObject1 = /*#__PURE__*/function () {
+var UpdateInstituteRequest = /*#__PURE__*/function () {
   /**
-   * Constructs a new <code>InlineObject1</code>.
-   * @alias module:gp.backend.model/InlineObject1
+   * Constructs a new <code>UpdateInstituteRequest</code>.
+   * @alias module:gp.backend.model/UpdateInstituteRequest
    * @param institute {module:gp.backend.model/Institute} 
    * @param profilePic {File} 
    */
-  function InlineObject1(institute, profilePic) {
-    _classCallCheck(this, InlineObject1);
+  function UpdateInstituteRequest(institute, profilePic) {
+    _classCallCheck(this, UpdateInstituteRequest);
 
-    InlineObject1.initialize(this, institute, profilePic);
+    UpdateInstituteRequest.initialize(this, institute, profilePic);
   }
   /**
    * Initializes the fields of this object.
@@ -41,25 +41,25 @@ var InlineObject1 = /*#__PURE__*/function () {
    */
 
 
-  _createClass(InlineObject1, null, [{
+  _createClass(UpdateInstituteRequest, null, [{
     key: "initialize",
     value: function initialize(obj, institute, profilePic) {
       obj['institute'] = institute;
       obj['profilePic'] = profilePic;
     }
     /**
-     * Constructs a <code>InlineObject1</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>UpdateInstituteRequest</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:gp.backend.model/InlineObject1} obj Optional instance to populate.
-     * @return {module:gp.backend.model/InlineObject1} The populated <code>InlineObject1</code> instance.
+     * @param {module:gp.backend.model/UpdateInstituteRequest} obj Optional instance to populate.
+     * @return {module:gp.backend.model/UpdateInstituteRequest} The populated <code>UpdateInstituteRequest</code> instance.
      */
 
   }, {
     key: "constructFromObject",
     value: function constructFromObject(data, obj) {
       if (data) {
-        obj = obj || new InlineObject1();
+        obj = obj || new UpdateInstituteRequest();
 
         if (data.hasOwnProperty('institute')) {
           obj['institute'] = _Institute.default.constructFromObject(data['institute']);
@@ -74,18 +74,18 @@ var InlineObject1 = /*#__PURE__*/function () {
     }
   }]);
 
-  return InlineObject1;
+  return UpdateInstituteRequest;
 }();
 /**
  * @member {module:gp.backend.model/Institute} institute
  */
 
 
-InlineObject1.prototype['institute'] = undefined;
+UpdateInstituteRequest.prototype['institute'] = undefined;
 /**
  * @member {File} profilePic
  */
 
-InlineObject1.prototype['profilePic'] = undefined;
-var _default = InlineObject1;
+UpdateInstituteRequest.prototype['profilePic'] = undefined;
+var _default = UpdateInstituteRequest;
 exports.default = _default;
