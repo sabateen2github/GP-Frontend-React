@@ -37,23 +37,20 @@ var InstituteControllerApi = /*#__PURE__*/function () {
   }
   /**
    * @param {module:gp.backend.model/Institute} institute 
-   * @param {File} profilePic 
+   * @param {Object} opts Optional parameters
+   * @param {File} opts.profilePic 
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(InstituteControllerApi, [{
     key: "createInstituteWithHttpInfo",
-    value: function createInstituteWithHttpInfo(institute, profilePic) {
+    value: function createInstituteWithHttpInfo(institute, opts) {
+      opts = opts || {};
       var postBody = null; // verify the required parameter 'institute' is set
 
       if (institute === undefined || institute === null) {
         throw new Error("Missing the required parameter 'institute' when calling createInstitute");
-      } // verify the required parameter 'profilePic' is set
-
-
-      if (profilePic === undefined || profilePic === null) {
-        throw new Error("Missing the required parameter 'profilePic' when calling createInstitute");
       }
 
       var pathParams = {};
@@ -61,7 +58,7 @@ var InstituteControllerApi = /*#__PURE__*/function () {
       var headerParams = {};
       var formParams = {
         'institute': institute,
-        'profilePic': profilePic
+        'profilePic': opts['profilePic']
       };
       var authNames = ['bearerAuth'];
       var contentTypes = ['multipart/form-data'];
@@ -71,14 +68,15 @@ var InstituteControllerApi = /*#__PURE__*/function () {
     }
     /**
      * @param {module:gp.backend.model/Institute} institute 
-     * @param {File} profilePic 
+     * @param {Object} opts Optional parameters
+     * @param {File} opts.profilePic 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
     key: "createInstitute",
-    value: function createInstitute(institute, profilePic) {
-      return this.createInstituteWithHttpInfo(institute, profilePic).then(function (response_and_data) {
+    value: function createInstitute(institute, opts) {
+      return this.createInstituteWithHttpInfo(institute, opts).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

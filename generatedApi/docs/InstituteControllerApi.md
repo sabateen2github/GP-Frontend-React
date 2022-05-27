@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## createInstitute
 
-> createInstitute(institute, profilePic)
+> createInstitute(institute, opts)
 
 
 
@@ -30,8 +30,10 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.InstituteControllerApi();
 let institute = new BackendClient.Institute(); // Institute | 
-let profilePic = "/path/to/file"; // File | 
-apiInstance.createInstitute(institute, profilePic).then(() => {
+let opts = {
+  'profilePic': "/path/to/file" // File | 
+};
+apiInstance.createInstitute(institute, opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -45,7 +47,7 @@ apiInstance.createInstitute(institute, profilePic).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **institute** | [**Institute**](Institute.md)|  | 
- **profilePic** | **File**|  | 
+ **profilePic** | **File**|  | [optional] 
 
 ### Return type
 

@@ -1,4 +1,4 @@
-import {ApiClient, Institute, InstituteControllerApi, UpdateInstituteRequest} from "backend-client";
+import {ApiClient, Institute, InstituteControllerApi} from "backend-client";
 import {ApiClient as AuthApiClient} from "auth-backend-client";
 
 
@@ -27,8 +27,8 @@ const createBusiness = async ({logoUrl, name, phone, email}) => {
     AuthApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
-    let updateInstituteReq = new UpdateInstituteRequest();
-    updateInstituteReq.institute = new Institute();
+    let institute = new Institute();
+    let profilePic = null;
     if (logoUrl) {
         async function getFileFromUrl(url, name, defaultType = 'image/jpeg') {
             const response = await fetch(url);
@@ -39,24 +39,19 @@ const createBusiness = async ({logoUrl, name, phone, email}) => {
         }
 
         const file = await getFileFromUrl(logoUrl, `${name}logoUrl.jpg`);
-        updateInstituteReq.profilePic = file;
+        profilePic = file;
     }
 
     let apiInstance = new InstituteControllerApi();
 
-    updateInstituteReq.institute.name = name;
-    updateInstituteReq.institute.phone = phone;
-    updateInstituteReq.institute.email = email;
+    institute.name = name;
+    institute.phone = phone;
+    institute.email = email;
 
-
-    let opts = {
-        'updateInstituteRequest': updateInstituteReq // UpdateInstituteRequest |
-    };
-    return apiInstance.createInstitute(opts).then(() => {
-        return true;
+    return apiInstance.createInstitute(institute, profilePic).then(() => {
+        console.log('API called successfully.');
     }, (error) => {
-        console.log(error);
-        return false;
+        console.error(error);
     });
 
 };

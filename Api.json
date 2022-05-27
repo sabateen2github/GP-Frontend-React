@@ -423,8 +423,7 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "institute",
-                  "profilePic"
+                  "institute"
                 ],
                 "type": "object",
                 "properties": {
