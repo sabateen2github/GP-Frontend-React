@@ -1,4 +1,4 @@
-# BackendClient.UserDataDTO
+# AuthBackendClient.UserDataDTO
 
 ## Properties
 

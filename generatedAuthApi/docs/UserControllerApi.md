@@ -1,4 +1,4 @@
-# BackendClient.UserControllerApi
+# AuthBackendClient.UserControllerApi
 
 All URIs are relative to *http://localhost:8080*
 
@@ -22,13 +22,13 @@ Method | HTTP request | Description
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
-let defaultClient = BackendClient.ApiClient.instance;
+import AuthBackendClient from 'auth-backend-client';
+let defaultClient = AuthBackendClient.ApiClient.instance;
 // Configure Bearer (JWT) access token for authorization: bearerAuth
 let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new BackendClient.UserControllerApi();
+let apiInstance = new AuthBackendClient.UserControllerApi();
 let username = "username_example"; // String | 
 apiInstance.callDelete(username).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -68,9 +68,9 @@ Name | Type | Description  | Notes
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
+import AuthBackendClient from 'auth-backend-client';
 
-let apiInstance = new BackendClient.UserControllerApi();
+let apiInstance = new AuthBackendClient.UserControllerApi();
 let username = "username_example"; // String | 
 let password = "password_example"; // String | 
 apiInstance.login(username, password).then((data) => {
@@ -112,13 +112,13 @@ No authorization required
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
-let defaultClient = BackendClient.ApiClient.instance;
+import AuthBackendClient from 'auth-backend-client';
+let defaultClient = AuthBackendClient.ApiClient.instance;
 // Configure Bearer (JWT) access token for authorization: bearerAuth
 let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new BackendClient.UserControllerApi();
+let apiInstance = new AuthBackendClient.UserControllerApi();
 apiInstance.refresh().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -154,13 +154,13 @@ This endpoint does not need any parameter.
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
-let defaultClient = BackendClient.ApiClient.instance;
+import AuthBackendClient from 'auth-backend-client';
+let defaultClient = AuthBackendClient.ApiClient.instance;
 // Configure Bearer (JWT) access token for authorization: bearerAuth
 let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new BackendClient.UserControllerApi();
+let apiInstance = new AuthBackendClient.UserControllerApi();
 let username = "username_example"; // String | 
 apiInstance.search(username).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
-let defaultClient = BackendClient.ApiClient.instance;
+import AuthBackendClient from 'auth-backend-client';
+let defaultClient = AuthBackendClient.ApiClient.instance;
 // Configure Bearer (JWT) access token for authorization: bearerAuth
 let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new BackendClient.UserControllerApi();
-let userDataDTO = new BackendClient.UserDataDTO(); // UserDataDTO | 
+let apiInstance = new AuthBackendClient.UserControllerApi();
+let userDataDTO = new AuthBackendClient.UserDataDTO(); // UserDataDTO | 
 apiInstance.signup(userDataDTO).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -246,13 +246,13 @@ Name | Type | Description  | Notes
 ### Example
 
 ```javascript
-import BackendClient from 'backend-client';
-let defaultClient = BackendClient.ApiClient.instance;
+import AuthBackendClient from 'auth-backend-client';
+let defaultClient = AuthBackendClient.ApiClient.instance;
 // Configure Bearer (JWT) access token for authorization: bearerAuth
 let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-let apiInstance = new BackendClient.UserControllerApi();
+let apiInstance = new AuthBackendClient.UserControllerApi();
 apiInstance.whoami().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {

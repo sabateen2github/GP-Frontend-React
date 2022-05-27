@@ -1,4 +1,4 @@
-import {Employee} from "backend-client";
+import BackendClient from 'backend-client';
 
 const CREDENTIAL_KEY = '/credentials';
 

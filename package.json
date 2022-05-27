@@ -32,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generateApi": "openapi-generator-cli generate -i Api.json -g javascript -o generatedApi --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=backend-client,usePromises=true",
-    "generateAuthApi": "openapi-generator-cli generate -i AuthApi.json -g javascript -o generatedAuthApi --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=backend-client,usePromises=true"
+    "generateAuthApi": "openapi-generator-cli generate -i AuthApi.json -g javascript -o generatedAuthApi --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=auth-backend-client,usePromises=true"
   },
   "eslintConfig": {
     "extends": [

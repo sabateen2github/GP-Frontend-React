@@ -1,4 +1,4 @@
-# BackendClient.UserResponseDTO
+# AuthBackendClient.UserResponseDTO
 
 ## Properties
 
