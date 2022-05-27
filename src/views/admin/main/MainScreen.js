@@ -21,6 +21,7 @@ import useSWR from "swr";
 import {FixedSizeList} from "react-window";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 import {fetchBusinesses} from "../../../api/admin/admin";
+import {ApiClient} from "backend-client";
 
 
 const renderRow = (businesses) => (props) => {
@@ -31,12 +32,13 @@ const renderRow = (businesses) => (props) => {
         history(path);
     };
 
+    console.log(businesses[index].logoUrl);
     return (
         <ListItem style={style} key={index} component="div" disablePadding>
             <ListItemButton onClick={redirectHandler(`/admin/business/${businesses[index].id}`)}>
                 <Avatar
                     alt="Remy Sharp"
-                    src={businesses[index].logoUrl}
+                    src={`${ApiClient.instance.basePath}${businesses[index].logoUrl}`}
                     sx={{width: 64, height: 64}}
                     variant="circular"/>
                 <Stack direction='column' paddingX={2} width='100%'>

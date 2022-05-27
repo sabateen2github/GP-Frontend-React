@@ -48,14 +48,15 @@ const createBusiness = async ({logoUrl, name, phone, email}) => {
 
     let apiInstance = new InstituteControllerApi();
 
+    let blob = new Blob([JSON.stringify(institute)], {type: 'application/json'});
+    let file = new File([blob], "foo.txt", {type: "application/json"});
 
-    let opts = {
-        'profilePic': profilePic // File |
-    };
-    return apiInstance.createInstitute(institute, opts).then(() => {
+    return apiInstance.createInstitute(file, profilePic).then(() => {
         console.log('API called successfully.');
+        return true;
     }, (error) => {
         console.error(error);
+        return false;
     });
 
 };
