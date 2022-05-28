@@ -37,7 +37,7 @@ var BranchesControllerApi = /*#__PURE__*/function () {
   }
   /**
    * @param {module:gp.backend.model/Branch} branch 
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Branch} and HTTP response
    */
 
 
@@ -56,13 +56,13 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       var formParams = {};
       var authNames = ['bearerAuth'];
       var contentTypes = ['application/json'];
-      var accepts = [];
-      var returnType = null;
+      var accepts = ['*/*'];
+      var returnType = _Branch.default;
       return this.apiClient.callApi('/branches', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
      * @param {module:gp.backend.model/Branch} branch 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Branch}
      */
 
   }, {

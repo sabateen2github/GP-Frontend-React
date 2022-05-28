@@ -37,7 +37,7 @@ export default class BranchesControllerApi {
 
     /**
      * @param {module:gp.backend.model/Branch} branch 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:gp.backend.model/Branch} and HTTP response
      */
     createBranchWithHttpInfo(branch) {
       let postBody = branch;
@@ -57,8 +57,8 @@ export default class BranchesControllerApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['*/*'];
+      let returnType = Branch;
       return this.apiClient.callApi(
         '/branches', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -68,7 +68,7 @@ export default class BranchesControllerApi {
 
     /**
      * @param {module:gp.backend.model/Branch} branch 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:gp.backend.model/Branch}
      */
     createBranch(branch) {
       return this.createBranchWithHttpInfo(branch)

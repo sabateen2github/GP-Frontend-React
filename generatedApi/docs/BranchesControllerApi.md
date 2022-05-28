@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createBranch
 
-> createBranch(branch)
+> Branch createBranch(branch)
 
 
 
@@ -28,8 +28,8 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.BranchesControllerApi();
 let branch = new BackendClient.Branch(); // Branch | 
-apiInstance.createBranch(branch).then(() => {
-  console.log('API called successfully.');
+apiInstance.createBranch(branch).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
 });
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Branch**](Branch.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: */*
 
 
 ## getAllBranches

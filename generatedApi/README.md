@@ -107,8 +107,8 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new BackendClient.BranchesControllerApi()
 var branch = new BackendClient.Branch(); // {Branch} 
-api.createBranch(branch).then(function() {
-  console.log('API called successfully.');
+api.createBranch(branch).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
 });
