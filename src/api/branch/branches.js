@@ -56,8 +56,8 @@ const addQueue = async (queueName, branchId) => {
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
     let apiInstance = new QueueControllerApi();
     let queueSpec = new QueueSpec(); // QueueSpec |
-    queueName.name = queueName;
-    queueName.branchId = branchId;
+    queueSpec.name = queueName;
+    queueSpec.branchId = branchId;
 
     return apiInstance.createQueueSpec(queueSpec).then(() => {
         return true;
@@ -69,14 +69,20 @@ const addQueue = async (queueName, branchId) => {
 };
 
 const deleteBranch = async (branchId) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
-    return true;
+    let apiInstance = new BranchesControllerApi();
+    return apiInstance.deleteBranch(branchId).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+        return false;
+    });
 };
 
 const createBranch = async ({location, name, phone, instituteId}) => {
 
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
-
 
     let apiInstance = new BranchesControllerApi();
 

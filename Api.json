@@ -759,6 +759,14 @@
         "operationId": "getAllQueues",
         "parameters": [
           {
+            "name": "instituteId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "branchId",
             "in": "query",
             "required": true,

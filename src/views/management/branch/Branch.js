@@ -108,6 +108,7 @@ const BranchScreen = (props) => {
 
     const {data, error, isValidating, mutate} = useSWR(id, branchFetcher);
 
+
     const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
     if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
 
@@ -156,8 +157,10 @@ const BranchScreen = (props) => {
                                 }}
                                 onSubmit={(name) => {
                                     addQueue(name, id).then((result) => {
-                                        if (result)
+                                        if (result) {
+                                            mutate();
                                             setOpenAddQueue(false);
+                                        }
                                     });
                                 }}
             >

@@ -438,11 +438,16 @@ export default class QueueControllerApi {
 
 
     /**
+     * @param {String} instituteId 
      * @param {String} branchId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Queue>} and HTTP response
      */
-    getAllQueuesWithHttpInfo(branchId) {
+    getAllQueuesWithHttpInfo(instituteId, branchId) {
       let postBody = null;
+      // verify the required parameter 'instituteId' is set
+      if (instituteId === undefined || instituteId === null) {
+        throw new Error("Missing the required parameter 'instituteId' when calling getAllQueues");
+      }
       // verify the required parameter 'branchId' is set
       if (branchId === undefined || branchId === null) {
         throw new Error("Missing the required parameter 'branchId' when calling getAllQueues");
@@ -451,6 +456,7 @@ export default class QueueControllerApi {
       let pathParams = {
       };
       let queryParams = {
+        'instituteId': instituteId,
         'branchId': branchId
       };
       let headerParams = {
@@ -470,11 +476,12 @@ export default class QueueControllerApi {
     }
 
     /**
+     * @param {String} instituteId 
      * @param {String} branchId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Queue>}
      */
-    getAllQueues(branchId) {
-      return this.getAllQueuesWithHttpInfo(branchId)
+    getAllQueues(instituteId, branchId) {
+      return this.getAllQueuesWithHttpInfo(instituteId, branchId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

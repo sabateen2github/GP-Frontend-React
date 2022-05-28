@@ -399,14 +399,20 @@ var QueueControllerApi = /*#__PURE__*/function () {
       });
     }
     /**
+     * @param {String} instituteId 
      * @param {String} branchId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Queue>} and HTTP response
      */
 
   }, {
     key: "getAllQueuesWithHttpInfo",
-    value: function getAllQueuesWithHttpInfo(branchId) {
-      var postBody = null; // verify the required parameter 'branchId' is set
+    value: function getAllQueuesWithHttpInfo(instituteId, branchId) {
+      var postBody = null; // verify the required parameter 'instituteId' is set
+
+      if (instituteId === undefined || instituteId === null) {
+        throw new Error("Missing the required parameter 'instituteId' when calling getAllQueues");
+      } // verify the required parameter 'branchId' is set
+
 
       if (branchId === undefined || branchId === null) {
         throw new Error("Missing the required parameter 'branchId' when calling getAllQueues");
@@ -414,6 +420,7 @@ var QueueControllerApi = /*#__PURE__*/function () {
 
       var pathParams = {};
       var queryParams = {
+        'instituteId': instituteId,
         'branchId': branchId
       };
       var headerParams = {};
@@ -425,14 +432,15 @@ var QueueControllerApi = /*#__PURE__*/function () {
       return this.apiClient.callApi('/queues/queues/all', 'GET', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
+     * @param {String} instituteId 
      * @param {String} branchId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:gp.backend.model/Queue>}
      */
 
   }, {
     key: "getAllQueues",
-    value: function getAllQueues(branchId) {
-      return this.getAllQueuesWithHttpInfo(branchId).then(function (response_and_data) {
+    value: function getAllQueues(instituteId, branchId) {
+      return this.getAllQueuesWithHttpInfo(instituteId, branchId).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

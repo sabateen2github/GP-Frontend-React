@@ -388,7 +388,7 @@ No authorization required
 
 ## getAllQueues
 
-> [Queue] getAllQueues(branchId)
+> [Queue] getAllQueues(instituteId, branchId)
 
 
 
@@ -398,8 +398,9 @@ No authorization required
 import BackendClient from 'backend-client';
 
 let apiInstance = new BackendClient.QueueControllerApi();
+let instituteId = "instituteId_example"; // String | 
 let branchId = "branchId_example"; // String | 
-apiInstance.getAllQueues(branchId).then((data) => {
+apiInstance.getAllQueues(instituteId, branchId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -412,6 +413,7 @@ apiInstance.getAllQueues(branchId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **instituteId** | **String**|  | 
  **branchId** | **String**|  | 
 
 ### Return type
