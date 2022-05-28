@@ -9,6 +9,7 @@ import queues_branches from './images/queues_branches.svg';
 import {useNavigate} from "react-router-dom";
 import useSWR from "swr";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const MainScreen = (props) => {
@@ -26,9 +27,9 @@ const MainScreen = (props) => {
 
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={credentialsRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                           institute={credentialsRequest.data.instituteName}
-                          profilePic={credentialsRequest.data.profilePic}
+                          profilePic={`${ApiClient.instance.basePath}${credentialsRequest.data.profilePic}`}
                           employee={credentialsRequest.data.employeeName}
                           employeeId={credentialsRequest.data.employeeId}/>
             <Stack direction='row' alignItems='center' justifyContent='space-between' spacing={1}>

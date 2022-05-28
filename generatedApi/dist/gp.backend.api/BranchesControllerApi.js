@@ -36,17 +36,20 @@ var BranchesControllerApi = /*#__PURE__*/function () {
     this.apiClient = apiClient || _ApiClient.default.instance;
   }
   /**
-   * @param {Object} opts Optional parameters
-   * @param {module:gp.backend.model/Branch} opts.branch 
+   * @param {module:gp.backend.model/Branch} branch 
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
    */
 
 
   _createClass(BranchesControllerApi, [{
     key: "createBranchWithHttpInfo",
-    value: function createBranchWithHttpInfo(opts) {
-      opts = opts || {};
-      var postBody = opts['branch'];
+    value: function createBranchWithHttpInfo(branch) {
+      var postBody = branch; // verify the required parameter 'branch' is set
+
+      if (branch === undefined || branch === null) {
+        throw new Error("Missing the required parameter 'branch' when calling createBranch");
+      }
+
       var pathParams = {};
       var queryParams = {};
       var headerParams = {};
@@ -58,15 +61,14 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       return this.apiClient.callApi('/branches', 'POST', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
     }
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Branch} opts.branch 
+     * @param {module:gp.backend.model/Branch} branch 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
 
   }, {
     key: "createBranch",
-    value: function createBranch(opts) {
-      return this.createBranchWithHttpInfo(opts).then(function (response_and_data) {
+    value: function createBranch(branch) {
+      return this.createBranchWithHttpInfo(branch).then(function (response_and_data) {
         return response_and_data.data;
       });
     }

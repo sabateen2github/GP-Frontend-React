@@ -106,10 +106,8 @@ var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new BackendClient.BranchesControllerApi()
-var opts = {
-  'branch': new BackendClient.Branch() // {Branch} 
-};
-api.createBranch(opts).then(function() {
+var branch = new BackendClient.Branch(); // {Branch} 
+api.createBranch(branch).then(function() {
   console.log('API called successfully.');
 }, function(error) {
   console.error(error);

@@ -1,4 +1,4 @@
-import {Branch, BranchesControllerApi} from 'backend-client';
+import {ApiClient, Branch, BranchesControllerApi} from 'backend-client';
 
 
 if (!localStorage.hasOwnProperty('location-edit-branch')) {
@@ -28,6 +28,9 @@ const branchFetcher = async (id) => {
 
 const updateBranch = async ({id, location, name, phone, instituteId}) => {
 
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
+
+
     let apiInstance = new BranchesControllerApi();
     let branch = new Branch();
     branch.id = id;
@@ -45,6 +48,9 @@ const updateBranch = async ({id, location, name, phone, instituteId}) => {
 
 const createBranch = async ({location, name, phone, instituteId}) => {
 
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
+
+
     let apiInstance = new BranchesControllerApi();
 
     let branch = new Branch();
@@ -52,7 +58,7 @@ const createBranch = async ({location, name, phone, instituteId}) => {
     branch.phone = phone;
     branch.location = location;
     branch.instituteId = instituteId;
-
+    
     let opts = {
         'branch': branch // Branch |
     };
@@ -61,6 +67,7 @@ const createBranch = async ({location, name, phone, instituteId}) => {
         return true;
     }, (error) => {
         console.error(error);
+        return false;
     });
 };
 

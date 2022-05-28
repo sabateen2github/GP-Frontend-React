@@ -32,7 +32,6 @@ const renderRow = (businesses) => (props) => {
         history(path);
     };
 
-    console.log(businesses[index].logoUrl);
     return (
         <ListItem style={style} key={index} component="div" disablePadding>
             <ListItemButton onClick={redirectHandler(`/admin/business/${businesses[index].id}`)}>

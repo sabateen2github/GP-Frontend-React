@@ -19,6 +19,7 @@ import {branchesFetcher} from "../../../api/branch/branches";
 import {FixedSizeList} from "react-window";
 import {ArrowForwardIos} from "@mui/icons-material";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const renderRow = (branches) => (props) => {
@@ -79,7 +80,7 @@ const BranchesScreen = (props) => {
 
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={credentialsRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                           institute={credentialsRequest.data.instituteName}
                           profilePic={credentialsRequest.data.profilePic}
                           employee={credentialsRequest.data.employeeName}

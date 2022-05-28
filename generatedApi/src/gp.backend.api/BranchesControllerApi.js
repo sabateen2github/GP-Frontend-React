@@ -36,13 +36,15 @@ export default class BranchesControllerApi {
 
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Branch} opts.branch 
+     * @param {module:gp.backend.model/Branch} branch 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createBranchWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = opts['branch'];
+    createBranchWithHttpInfo(branch) {
+      let postBody = branch;
+      // verify the required parameter 'branch' is set
+      if (branch === undefined || branch === null) {
+        throw new Error("Missing the required parameter 'branch' when calling createBranch");
+      }
 
       let pathParams = {
       };
@@ -65,12 +67,11 @@ export default class BranchesControllerApi {
     }
 
     /**
-     * @param {Object} opts Optional parameters
-     * @param {module:gp.backend.model/Branch} opts.branch 
+     * @param {module:gp.backend.model/Branch} branch 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    createBranch(opts) {
-      return this.createBranchWithHttpInfo(opts)
+    createBranch(branch) {
+      return this.createBranchWithHttpInfo(branch)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

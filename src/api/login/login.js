@@ -1,6 +1,7 @@
 import {ApiClient as AuthApiClient, UserControllerApi, UserResponseDTO} from "auth-backend-client";
 import {ApiClient, BranchesControllerApi, EmployeesControllerApi, InstituteControllerApi} from "backend-client";
 import jwt_decode from "jwt-decode";
+import {fetchInstituteDetails} from "../management/management";
 
 const CREDENTIAL_KEY = 'CREDENTIAL_KEY';
 
@@ -20,9 +21,7 @@ const login = (username, password, callback) => {
         localStorage.setItem('employeeName', employee.name);
         localStorage.setItem('employeeFullName', employee.fullName);
 
-        if (employee.branchId != null)
-            localStorage.setItem("branchId", employee.branchId);
-        else localStorage.removeItem("branchId");
+        if (employee.branchId != null) localStorage.setItem("branchId", employee.branchId); else localStorage.removeItem("branchId");
 
         if (employee.accountType == UserResponseDTO.AppUserRolesEnum.ADMIN) {
             const adminLogo = 'https://image.pngaaa.com/702/6256702-middle.png';
@@ -74,24 +73,47 @@ const fetchCredentials = async () => {
         };
     }
 
-    return {
-        logo: localStorage.getItem('logo'),
-        profilePic: localStorage.getItem('profilePic'),
-        instituteName: localStorage.getItem('instituteName'),
-        employeeName: localStorage.getItem('employeeName'),
-        employeeId: localStorage.getItem('employeeId'),
-        instituteId: localStorage.getItem('instituteId'),
-        instituteEmail: localStorage.getItem('instituteEmail'),
-        institutePhone: localStorage.getItem('institutePhone'),
-        accountType: accountType,
-        ...helpDeskMetaData
-    };
+    if (accountType == UserResponseDTO.AppUserRolesEnum.ADMIN && localStorage.hasOwnProperty("loggedAs")) {
+        return {
+            logo: localStorage.getItem('loggedAs_logo'),
+            profilePic: localStorage.getItem('profilePic'),
+            instituteName: localStorage.getItem('loggedAs_InstituteName'),
+            employeeName: localStorage.getItem('employeeName'),
+            employeeId: localStorage.getItem('employeeId'),
+            instituteId: localStorage.getItem('loggedAs_InstituteId'),
+            instituteEmail: localStorage.getItem('instituteEmail'),
+            institutePhone: localStorage.getItem('institutePhone'),
+            accountType: accountType
+        };
+    } else {
+        return {
+            logo: localStorage.getItem('logo'),
+            profilePic: localStorage.getItem('profilePic'),
+            instituteName: localStorage.getItem('instituteName'),
+            employeeName: localStorage.getItem('employeeName'),
+            employeeId: localStorage.getItem('employeeId'),
+            instituteId: localStorage.getItem('instituteId'),
+            instituteEmail: localStorage.getItem('instituteEmail'),
+            institutePhone: localStorage.getItem('institutePhone'),
+            accountType: accountType, ...helpDeskMetaData
+        };
+    }
+
 
 };
 
 
 const loginAdminAsInstitute = async (instituteId) => {
-    return true;
+    return fetchInstituteDetails(instituteId).then((institute) => {
+        localStorage.setItem("loggedAs", 'true');
+        localStorage.setItem("loggedAs_InstituteId", institute.id);
+        localStorage.setItem("loggedAs_InstituteName", institute.name);
+        localStorage.setItem("loggedAs_logo", institute.logoUrl);
+        return true;
+    }).catch((error) => {
+        console.log(error);
+        return false;
+    });
 };
 
 const checkIfLoggedIn = () => {
@@ -100,6 +122,11 @@ const checkIfLoggedIn = () => {
 
 
 const logout = async () => {
+    const accountType = localStorage.getItem('accountType');
+    if (accountType == UserResponseDTO.AppUserRolesEnum.ADMIN && localStorage.hasOwnProperty("loggedAs")) {
+        localStorage.removeItem("loggedAs");
+        return true;
+    }
     localStorage.clear();
     return true;
 };

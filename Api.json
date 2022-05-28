@@ -670,7 +670,8 @@
                 "$ref": "#/components/schemas/Branch"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {

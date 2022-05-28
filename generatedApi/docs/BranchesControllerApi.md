@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createBranch
 
-> createBranch(opts)
+> createBranch(branch)
 
 
 
@@ -27,10 +27,8 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new BackendClient.BranchesControllerApi();
-let opts = {
-  'branch': new BackendClient.Branch() // Branch | 
-};
-apiInstance.createBranch(opts).then(() => {
+let branch = new BackendClient.Branch(); // Branch | 
+apiInstance.createBranch(branch).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -43,7 +41,7 @@ apiInstance.createBranch(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **branch** | [**Branch**](Branch.md)|  | [optional] 
+ **branch** | [**Branch**](Branch.md)|  | 
 
 ### Return type
 

@@ -7,6 +7,7 @@ import {branchFetcher, createBranch, updateBranch} from "../../../api/branch/bra
 import RoomIcon from "@mui/icons-material/Room";
 import {Map, Marker} from "../../common/Map";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const BranchDetails = ({data, id, successCallback, ...props}) => {
@@ -33,7 +34,7 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
     return (<Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader
                 branchName={data ? data.name : undefined}
-                logo={credentialsRequest.data.logo}
+                logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                 institute={credentialsRequest.data.instituteName}
                 profilePic={credentialsRequest.data.profilePic}
                 employee={credentialsRequest.data.employeeName}
@@ -148,7 +149,7 @@ const NewBranchScreen = (props) => {
 
 const EditBranchScreen = (props) => {
     const {id} = useParams();
-    if (id) return <ExistingBranchScreen id={id}/>
+    if (id && id != 'new') return <ExistingBranchScreen id={id}/>
     else return <NewBranchScreen/>
 };
 

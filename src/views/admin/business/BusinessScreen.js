@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import useSWR from "swr";
+import useSWR, {mutate} from "swr";
 import {CREDENTIAL_KEY, fetchCredentials, loginAdminAsInstitute} from "../../../api/login/login";
 import {Button, Card, CardActionArea, CardContent, CardMedia, CircularProgress, Stack, Typography} from "@mui/material";
 import React from "react";
@@ -28,7 +28,9 @@ const BusinessScreen = (props) => {
             <Card sx={{width: 400, height: 280}}>
                 <CardActionArea onClick={() => {
                     loginAdminAsInstitute(id).then(result => {
-                        if (result) history('/main');
+                        return mutate(CREDENTIAL_KEY);
+                    }).then(() => {
+                        history('/main');
                     });
                 }}>
                     <CardContent>
