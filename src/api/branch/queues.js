@@ -1,11 +1,12 @@
-import {QueueControllerApi, QueueSpec} from 'backend-client';
+import {ApiClient, QueueControllerApi, QueueSpec} from 'backend-client';
 
 
 const queueFetcher = async ({id, branchId}) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let apiInstance = new QueueControllerApi();
 
-    return await apiInstance.getQueue(id, branchId).then((data) => {
+    return apiInstance.getQueue(id, branchId).then((data) => {
         return data;
     }, (error) => {
         console.error(error);
@@ -14,10 +15,11 @@ const queueFetcher = async ({id, branchId}) => {
 
 
 const resetQueue = async (branchId, queueId) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let apiInstance = new QueueControllerApi();
 
-    return await apiInstance.resetQueue(queueId, branchId).then(() => {
+    return apiInstance.resetQueue(queueId, branchId).then(() => {
         return true;
     }, (error) => {
         console.log(error);
@@ -26,10 +28,11 @@ const resetQueue = async (branchId, queueId) => {
 };
 
 const deleteQueue = async (branchId, queueId) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let apiInstance = new QueueControllerApi();
 
-    return await apiInstance.deleteQueue(queueId, branchId).then(() => {
+    return apiInstance.deleteQueue(queueId, branchId).then(() => {
         return true;
     }, (error) => {
         console.log(error);
@@ -39,6 +42,7 @@ const deleteQueue = async (branchId, queueId) => {
 
 const editQueue = async ({branchId, queueId, queueName}) => {
 
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let apiInstance = new QueueControllerApi();
     let queueSpec = new QueueSpec();
@@ -46,7 +50,7 @@ const editQueue = async ({branchId, queueId, queueName}) => {
     queueSpec.id = queueId;
     queueSpec.branchId = branchId;
 
-    return await apiInstance.editQueueSpec(queueSpec).then(() => {
+    return apiInstance.editQueueSpec(queueSpec).then(() => {
         return true;
     }, (error) => {
         console.log(error);
@@ -55,10 +59,11 @@ const editQueue = async ({branchId, queueId, queueName}) => {
 };
 
 const advanceQueue = async (branchId, queueId) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let apiInstance = new QueueControllerApi();
 
-    return await apiInstance.advanceQueue(queueId, branchId).then(() => {
+    return apiInstance.advanceQueue(queueId, branchId).then(() => {
         return true;
     }, (error) => {
         console.error(error);

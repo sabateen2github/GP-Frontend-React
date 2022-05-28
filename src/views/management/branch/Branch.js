@@ -37,10 +37,11 @@ const renderRow = (queues) => (props) => {
         history(path);
     };
 
+    console.log(queues[index])
     return (
         <ListItem style={style} key={index} component="div" disablePadding>
-            <ListItemButton onClick={redirectHandler(`/branch/${id}/queues/${queues[index].id}`)}>
-                <ListItemText primary={`${queues[index].name}`}/>
+            <ListItemButton onClick={redirectHandler(`/branch/${id}/queues/${queues[index].queueSpec.id}`)}>
+                <ListItemText primary={`${queues[index].queueSpec.name}`}/>
                 <ListItemIcon>
                     <ArrowForwardIos/>
                 </ListItemIcon>
@@ -102,7 +103,7 @@ const BranchScreen = (props) => {
     };
 
     const [openAddQueue, setOpenAddQueue] = useState(false);
-    const [openDeleteQueue, setOpenDeleteQueue] = useState(false);
+    const [openDeleteBranch, setOpenDeleteBranch] = useState(false);
 
     const {id} = useParams();
 
@@ -135,17 +136,19 @@ const BranchScreen = (props) => {
 
     return (
         <BranchDialogHolder
-            open={openDeleteQueue}
+            open={openDeleteBranch}
             actionText={"Delete"}
             showTextField={false}
             message={'Do you want to delete the branch?'}
             onCancel={() => {
-                setOpenDeleteQueue(false)
+                setOpenDeleteBranch(false)
             }}
             onSubmit={() => {
                 deleteBranch(id).then((result) => {
-                    if (result)
-                        setOpenDeleteQueue(false);
+                    if (result){
+                        setOpenDeleteBranch(false);
+                        history('/branches');
+                    }
                 });
             }}
             actionColor={'error'}
@@ -185,7 +188,7 @@ const BranchScreen = (props) => {
                             <Button variant='contained' onClick={redirectHandler(`/branch/edit/${id}`)}><Typography
                                 variant='body'>Edit branch</Typography></Button>
                             <Button variant='contained' color='error'
-                                    onClick={() => setOpenDeleteQueue(true)}><Typography variant='body'>Delete
+                                    onClick={() => setOpenDeleteBranch(true)}><Typography variant='body'>Delete
                                 branch</Typography></Button>
                         </Stack>}
                 </Stack>

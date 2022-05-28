@@ -124,7 +124,7 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
 
 const ExistingBranchScreen = ({id, ...props}) => {
     const {data, error, isValidating, mutate} = useSWR(id, branchFetcher);
-    return <BranchDetails data={data} id={id} successCallback={(newDetails) => mutate(newDetails)}/>
+    return <BranchDetails data={data} id={id} successCallback={(newDetails) => mutate()}/>
 };
 
 const NewBranchScreen = (props) => {

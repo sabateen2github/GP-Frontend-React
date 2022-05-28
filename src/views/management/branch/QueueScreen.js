@@ -16,9 +16,10 @@ import {
 import {CommonHeader} from "../../common/Headers";
 import React from "react";
 import useSWR from "swr";
-import {branchesFetcher} from "../../../api/branch/branches";
+import {addQueueForBranches, branchesFetcher} from "../../../api/branch/branches";
 import {FixedSizeList} from "react-window";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {useNavigate} from "react-router-dom";
 
 let queueName = null;
 
@@ -48,6 +49,7 @@ const GeneralQueueScreen = (props) => {
     const {data, error, isValidating, mutate} = useSWR('/branchesFetcher', branchesFetcher);
     const [checked, setChecked] = React.useState([]);
 
+    const history = useNavigate();
 
     const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
     if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
@@ -102,7 +104,11 @@ const GeneralQueueScreen = (props) => {
                     <Content/>
                 </CardContent>
             </Card>
-            <Button variant='contained'>Save new Queue</Button>
+            <Button variant='contained' onClick={() => {
+                addQueueForBranches(queueName, checked.map((index) => data[index].id)).then(result => {
+                    if (result) history(-1);
+                });
+            }}>Save new Queue</Button>
         </Stack>);
 };
 

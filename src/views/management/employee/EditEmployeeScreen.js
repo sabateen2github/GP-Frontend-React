@@ -8,6 +8,7 @@ import {branchesFetcher} from "../../../api/branch/branches";
 import {useParams} from "react-router-dom";
 import {getEmployee, saveEmployee} from "../../../api/employee/employee";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const EmployeeLoaded = ({id, employeeDetails, branches, ...props}) => {
@@ -21,7 +22,7 @@ const EmployeeLoaded = ({id, employeeDetails, branches, ...props}) => {
 
 
     const [date, setDate] = useState(employeeDetails.dateOfBirth);
-    const [branch, setBranch] = useState(branches.filter(b => b.id === employeeDetails.branchId).at(0).name);
+    const [branch, setBranch] = useState(employeeDetails.branchId ? branches.filter(b => b.id === employeeDetails.branchId).at(0).name : undefined);
     const [image, setImage] = useState(employeeDetails.profilePic);
 
     const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
@@ -49,7 +50,7 @@ const EmployeeLoaded = ({id, employeeDetails, branches, ...props}) => {
                 </Button>
                 <Avatar
                     alt="Remy Sharp"
-                    src={image}
+                    src={`${ApiClient.instance.basePath}${image}`}
                     sx={{width: 150, height: 150}}
                     variant="circular"/>
             </Stack>
@@ -102,7 +103,8 @@ const EmployeeLoaded = ({id, employeeDetails, branches, ...props}) => {
                         password: passwordRef.current.value ? passwordRef.current.value : undefined,
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
-                        branchId: branch.id
+                        branchId: branch ? branch.id : undefined,
+                        accountType: employeeDetails.accountType
                     });
                 }}>Save</Button>
                 <Button variant='contained' color='error'>Delete this Employee</Button>

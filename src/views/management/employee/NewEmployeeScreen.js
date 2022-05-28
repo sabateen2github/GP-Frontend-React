@@ -6,7 +6,7 @@ import {Photo} from "@mui/icons-material";
 import useSWR from "swr";
 import {branchesFetcher} from "../../../api/branch/branches";
 import {createEmployee} from "../../../api/employee/employee";
-import { CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
 import {UserResponseDTO} from "auth-backend-client";
 
 
@@ -18,8 +18,8 @@ const EmployeeLoaded = ({branches, ...props}) => {
     const emailRef = useRef();
     const phoneRef = useRef();
 
-    const [date, setDate] = useState();
-    const [branch, setBranch] = useState();
+    const [date, setDate] = useState(new Date());
+    const [branch, setBranch] = useState(branches[0]);
     const [accountType, setAccountType] = useState({name: 'Help Desk', id: UserResponseDTO.AppUserRolesEnum.HELP_DESK});
 
     const [image, setImage] = useState();
@@ -70,7 +70,10 @@ const EmployeeLoaded = ({branches, ...props}) => {
                         {'Help Desk'}
                     </option>
                     <option key={1}
-                            value={JSON.stringify({name: 'Management', id: UserResponseDTO.AppUserRolesEnum.MANAGEMENT})}>
+                            value={JSON.stringify({
+                                name: 'Management',
+                                id: UserResponseDTO.AppUserRolesEnum.MANAGEMENT
+                            })}>
                         {'Management'}
                     </option>
                 </TextField>
@@ -115,9 +118,9 @@ const EmployeeLoaded = ({branches, ...props}) => {
                         password: passwordRef.current.value ? passwordRef.current.value : undefined,
                         email: emailRef.current.value,
                         phone: phoneRef.current.value,
-                        branchId: branch.id,
+                        branchId: branch ? branch.id : undefined,
                         accountType: accountType.id
-                    });
+                    }).then(r => console.log(r));
                 }}>Save</Button>
             </Stack>
         </Stack>

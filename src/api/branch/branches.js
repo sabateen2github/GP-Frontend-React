@@ -1,4 +1,5 @@
 import {ApiClient, Branch, BranchesControllerApi, QueueControllerApi, QueueSpec} from 'backend-client';
+import {fetchCredentials} from "../login/login";
 
 
 if (!localStorage.hasOwnProperty('location-edit-branch')) {
@@ -7,7 +8,7 @@ if (!localStorage.hasOwnProperty('location-edit-branch')) {
 const branchesFetcher = async () => {
 
     let apiInstance = new BranchesControllerApi();
-    return await apiInstance.getAllBranches().then((data) => {
+    return apiInstance.getAllBranches().then((data) => {
         return data;
     }, (error) => {
         console.error(error);
@@ -23,8 +24,10 @@ const branchFetcher = async (id) => {
         return data;
     }).then(branch => {
         finalBranch = branch;
+        return fetchCredentials();
+    }).then(credentials => {
         let apiInstance = new QueueControllerApi();
-        return apiInstance.getAllQueues(branch.id);
+        return apiInstance.getAllQueues(credentials.instituteId, finalBranch.id);
     }).then(queues => {
         finalBranch.queues = queues;
         return finalBranch;
@@ -68,6 +71,28 @@ const addQueue = async (queueName, branchId) => {
 
 };
 
+
+const addQueueForBranches = async (queueName, branchesIds) => {
+
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
+
+    let apiInstance = new QueueControllerApi();
+
+    let promises = branchesIds.map((branchId) => {
+        let queueSpec = new QueueSpec(); // QueueSpec |
+        queueSpec.name = queueName;
+        queueSpec.branchId = branchId;
+        console.log(queueSpec);
+        return apiInstance.createQueueSpec(queueSpec);
+    })
+
+
+    for (let i = 0, len = promises.length; i < len; i++) {
+        await promises[i];
+    }
+    return true;
+};
+
 const deleteBranch = async (branchId) => {
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
@@ -101,4 +126,4 @@ const createBranch = async ({location, name, phone, instituteId}) => {
 };
 
 
-export {branchesFetcher, branchFetcher, updateBranch, createBranch, deleteBranch, addQueue};
+export {addQueueForBranches, branchesFetcher, branchFetcher, updateBranch, createBranch, deleteBranch, addQueue};

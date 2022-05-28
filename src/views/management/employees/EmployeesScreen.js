@@ -21,6 +21,7 @@ import useSWR from "swr";
 import {fetchEmployees} from "../../../api/employee/employee";
 import {FixedSizeList} from "react-window";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const renderRow = (employees) => (props) => {
@@ -31,12 +32,13 @@ const renderRow = (employees) => (props) => {
         history(path);
     };
 
+
     return (
         <ListItem style={style} key={index} component="div" disablePadding>
             <ListItemButton onClick={redirectHandler(`/employees/${employees[index].id}`)}>
                 <Avatar
                     alt="Remy Sharp"
-                    src={employees[index].logoUrl}
+                    src={`${ApiClient.instance.basePath}${employees[index].profilePic}`}
                     sx={{width: 64, height: 64}}
                     variant="circular"/>
                 <Stack direction='column' paddingX={2} width='100%'>
@@ -106,7 +108,9 @@ const EmployeesScreen = (props) => {
                 </Card>
             </Stack>
             <Stack direction='row' width='95%' justifyContent='center'>
-                <Button variant='contained' onClick={()=>{history('/employees/new');}}>Add new employee</Button>
+                <Button variant='contained' onClick={() => {
+                    history('/employees/new');
+                }}>Add new employee</Button>
             </Stack>
         </Stack>);
 

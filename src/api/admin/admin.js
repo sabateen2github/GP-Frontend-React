@@ -43,7 +43,6 @@ const createBusiness = async ({logoUrl, name, phone, email}) => {
                 type: data.type || defaultType,
             });
         }
-
         const file = await getFileFromUrl(logoUrl, `${name}logoUrl.jpg`);
         profilePic = file;
     }
