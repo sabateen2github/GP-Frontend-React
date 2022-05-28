@@ -73,6 +73,44 @@ var BranchesControllerApi = /*#__PURE__*/function () {
       });
     }
     /**
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+
+  }, {
+    key: "deleteBranchWithHttpInfo",
+    value: function deleteBranchWithHttpInfo(id) {
+      var postBody = null; // verify the required parameter 'id' is set
+
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteBranch");
+      }
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {};
+      var headerParams = {};
+      var formParams = {};
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = null;
+      return this.apiClient.callApi('/branches/{id}', 'DELETE', pathParams, queryParams, headerParams, formParams, postBody, authNames, contentTypes, accepts, returnType, null);
+    }
+    /**
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+
+  }, {
+    key: "deleteBranch",
+    value: function deleteBranch(id) {
+      return this.deleteBranchWithHttpInfo(id).then(function (response_and_data) {
+        return response_and_data.data;
+      });
+    }
+    /**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:gp.backend.model/Branch>} and HTTP response
      */
 

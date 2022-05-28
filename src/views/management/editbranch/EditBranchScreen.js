@@ -96,7 +96,7 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
                             });
                         } else {
                             createBranch(submitData).then(branch => {
-                                if (success) successCallback(branch.id);
+                                if (branch) successCallback(branch.id);
                                 setSaving(false);
                                 setUpdating(false);
                                 setSnackBar({success: success, snackBarOpened: true});

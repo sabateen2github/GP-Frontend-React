@@ -123,6 +123,7 @@ All URIs are relative to *http://localhost:8080*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BackendClient.BranchesControllerApi* | [**createBranch**](docs/BranchesControllerApi.md#createBranch) | **POST** /branches | 
+*BackendClient.BranchesControllerApi* | [**deleteBranch**](docs/BranchesControllerApi.md#deleteBranch) | **DELETE** /branches/{id} | 
 *BackendClient.BranchesControllerApi* | [**getAllBranches**](docs/BranchesControllerApi.md#getAllBranches) | **GET** /branches | 
 *BackendClient.BranchesControllerApi* | [**getBranch**](docs/BranchesControllerApi.md#getBranch) | **GET** /branches/{id} | 
 *BackendClient.BranchesControllerApi* | [**updateBranch**](docs/BranchesControllerApi.md#updateBranch) | **PUT** /branches/{id} | 

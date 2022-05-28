@@ -1,4 +1,4 @@
-import {ApiClient, Branch, BranchesControllerApi} from 'backend-client';
+import {ApiClient, Branch, BranchesControllerApi, QueueControllerApi, QueueSpec} from 'backend-client';
 
 
 if (!localStorage.hasOwnProperty('location-edit-branch')) {
@@ -18,19 +18,24 @@ const branchesFetcher = async () => {
 const branchFetcher = async (id) => {
 
     let apiInstance = new BranchesControllerApi();
-    return await apiInstance.getBranch(id).then((data) => {
+    let finalBranch;
+    return apiInstance.getBranch(id).then((data) => {
         return data;
-    }, (error) => {
+    }).then(branch => {
+        finalBranch = branch;
+        let apiInstance = new QueueControllerApi();
+        return apiInstance.getAllQueues(branch.id);
+    }).then(queues => {
+        finalBranch.queues = queues;
+        return finalBranch;
+    }).catch((error) => {
         console.error(error);
     });
 };
 
 
 const updateBranch = async ({id, location, name, phone, instituteId}) => {
-
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
-
-
     let apiInstance = new BranchesControllerApi();
     let branch = new Branch();
     branch.id = id;
@@ -46,6 +51,28 @@ const updateBranch = async ({id, location, name, phone, instituteId}) => {
     });
 };
 
+const addQueue = async (queueName, branchId) => {
+
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
+    let apiInstance = new QueueControllerApi();
+    let queueSpec = new QueueSpec(); // QueueSpec |
+    queueName.name = queueName;
+    queueName.branchId = branchId;
+
+    return apiInstance.createQueueSpec(queueSpec).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+        return false;
+    });
+
+};
+
+const deleteBranch = async (branchId) => {
+
+    return true;
+};
+
 const createBranch = async ({location, name, phone, instituteId}) => {
 
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
@@ -59,8 +86,8 @@ const createBranch = async ({location, name, phone, instituteId}) => {
     branch.location = location;
     branch.instituteId = instituteId;
 
-    return await apiInstance.createBranch(branch).then(() => {
-        return true;
+    return apiInstance.createBranch(branch).then((branch) => {
+        return branch;
     }, (error) => {
         console.error(error);
         return false;
@@ -68,4 +95,4 @@ const createBranch = async ({location, name, phone, instituteId}) => {
 };
 
 
-export {branchesFetcher, branchFetcher, updateBranch, createBranch};
+export {branchesFetcher, branchFetcher, updateBranch, createBranch, deleteBranch, addQueue};

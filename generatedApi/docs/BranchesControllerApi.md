@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createBranch**](BranchesControllerApi.md#createBranch) | **POST** /branches | 
+[**deleteBranch**](BranchesControllerApi.md#deleteBranch) | **DELETE** /branches/{id} | 
 [**getAllBranches**](BranchesControllerApi.md#getAllBranches) | **GET** /branches | 
 [**getBranch**](BranchesControllerApi.md#getBranch) | **GET** /branches/{id} | 
 [**updateBranch**](BranchesControllerApi.md#updateBranch) | **PUT** /branches/{id} | 
@@ -55,6 +56,52 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: */*
+
+
+## deleteBranch
+
+> deleteBranch(id)
+
+
+
+### Example
+
+```javascript
+import BackendClient from 'backend-client';
+let defaultClient = BackendClient.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new BackendClient.BranchesControllerApi();
+let id = "id_example"; // String | 
+apiInstance.deleteBranch(id).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## getAllBranches
