@@ -6,6 +6,7 @@ import React from "react";
 import {CommonHeader} from "../../common/Headers";
 import {fetchInstituteDetails} from "../../../api/management/management";
 import {deleteBusiness} from "../../../api/admin/admin";
+import {ApiClient} from "backend-client";
 
 const BusinessScreen = (props) => {
 
@@ -19,7 +20,7 @@ const BusinessScreen = (props) => {
 
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={businessRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${businessRequest.data.logoUrl}`}
                           institute={businessRequest.data.name}
                           profilePic={credentialsRequest.data.profilePic}
                           employee={credentialsRequest.data.employeeName}
@@ -33,7 +34,7 @@ const BusinessScreen = (props) => {
                     <CardContent>
                         <CardMedia
                             component="img"
-                            image={businessRequest.data.logo}
+                            image={`${ApiClient.instance.basePath}${businessRequest.data.logoUrl}`}
                             alt="green iguana"
                         />
                         <Typography align='center' gutterBottom variant="h5" component="div">
@@ -44,7 +45,7 @@ const BusinessScreen = (props) => {
             </Card>
             <Button variant='contained' color='error' onClick={() => {
                 deleteBusiness(id).then(result => {
-
+                    if (result) history('/admin');
                 });
             }}>Delete this business</Button>
         </Stack>

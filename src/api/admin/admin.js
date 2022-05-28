@@ -1,5 +1,4 @@
 import {ApiClient, Institute, InstituteControllerApi} from "backend-client";
-import {ApiClient as AuthApiClient} from "auth-backend-client";
 
 
 const fetchBusinesses = async (searchTerm) => {
@@ -18,13 +17,20 @@ const fetchBusinesses = async (searchTerm) => {
 };
 
 const deleteBusiness = async (id) => {
+    ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
-    return true;
+    let apiInstance = new InstituteControllerApi();
+    return apiInstance.deleteInstitute(id).then(() => {
+        return true;
+    }, (error) => {
+        console.error(error);
+        return false;
+    });
+
 };
 
 const createBusiness = async ({logoUrl, name, phone, email}) => {
 
-    AuthApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
     ApiClient.instance.authentications['bearerAuth'].accessToken = localStorage.getItem("jwt");
 
     let institute = new Institute();
