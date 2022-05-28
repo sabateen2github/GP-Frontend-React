@@ -84,23 +84,22 @@ const BranchDetails = ({data, id, successCallback, ...props}) => {
                             location: markerLocation,
                             name: data.name,
                             phone: data.phone,
-                            instituteId: credentialsRequest.data.institutdeId
+                            instituteId: credentialsRequest.data.instituteId
                         };
                         if (id) {
                             updateBranch(submitData).then(success => {
-                                if (success) successCallback({...data, ...submitData});
+                                if (success) successCallback(id);
                                 setSaving(false);
                                 setUpdating(false);
                                 setSnackBar({success: success, snackBarOpened: true});
 
                             });
                         } else {
-                            createBranch(submitData).then(success => {
-                                if (success) successCallback({...data, ...submitData});
+                            createBranch(submitData).then(branch => {
+                                if (success) successCallback(branch.id);
                                 setSaving(false);
                                 setUpdating(false);
                                 setSnackBar({success: success, snackBarOpened: true});
-
                             });
                         }
 
@@ -139,8 +138,8 @@ const NewBranchScreen = (props) => {
         },
         name: '',
         phone: ''
-    }} successCallback={(newDetails) => {
-        history(`/branch/${newDetails.id}`);
+    }} successCallback={(newBranchId) => {
+        history(`/branch/${newBranchId}`);
         history(0);
     }
     }/>

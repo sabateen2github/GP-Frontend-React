@@ -58,12 +58,8 @@ const createBranch = async ({location, name, phone, instituteId}) => {
     branch.phone = phone;
     branch.location = location;
     branch.instituteId = instituteId;
-    
-    let opts = {
-        'branch': branch // Branch |
-    };
 
-    return await apiInstance.createBranch(opts).then(() => {
+    return await apiInstance.createBranch(branch).then(() => {
         return true;
     }, (error) => {
         console.error(error);
