@@ -1,0 +1,68 @@
+@startuml
+
+title backend-api Schemas Diagram
+
+entity BookedTurnQueue {
+    turnId: String
+    position: Integer
+    logoUrl: String
+    state: String
+    queue: Queue
+}
+
+entity Branch {
+    name: String
+    id: String
+    phone: String
+    instituteId: String
+    location: LatLng
+}
+
+entity Employee {
+    name: String
+    id: String
+    fullName: String
+    dateOfBirth: Date
+    username: String
+    password: String
+    profilePic: String
+    email: String
+    phone: String
+    branchId: String
+    accountType: String
+}
+
+entity Institute {
+    name: String
+    id: String
+    logoUrl: String
+    email: String
+    phone: String
+}
+
+entity LatLng {
+    lng: Double
+    lat: Double
+}
+
+entity Queue {
+    queueSpec: QueueSpec
+    queueSize: Integer
+    physicalSize: Integer
+    remoteSize: Integer
+    averageTime: Integer
+    currentTurnId: String
+}
+
+entity QueueSpec {
+    name: String
+    id: String
+    branchId: String
+}
+
+
+BookedTurnQueue -- Queue : queue
+Branch -- LatLng : location
+Queue -- QueueSpec : queueSpec
+
+@enduml

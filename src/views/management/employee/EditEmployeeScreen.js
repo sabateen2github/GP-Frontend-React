@@ -31,7 +31,7 @@ const EmployeeLoaded = ({id, employeeDetails, branches, ...props}) => {
 
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={credentialsRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                           institute={credentialsRequest.data.instituteName}
                           profilePic={credentialsRequest.data.profilePic}
                           employee={credentialsRequest.data.employeeName}

@@ -72,7 +72,6 @@ const HelpDeskMainScreen = (props) => {
     const {data, error, isValidating, mutate} = useSWR(CREDENTIAL_KEY, fetchCredentials);
     if (!data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
 
-
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
             <CommonHeader

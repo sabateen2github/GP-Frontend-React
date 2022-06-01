@@ -15,6 +15,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "asciidoctor": "^2.2.6",
     "auth-backend-client": "file:generatedAuthApi",
     "axios": "^0.27.2",
     "backend-client": "file:generatedApi",

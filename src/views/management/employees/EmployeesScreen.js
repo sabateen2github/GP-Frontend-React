@@ -68,9 +68,9 @@ const EmployeesScreen = (props) => {
 
     return (
         <Stack direction='column' spacing={4} alignItems='start' justifyContent='space-between'>
-            <CommonHeader logo={credentialsRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                           institute={credentialsRequest.data.instituteName}
-                          profilePic={credentialsRequest.data.profilePic}
+                          profilePic={`${ApiClient.instance.basePath}${credentialsRequest.data.profilePic}`}
                           employee={credentialsRequest.data.employeeName}
                           employeeId={credentialsRequest.data.employeeId}/>
 

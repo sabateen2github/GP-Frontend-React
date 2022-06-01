@@ -5,6 +5,7 @@ import {Photo} from "@mui/icons-material";
 import {saveInstituteDetails} from "../../../api/management/management";
 import useSWR, {mutate} from "swr";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 const EditBusinessScreen = (props) => {
 
@@ -17,11 +18,11 @@ const EditBusinessScreen = (props) => {
 
     if (!credentialsRequest.data) return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
 
-    if (!image) image = credentialsRequest.data.logo;
-
+    if (!image) image = `${ApiClient.instance.basePath}${credentialsRequest.data.logo}`;
+    console.log(image)
     return (
         <Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
-            <CommonHeader logo={credentialsRequest.data.logo}
+            <CommonHeader logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                           institute={credentialsRequest.data.instituteName}
                           profilePic={credentialsRequest.data.profilePic}
                           employee={credentialsRequest.data.employeeName}

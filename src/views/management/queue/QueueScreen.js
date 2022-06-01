@@ -17,6 +17,7 @@ import useSWR from "swr";
 import {advanceQueue, deleteQueue, editQueue, queueFetcher, resetQueue} from "../../../api/branch/queues";
 import {branchFetcher} from "../../../api/branch/branches";
 import {CREDENTIAL_KEY, fetchCredentials} from "../../../api/login/login";
+import {ApiClient} from "backend-client";
 
 
 const QueueDialogHolder = ({
@@ -79,6 +80,7 @@ const QueueScreen = (props) => {
 
     const credentialsRequest = useSWR(CREDENTIAL_KEY, fetchCredentials);
 
+
     if (isValidating || credentialsRequest.isValidating) {
         return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
     } else if (error || credentialsRequest.error) return <Typography variant='h2'>Error!</Typography>;
@@ -125,7 +127,7 @@ const QueueScreen = (props) => {
                     <CommonHeader
                         branchName={branchResponse.data ? branchResponse.data.name : undefined}
                         queueName={data ? data.queueSpec.name : undefined}
-                        logo={credentialsRequest.data.logo}
+                        logo={`${ApiClient.instance.basePath}${credentialsRequest.data.logo}`}
                         institute={credentialsRequest.data.instituteName}
                         profilePic={credentialsRequest.data.profilePic}
                         employee={credentialsRequest.data.employeeName}

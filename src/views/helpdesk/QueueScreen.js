@@ -20,7 +20,6 @@ const HelpDeskQueueScreen = (props) => {
         return <Stack justifyContent='center' alignItems='center'><CircularProgress/></Stack>;
     } else if (error) return <Typography variant='h2'>Error!</Typography>;
 
-
     return (<Stack direction='column' spacing={4} alignItems='center' justifyContent='space-between'>
         <CommonHeader
             branchName={credentialsRequest.data.branchName}
