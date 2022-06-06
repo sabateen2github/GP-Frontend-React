@@ -163,6 +163,7 @@ Class | Method | HTTP request | Description
  - [BackendClient.LatLng](docs/LatLng.md)
  - [BackendClient.Queue](docs/Queue.md)
  - [BackendClient.QueueSpec](docs/QueueSpec.md)
+ - [BackendClient.WorkingDay](docs/WorkingDay.md)
 
 
 ## Documentation for Authorization

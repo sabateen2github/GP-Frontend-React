@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **phone** | **String** |  | [optional] 
 **instituteId** | **String** |  | [optional] 
 **location** | [**LatLng**](LatLng.md) |  | [optional] 
+**workingDays** | [**[WorkingDay]**](WorkingDay.md) |  | [optional] 
 
 

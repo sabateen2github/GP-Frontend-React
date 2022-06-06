@@ -1,0 +1,6 @@
+projectKey=management
+serverUrl=http://localhost:9000
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9000/dashboard?id=management
+ceTaskId=AYEhmxuRFOE0RCXg3vc8
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYEhmxuRFOE0RCXg3vc8

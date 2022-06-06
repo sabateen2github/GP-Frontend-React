@@ -14,7 +14,6 @@
 
 import ApiClient from "../ApiClient";
 import BookedTurnQueue from '../gp.backend.model/BookedTurnQueue';
-import LatLng from '../gp.backend.model/LatLng';
 import Queue from '../gp.backend.model/Queue';
 import QueueSpec from '../gp.backend.model/QueueSpec';
 
@@ -93,7 +92,7 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
+     * @param {String} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     bookQueueWithHttpInfo(userId, queueId, branchId, location) {
@@ -143,7 +142,7 @@ export default class QueueControllerApi {
      * @param {String} userId 
      * @param {String} queueId 
      * @param {String} branchId 
-     * @param {Object.<String, module:gp.backend.model/LatLng>} location 
+     * @param {String} location 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     bookQueue(userId, queueId, branchId, location) {

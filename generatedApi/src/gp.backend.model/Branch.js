@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import LatLng from './LatLng';
+import WorkingDay from './WorkingDay';
 
 /**
  * The Branch model module.
@@ -63,6 +64,9 @@ class Branch {
             if (data.hasOwnProperty('location')) {
                 obj['location'] = LatLng.constructFromObject(data['location']);
             }
+            if (data.hasOwnProperty('workingDays')) {
+                obj['workingDays'] = ApiClient.convertToType(data['workingDays'], [WorkingDay]);
+            }
         }
         return obj;
     }
@@ -94,6 +98,11 @@ Branch.prototype['instituteId'] = undefined;
  * @member {module:gp.backend.model/LatLng} location
  */
 Branch.prototype['location'] = undefined;
+
+/**
+ * @member {Array.<module:gp.backend.model/WorkingDay>} workingDays
+ */
+Branch.prototype['workingDays'] = undefined;
 
 
 

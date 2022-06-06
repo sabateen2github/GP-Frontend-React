@@ -20,6 +20,7 @@ import Institute from './gp.backend.model/Institute';
 import LatLng from './gp.backend.model/LatLng';
 import Queue from './gp.backend.model/Queue';
 import QueueSpec from './gp.backend.model/QueueSpec';
+import WorkingDay from './gp.backend.model/WorkingDay';
 import BranchesControllerApi from './gp.backend.api/BranchesControllerApi';
 import EmployeesControllerApi from './gp.backend.api/EmployeesControllerApi';
 import FileServingControllerApi from './gp.backend.api/FileServingControllerApi';
@@ -106,6 +107,12 @@ export {
      * @property {module:gp.backend.model/QueueSpec}
      */
     QueueSpec,
+
+    /**
+     * The WorkingDay model constructor.
+     * @property {module:gp.backend.model/WorkingDay}
+     */
+    WorkingDay,
 
     /**
     * The BranchesControllerApi service constructor.

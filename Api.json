@@ -212,7 +212,7 @@
             "in": "query",
             "required": true,
             "schema": {
-              "$ref": "#/components/schemas/LatLng"
+              "type": "string"
             }
           }
         ],
@@ -1067,19 +1067,6 @@
           }
         }
       },
-      "LatLng": {
-        "type": "object",
-        "properties": {
-          "lng": {
-            "type": "number",
-            "format": "double"
-          },
-          "lat": {
-            "type": "number",
-            "format": "double"
-          }
-        }
-      },
       "Branch": {
         "type": "object",
         "properties": {
@@ -1097,6 +1084,55 @@
           },
           "location": {
             "$ref": "#/components/schemas/LatLng"
+          },
+          "workingDays": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkingDay"
+            }
+          }
+        }
+      },
+      "LatLng": {
+        "type": "object",
+        "properties": {
+          "lng": {
+            "type": "number",
+            "format": "double"
+          },
+          "lat": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "WorkingDay": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "string",
+            "enum": [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ]
+          },
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodInMinutes": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },

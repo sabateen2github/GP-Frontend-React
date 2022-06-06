@@ -37,7 +37,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generateApi": "openapi-generator-cli generate -i Api.json -g javascript -o generatedApi --additional-properties=npmName=restClient,supportsES6=true,npmVersion=8.4.1,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=backend-client,usePromises=true",
-    "generateAuthApi": "openapi-generator-cli generate -i AuthApi.json -g javascript -o generatedAuthApi --additional-properties=npmName=restClient,supportsES6=true,npmVersion=8.4.1,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=auth-backend-client,usePromises=true"
+    "generateAuthApi": "openapi-generator-cli generate -i AuthApi.json -g javascript -o generatedAuthApi --additional-properties=npmName=restClient,supportsES6=true,npmVersion=8.4.1,withInterfaces=true,apiPackage=gp.backend.api,modelPackage=gp.backend.model,projectName=auth-backend-client,usePromises=true",
+    "sonar": "node sonarqube-scanner.js"
   },
   "eslintConfig": {
     "extends": [
@@ -56,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sonarqube-scanner": "^2.8.1"
   }
 }
